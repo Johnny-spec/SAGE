@@ -1,0 +1,15 @@
+schema_version: 1
+solution_id: enterprise-qa
+title: Enterprise QA
+layout: conversation
+widgets:
+  - widget_id: question
+    kind: input-form
+    actions:
+      - action_id: answer
+        label: Answer
+        kind: invoke
+        target: skill:enterprise-qa
+  - widget_id: citations
+    kind: citation-list
+    data_source: /v1/runs/{run_id}/citations

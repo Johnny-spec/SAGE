@@ -1,0 +1,21 @@
+apiVersion: sage.dev/v1alpha1
+kind: WorkflowTemplate
+workflowId: review-contract
+version: 1.0.0
+steps:
+  - id: analyze
+    kind: skill
+    target: contract-review
+    timeoutSeconds: 600
+    retry:
+      maximum_attempts: 2
+  - id: expert-review
+    kind: human-task
+    target: legal-review
+    dependsOn: [analyze]
+    timeoutSeconds: 86400
+    input:
+      task_kind: approval
+      title: Review contract findings
+      instructions: Review every cited finding before approving the draft.
+      assigned_roles: [legal-reviewer]

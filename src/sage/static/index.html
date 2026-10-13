@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SAGE Skills Gateway</title>
+  <link rel="stylesheet" href="/static/styles.css?v=20260911-evidence-blocks">
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <strong class="brand">SAGE</strong>
+      <span class="subtitle">Skills Gateway</span>
+    </div>
+    <div class="header-actions">
+      <button id="signInButton" type="button" class="quiet-button" hidden>Sign in</button>
+      <a href="/admin" class="quiet-link">Control Plane</a>
+      <div id="serviceStatus" class="service-status">Checking service</div>
+    </div>
+  </header>
+
+  <main class="workspace">
+    <section class="conversation" aria-label="Conversation">
+      <div id="messages" class="messages" aria-live="polite">
+        <div class="message assistant">
+          Attach evidence and describe the incident. The active Skills and their progress
+          will appear here while the run is in progress.
+        </div>
+        <section id="skillOverview" class="skill-overview" aria-label="Available Skills">
+          <div class="skill-overview-heading">
+            <strong>Available Skills</strong>
+            <span id="skillCount">Loading</span>
+          </div>
+          <div id="skillCatalog" class="skill-catalog"></div>
+        </section>
+        <section id="solutionWorkspace" class="solution-workspace" aria-label="Solution workspace" hidden>
+          <div class="skill-overview-heading">
+            <strong id="solutionWorkspaceTitle"></strong>
+            <span>Release UI</span>
+          </div>
+          <div id="solutionWidgets" class="solution-widgets"></div>
+        </section>
+      </div>
+
+      <div class="threadbar">
+        <span id="threadLabel"></span>
+        <button id="newThread" type="button" class="quiet-button">New thread</button>
+      </div>
+
+      <form id="composer" class="composer">
+        <label class="attachment-control" for="attachment">Attach file</label>
+        <input
+          id="attachment"
+          name="attachment"
+          type="file"
+          accept=".log,.txt,.csv,.json,.zip,.pdf,.docx,.png,.jpg,.jpeg,text/plain,application/json,application/zip,application/pdf,image/png,image/jpeg"
+        >
+        <label class="select-control" for="solutionSelect">
+          <span>Solution</span>
+          <select id="solutionSelect" name="solution"></select>
+        </label>
+        <label class="select-control" for="modeSelect">
+          <span>Mode</span>
+          <select id="modeSelect" name="mode">
+            <option value="agent" selected>Deep Agent</option>
+            <option value="direct">Direct Skill</option>
+            <option value="durable-skill">Durable Skill</option>
+            <option value="durable-agent">Durable Agent</option>
+          </select>
+        </label>
+        <label class="select-control" for="skillSelect">
+          <span>Route</span>
+          <select id="skillSelect" name="skill">
+            <option value="">Auto</option>
+          </select>
+        </label>
+        <label class="select-control" for="agentSelect">
+          <span>Agent</span>
+          <select id="agentSelect" name="agent"></select>
+        </label>
+        <label id="argumentsControl" class="arguments-control" for="argumentsInput" hidden>
+          <span>Arguments JSON</span>
+          <textarea id="argumentsInput" name="arguments" rows="2" placeholder="{}"></textarea>
+        </label>
+        <textarea
+          id="messageInput"
+          name="message"
+          rows="2"
+          maxlength="20000"
+          placeholder="Describe what you need..."
+          required
+        ></textarea>
+        <button id="sendButton" type="submit">Send</button>
+      </form>
+      <div id="attachmentName" class="attachment-name"></div>
+    </section>
+
+    <aside class="activity" aria-label="Run activity">
+      <div class="activity-heading">
+        <h2>Run activity</h2>
+        <button id="clearActivity" type="button" class="quiet-button">Clear</button>
+      </div>
+      <ol id="events" class="events"></ol>
+      <section id="durableRun" aria-label="Durable run" hidden>
+        <h2>Durable run</h2>
+        <p id="durableStatus" role="status"></p>
+        <button id="refreshDurable" type="button" class="quiet-button">Refresh</button>
+        <button id="cancelDurable" type="button" class="quiet-button">Cancel run</button>
+        <div id="durableTasks"></div>
+        <pre id="durableResult"></pre>
+      </section>
+    </aside>
+  </main>
+
+  <script src="/static/app.js?v=20260911-evidence-blocks" defer></script>
+</body>
+</html>

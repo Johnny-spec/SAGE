@@ -1,0 +1,10 @@
+.git
+.venv
+.sage-state
+.pytest_cache
+.ruff_cache
+**/__pycache__
+**/*.pyc
+.env
+skills/SkillsCollection/**/.git
+skills/SkillsCollection/**/Temp

@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SAGE Solution API</title>
+  <script src="/static/theme-init.js"></script>
+  <link rel="stylesheet" href="/static/solution-api.css">
+</head>
+<body>
+  <header class="api-header">
+    <div class="brand"><strong>SAGE</strong><span>Solution API</span></div>
+    <nav><a href="/admin">Control Plane</a><a href="/">Runtime</a></nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div>
+        <span class="eyebrow">External integration</span>
+        <h1>Call an active Solution over HTTP or SSE</h1>
+        <p>Send the same message contract from a server, desktop client, or website. SSE uses a POST request and streams typed run events until completion.</p>
+      </div>
+      <span id="serviceStatus" class="badge">Connecting</span>
+    </section>
+
+    <div id="notice" class="notice" role="status" aria-live="polite"></div>
+
+    <section class="panel">
+      <div class="panel-heading">
+        <div><span class="eyebrow">Request builder</span><h2>Test a Solution</h2></div>
+        <button id="refreshSolutions" type="button" class="secondary">Refresh</button>
+      </div>
+      <div class="grid two">
+        <label>Active Solution<select id="solutionSelect"><option value="">Loading active Solutions...</option></select></label>
+        <label>Mode<select id="modeSelect"><option value="agent">Agent</option><option value="direct">Direct routing</option></select></label>
+        <label>Thread ID (optional)<input id="threadId" maxlength="128" placeholder="customer-session-123"></label>
+        <label>Bearer token (optional)<input id="bearerToken" type="password" autocomplete="off" placeholder="Required when public API authentication is enabled"></label>
+        <label class="span-two">Message<textarea id="messageInput" rows="5" maxlength="20000" required>Introduce yourself and describe what this Solution can do.</textarea></label>
+      </div>
+      <div class="actions">
+        <button id="sendHttp" type="button" class="primary">Send HTTP</button>
+        <button id="sendSse" type="button" class="primary">Stream SSE</button>
+        <button id="clearOutput" type="button" class="secondary">Clear output</button>
+      </div>
+    </section>
+
+    <section class="output-grid">
+      <article class="panel">
+        <div class="panel-heading"><h2>Response</h2><span id="requestStatus" class="badge neutral">Idle</span></div>
+        <pre id="responseOutput">No response yet.</pre>
+      </article>
+      <article class="panel">
+        <div class="panel-heading"><h2>SSE events</h2><span id="eventCount">0 events</span></div>
+        <pre id="eventOutput">No events yet.</pre>
+      </article>
+    </section>
+
+    <section class="panel">
+      <div class="panel-heading"><div><span class="eyebrow">Copy and integrate</span><h2>Request examples</h2></div><button id="copyExample" type="button" class="secondary">Copy selected example</button></div>
+      <div class="example-tabs" role="tablist">
+        <button type="button" class="tab active" data-example="curl">cURL HTTP</button>
+        <button type="button" class="tab" data-example="javascript">JavaScript SSE</button>
+      </div>
+      <pre id="exampleOutput"></pre>
+      <p class="hint">For a browser hosted on another origin, set <code>SAGE_CORS_ALLOWED_ORIGINS</code> to that exact origin and restart SAGE. Authentication tokens belong in the <code>Authorization: Bearer</code> header and must not be embedded in public frontend source.</p>
+    </section>
+
+    <section class="panel contract">
+      <div><span class="eyebrow">Endpoints</span><h2>Stable message contract</h2></div>
+      <dl>
+        <div><dt>HTTP</dt><dd><code>POST /v1/messages</code> returns one JSON response.</dd></div>
+        <div><dt>SSE</dt><dd><code>POST /v1/messages/stream</code> returns <code>text/event-stream</code> with typed run events.</dd></div>
+        <div><dt>Required JSON</dt><dd><code>message</code>, <code>solution_id</code>, and <code>mode</code>.</dd></div>
+        <div><dt>Conversation</dt><dd>Reuse the returned <code>thread_id</code> on later requests.</dd></div>
+      </dl>
+    </section>
+  </main>
+
+  <script src="/static/solution-api.js"></script>
+</body>
+</html>

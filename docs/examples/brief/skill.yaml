@@ -1,0 +1,29 @@
+apiVersion: sage.dev/v1alpha1
+kind: SkillBinding
+metadata:
+  name: brief
+  version: 1.0.0
+spec:
+  execution:
+    type: model
+    capabilityIds:
+      - tool:mcp:REPLACE_SERVER_ID:calculate_total
+      - tool:mcp:REPLACE_SERVER_ID:lookup_runbook
+    maxSteps: 20
+    maxModelCalls: 8
+    maxToolCalls: 4
+  inputSchema:
+    type: object
+    required: [unit_price, quantity, service]
+    properties:
+      unit_price: {type: number, minimum: 0}
+      quantity: {type: integer, minimum: 1}
+      service: {type: string, enum: [iis, edge]}
+    additionalProperties: false
+  outputSchema:
+    type: object
+    required: [total, runbook]
+    properties:
+      total: {type: number}
+      runbook: {type: object}
+    additionalProperties: false

@@ -1,0 +1,16 @@
+apiVersion: sage.dev/v1alpha1
+kind: SolutionBundle
+metadata:
+  name: news-intelligence
+  version: 1.0.0
+  title: News Intelligence
+spec:
+  owner: news-team
+  description: Deduplicated and cited news analysis with a durable scheduled workflow.
+  allowedRoles: [user, news-reader]
+  supportedProfiles: [direct, durable, scheduled]
+  components:
+    - {kind: skill, id: news-intelligence, version: 1.0.0, contentDigest: "sha256:4170ecade9de7023202449e527e6ea953a8ab34ea6085a401056d600f0ffedc6"}
+    - {kind: workflow, id: build-news-brief, version: 1.0.0, contentDigest: "sha256:379d86db88469674d2ca2b6655d637a1caf9afc83d4ece27531af5bad85d1477", path: workflow.yaml}
+    - {kind: trigger, id: daily-news, version: 1.0.0, contentDigest: "sha256:09b8ac0ee4194a212e932917079aec433857c4fa659861d8c73cf273c5abdffc", path: trigger.yaml}
+    - {kind: ui-schema, id: news-intelligence-ui, version: 1.0.0, contentDigest: "sha256:3030873ee1b28093708fb0b4aee6bde643f6f453d6b34ce558f2003d744beef9", path: ui.yaml}

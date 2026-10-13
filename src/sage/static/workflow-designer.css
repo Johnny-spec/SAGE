@@ -1,0 +1,62 @@
+.wf-actions, .wf-library, .wf-toolbar { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.wf-library { padding: 12px 0; border-bottom: 1px solid var(--cp-border); }
+.wf-library label { min-width: 200px; flex: 1; }
+#workflowDesigner label { display: flex; flex-direction: column; gap: 5px; color: var(--cp-text-muted); min-width: 0; }
+#workflowDesigner input, #workflowDesigner select, #workflowDesigner textarea { width: 100%; min-width: 0; padding: 8px; border: 1px solid var(--cp-border-strong); border-radius: 6px; background: var(--cp-surface); color: var(--cp-text); }
+#workflowDesigner input:invalid, #workflowDesigner textarea:invalid { border-color: var(--cp-danger); }
+#workflowDesigner button { border-radius: 6px; }
+.wf-metadata { display: grid; grid-template-columns: 2fr 1.5fr 1.5fr 1fr 110px; gap: 12px; padding: 18px 0; }
+.wf-toolbar { justify-content: space-between; padding-bottom: 12px; }
+#wfKind { width: auto !important; }
+.wf-workspace { display: grid; grid-template-columns: minmax(0, 1fr) minmax(280px, 340px); border-top: 1px solid var(--cp-border); border-bottom: 1px solid var(--cp-border); }
+.wf-graph-scroll { overflow: auto; height: 580px; min-width: 0; background-color: var(--cp-surface-soft); background-image: radial-gradient(var(--cp-border) 1px, transparent 1px); background-size: 20px 20px; }
+#wfGraph { position: relative; min-width: 640px; min-height: 580px; }
+#wfEdges { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
+#wfEdges path { fill: none; stroke: var(--cp-border-strong); stroke-width: 2; }
+#wfEdges marker path { fill: var(--cp-border-strong); }
+.wf-node { position: absolute; width: 190px; height: 86px; display: flex; flex-direction: column; align-items: flex-start; justify-content: center; gap: 6px; padding: 12px !important; background: var(--cp-surface); text-align: left; border: 1px solid var(--cp-border-strong); touch-action: none; }
+.wf-node.selected { border: 2px solid var(--cp-accent); background: var(--cp-accent-soft); }
+.wf-node strong, .wf-node span { display: block; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.wf-node span { font-size: 12px; color: var(--cp-text-muted); }
+.wf-inspector { border-left: 1px solid var(--cp-border); padding: 16px; height: 580px; overflow: auto; min-width: 0; }
+.wf-inspector h2 { font-size: 18px; margin: 0 0 12px; overflow-wrap: anywhere; }
+.wf-inspector label, .wf-inspector fieldset { margin-bottom: 12px; }
+.wf-inspector fieldset { min-width: 0; border: 1px solid var(--cp-border); padding: 10px; }
+#workflowDesigner .wf-check { flex-direction: row; align-items: center; overflow-wrap: anywhere; }
+#workflowDesigner .wf-check input { width: auto; flex: none; }
+.wf-binding { padding: 12px 0; border-bottom: 1px solid var(--cp-border); }
+.wf-binding input, .wf-binding select { margin-bottom: 6px; }
+.wf-output { border-bottom: 1px solid var(--cp-border); padding: 12px 0; }
+.wf-output summary { cursor: pointer; font-weight: 600; }
+#wfOutputs { max-width: 680px; padding: 12px 0; }
+#wfSource { white-space: pre-wrap; overflow-wrap: anywhere; max-height: 350px; overflow: auto; color: var(--cp-text-muted); }
+.wf-validation { padding: 12px 0; overflow-wrap: anywhere; }
+.wf-validation button { display: block; margin-top: 6px; text-align: left; max-width: 100%; white-space: normal; height: auto; }
+.wf-empty { padding: 32px; color: var(--cp-text-muted); }
+#wfStatus { color: var(--cp-text-muted); font-size: 13px; }
+.wf-readonly { font-family: Consolas, monospace; overflow-wrap: anywhere; }
+.wf-tool-details { padding: 12px 0; margin-bottom: 16px; border-bottom: 1px solid var(--cp-border); }
+.wf-tool-details h3 { margin: 0 0 8px; font-size: 15px; }
+.wf-tool-details p, .wf-tool-unavailable { white-space: pre-wrap; overflow-wrap: anywhere; }
+.wf-tool-details details { padding: 8px 0; }
+.wf-tool-details summary { cursor: pointer; font-weight: 600; }
+.wf-tool-metadata { margin: 10px 0; display: grid; grid-template-columns: minmax(0, 90px) minmax(0, 1fr); gap: 6px 10px; }
+.wf-tool-metadata dt { color: var(--cp-text-muted); }
+.wf-tool-metadata dd { margin: 0; overflow-wrap: anywhere; }
+.wf-tool-parameter { padding: 10px 0; border-bottom: 1px solid var(--cp-border); overflow-wrap: anywhere; }
+.wf-tool-parameter > span { display: block; margin-top: 4px; font-size: 12px; }
+.wf-tool-details pre { max-height: 260px; overflow: auto; white-space: pre-wrap; overflow-wrap: anywhere; font-size: 12px; }
+@media (max-width: 1150px) { .wf-metadata { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 760px) {
+  .wf-workspace { grid-template-columns: minmax(0, 1fr); }
+  .wf-inspector { border-left: none; border-top: 1px solid var(--cp-border); height: auto; max-height: none; }
+  .wf-graph-scroll { height: 310px; }
+  #wfGraph { min-width: 0; width: auto !important; height: auto !important; min-height: 0; }
+  #wfEdges { display: none; }
+  #wfNodes { display: flex; flex-direction: column; gap: 10px; padding: 12px; }
+  .wf-node { position: relative; left: auto !important; top: auto !important; width: 100%; flex: none; touch-action: auto; }
+  .wf-metadata { grid-template-columns: minmax(0, 1fr); }
+  .wf-actions { width: 100%; }
+  .wf-actions button { flex: 1 1 auto; }
+  .wf-library label { min-width: 0; width: 100%; flex-basis: 100%; }
+}

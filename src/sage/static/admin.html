@@ -1,0 +1,502 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SAGE Control Plane</title>
+  <script src="/static/theme-init.js"></script>
+  <style>
+    :root {
+      color-scheme: light;
+      --cp-bg: #f7f4ef;
+      --cp-bg-elevated: #fcfbf8;
+      --cp-surface: #ffffff;
+      --cp-surface-soft: #f5f5f5;
+      --cp-border: #dedede;
+      --cp-border-strong: #919191;
+      --cp-text: #242424;
+      --cp-text-muted: #5c5c5c;
+      --cp-text-soft: #6f6f6f;
+      --cp-accent: #b11f4b;
+      --cp-accent-hover: #9a1a41;
+      --cp-accent-soft: rgba(177, 31, 75, 0.08);
+      --cp-accent-fg: #ffffff;
+      --cp-success: #16a34a;
+      --cp-danger: #dc2626;
+      --cp-warning: #f59e0b;
+      --cp-link: #0078d4;
+      --cp-shadow: 0 18px 48px rgba(0, 0, 0, 0.12);
+      --cp-overlay: rgba(255, 255, 255, 0.8);
+      --cp-panel: rgba(255, 255, 255, 0.86);
+      --cp-panel-strong: rgba(255, 255, 255, 0.96);
+      --cp-sheen: rgba(255, 255, 255, 0.55);
+      --cp-highlight: rgba(177, 31, 75, 0.12);
+    }
+    html[data-theme="dark"] {
+      color-scheme: dark;
+      --cp-bg: #3d3b3a;
+      --cp-bg-elevated: #343231;
+      --cp-surface: #292929;
+      --cp-surface-soft: #2e2e2e;
+      --cp-border: #474747;
+      --cp-border-strong: #5f5f5f;
+      --cp-text: #dedede;
+      --cp-text-muted: #919191;
+      --cp-text-soft: #b0b0b0;
+      --cp-accent: #fd8ea1;
+      --cp-accent-hover: #fb7b91;
+      --cp-accent-soft: rgba(253, 142, 161, 0.14);
+      --cp-accent-fg: #1a1a1a;
+      --cp-success: #4ade80;
+      --cp-danger: #f87171;
+      --cp-warning: #fbbf24;
+      --cp-link: #4da6ff;
+      --cp-shadow: 0 18px 48px rgba(0, 0, 0, 0.32);
+      --cp-overlay: rgba(41, 41, 41, 0.88);
+      --cp-panel: rgba(41, 41, 41, 0.72);
+      --cp-panel-strong: rgba(41, 41, 41, 0.96);
+      --cp-sheen: rgba(255, 255, 255, 0.04);
+      --cp-highlight: rgba(253, 142, 161, 0.12);
+    }
+  </style>
+  <link rel="stylesheet" href="/static/admin.css?v=20260911-quality-v2">
+  <link rel="stylesheet" href="/static/workflow-designer.css?v=20260910-tool-details">
+  <link rel="stylesheet" href="/static/solution-workbench.css?v=20260910-quick">
+</head>
+<body>
+  <header class="control-header">
+    <div class="brand-lockup">
+      <strong>SAGE</strong>
+      <span>Control Plane</span>
+    </div>
+    <div class="header-actions">
+      <span id="connectionState" class="status-badge neutral">Disconnected</span>
+      <a href="/" class="text-link">Runtime</a>
+    </div>
+  </header>
+
+  <div class="control-shell">
+    <nav class="control-nav" aria-label="Control plane sections">
+      <button type="button" class="nav-item active" data-view="overview">Overview</button>
+      <button type="button" class="nav-item" data-view="solutions">Solutions</button>
+      <button type="button" class="nav-item" data-view="agents">Agents</button>
+      <button type="button" class="nav-item" data-view="workflows">Workflows</button>
+      <button type="button" class="nav-item" data-view="skills">Skills</button>
+      <button type="button" class="nav-item" data-view="mcp">MCP Servers</button>
+      <button type="button" class="nav-item" data-view="quality">Quality</button>
+      <button type="button" class="nav-item" data-view="catalog">Catalog</button>
+      <a class="nav-item" href="/solution-api">Solution API</a>
+    </nav>
+
+    <main class="control-main">
+      <section id="authPanel" class="auth-strip">
+        <label for="adminToken">Admin token</label>
+        <input id="adminToken" type="password" autocomplete="current-password">
+        <button id="connectAdmin" type="button" class="primary">Connect</button>
+      </section>
+      <div id="notice" class="notice" role="status" aria-live="polite"></div>
+
+      <section class="view active" data-view-panel="overview">
+        <div class="page-heading">
+          <div><span class="eyebrow">Operations</span><h1>Overview</h1></div>
+          <button type="button" class="secondary" data-refresh>Refresh</button>
+        </div>
+        <div id="overviewMetrics" class="metric-grid"></div>
+        <section class="work-section">
+          <div class="section-heading"><h2>Active generation</h2></div>
+          <div id="activeGeneration" class="detail-block empty">Connect to load status.</div>
+        </section>
+      </section>
+
+      <section class="view" data-view-panel="solutions">
+        <div class="page-heading">
+          <div><span class="eyebrow">Applications</span><h1>Solutions</h1></div>
+          <div class="form-actions"><button id="newSolution" type="button" class="primary">New Solution</button><button type="button" class="secondary" data-refresh>Refresh</button></div>
+        </div>
+        <section id="solutionWorkbench" class="work-section">
+          <div class="section-heading"><h2>Solution workbench</h2><span id="swStatus" role="status">Select a Solution</span></div>
+          <div class="form-grid two">
+            <label>Solution<select id="swSolution"><option value="">New Solution</option></select></label>
+            <label>Workflow draft<select id="swDraft"><option value="">No draft selected</option></select></label>
+            <label>Release version<input id="swVersion" value="1.0.0" maxlength="64"></label>
+            <div class="form-actions">
+              <button id="swNew" type="button" class="secondary">New workflow</button>
+              <button id="swEdit" type="button" class="secondary">Edit workflow</button>
+              <button id="swResolve" type="button" class="primary">Resolve dependencies</button>
+              <button id="swQuick" type="button" class="primary" hidden>Quick publish</button>
+            </div>
+          </div>
+          <div id="swReview" hidden>
+            <div class="section-heading"><h3>Build review</h3><span id="swSnapshot"></span></div>
+            <div id="swDependencies" class="table-wrap"></div>
+            <ul id="swWarnings"></ul>
+            <details><summary>Bundle manifest</summary><pre id="swManifest"></pre></details>
+            <label class="check-option"><input id="swConfirm" type="checkbox">Dependency locks and risks reviewed</label>
+            <div class="form-actions">
+              <button id="swBundle" type="button" class="secondary">Download unsigned Bundle</button>
+              <button id="swBuild" type="button" class="primary">Create Release and Candidate</button>
+              <label id="swSignedLabel" hidden>Signed Bundle<input id="swSigned" type="file" accept=".zip"></label>
+              <button id="swBuildSigned" type="button" class="primary" hidden>Build signed Bundle</button>
+            </div>
+          </div>
+          <div id="swResult" aria-live="polite"></div>
+          <section id="swRuntime" class="work-section" hidden>
+            <div class="section-heading"><h3>Test run</h3><span id="swRunStatus" role="status"></span></div>
+            <label>Workflow input JSON<textarea id="swRunInput" rows="3">{}</textarea></label>
+            <div class="form-actions">
+              <button id="swQuickRun" type="button" class="primary">Quick publish and run</button>
+              <button id="swRun" type="button" class="secondary">Run published</button>
+              <button id="swRunRefresh" type="button" class="secondary" disabled>Refresh result</button>
+              <button id="swRunCancel" type="button" class="secondary" disabled>Cancel run</button>
+            </div>
+            <pre id="swRunResult"></pre>
+          </section>
+          <section id="swHistory" hidden>
+            <h3>Release history</h3>
+            <div id="swHistoryList" class="table-wrap"></div>
+          </section>
+          <details id="swAi" class="sw-ai">
+            <summary>AI draft proposal</summary>
+            <div class="form-grid two">
+              <label>Solution ID<input id="swAiId" maxlength="64" pattern="[a-z0-9][a-z0-9-]*"></label>
+              <label>Owner<input id="swAiOwner" value="solution-owner" maxlength="200"></label>
+              <label class="span-two">Goal<textarea id="swGoal" rows="3" maxlength="8000"></textarea></label>
+              <label class="span-two">Capability scope<select id="swAiTargets" multiple size="6" aria-label="AI capability scope"></select></label>
+            </div>
+            <div class="form-actions"><button id="swSuggest" type="button" class="secondary">Generate proposal</button></div>
+            <div id="swProposal" hidden>
+              <label>Proposed title<input id="swAiTitle" maxlength="200"></label>
+              <label>Proposed description<textarea id="swAiDescription" rows="2" maxlength="4000"></textarea></label>
+              <ul id="swRecommendations"></ul>
+              <pre id="swAiSource"></pre>
+              <label class="check-option"><input id="swAiConfirm" type="checkbox">Proposal reviewed</label>
+              <div class="form-actions"><button id="swApply" type="button" class="primary" disabled>Apply as editable draft</button></div>
+            </div>
+          </details>
+        </section>
+        <details id="solutionDefinitions"><summary>Definitions and manual Bundle import</summary>
+        <form id="solutionImportForm" class="upload-strip">
+          <label for="solutionManifest">Solution Bundle manifest</label>
+          <input id="solutionManifest" type="file" accept=".zip,.yaml,.yml,application/zip,application/yaml,text/yaml" required>
+          <button type="submit" class="primary">Import Bundle</button>
+        </form>
+        <div class="split-workspace">
+          <section class="resource-pane">
+            <div class="section-heading"><h2>Definitions</h2><span id="solutionCount"></span></div>
+            <div id="solutionList" class="resource-list"></div>
+          </section>
+          <form id="solutionForm" class="editor-pane">
+            <div class="form-grid two">
+              <label>Solution ID<input id="solutionId" required></label>
+              <label>Owner<input id="solutionOwner" required></label>
+              <label class="span-two">Title<input id="solutionTitle" required></label>
+              <label class="span-two">Description<textarea id="solutionDescription" rows="3"></textarea></label>
+              <label>Entry Agent<select id="solutionEntryAgent"><option value="">No entry Agent</option></select></label>
+              <label>Allowed roles<input id="solutionRoles" value="user" required></label>
+              <fieldset class="span-two">
+                <legend>Execution profiles</legend>
+                <div id="solutionProfiles" class="check-grid">
+                  <label class="check-option"><input type="checkbox" value="direct" checked>Direct</label>
+                  <label class="check-option"><input type="checkbox" value="interactive" checked>Interactive</label>
+                  <label class="check-option"><input type="checkbox" value="durable">Durable</label>
+                  <label class="check-option"><input type="checkbox" value="scheduled">Scheduled</label>
+                  <label class="check-option"><input type="checkbox" value="event-driven">Event driven</label>
+                </div>
+              </fieldset>
+            </div>
+            <div class="form-actions"><button type="submit" class="primary">Create Solution</button></div>
+          </form>
+        </div>
+        </details>
+        <details><summary>Manual Release locks and evaluation reports</summary>
+        <section class="work-section">
+          <div class="section-heading"><h2>Immutable Release lock</h2></div>
+          <form id="solutionReleaseForm" class="candidate-builder">
+            <div class="form-grid two">
+              <label>Solution<select id="releaseSolution" required></select></label>
+              <label>Version<input id="releaseVersion" value="1.0.0" required></label>
+              <fieldset><legend>Published Agents</legend><div id="releaseAgents" class="check-grid"></div></fieldset>
+              <fieldset><legend>Active Skills</legend><div id="releaseSkills" class="check-grid"></div></fieldset>
+              <label class="span-two">Additional component locks JSON
+                <textarea id="releaseAdditionalComponents" rows="6" placeholder='[{"kind":"workflow","component_id":"analyze","version":"1.0.0","content_digest":"sha256:..."}]'>[]</textarea>
+              </label>
+            </div>
+            <div class="form-actions"><button type="submit" class="primary">Create Release</button></div>
+          </form>
+          <div id="solutionReleaseList" class="table-wrap"></div>
+        </section>
+        <section class="work-section">
+          <div class="section-heading"><h2>Evaluation report</h2></div>
+          <form id="evaluationForm" class="candidate-builder">
+            <div class="form-grid two">
+              <label>Release<select id="evaluationRelease" required></select></label>
+              <label>Suite ID<input id="evaluationSuite" required></label>
+              <label>Status<select id="evaluationStatus"><option value="passed">Passed</option><option value="failed">Failed</option></select></label>
+              <label>Metrics JSON<input id="evaluationMetrics" value="{}" required></label>
+              <label class="span-two">Summary<input id="evaluationSummary"></label>
+            </div>
+            <div class="form-actions"><button type="submit" class="primary">Record report</button></div>
+          </form>
+        </section>
+        </details>
+      </section>
+
+      <section class="view" data-view-panel="workflows" id="workflowDesigner">
+        <div class="page-heading">
+          <div><span class="eyebrow">Drafts</span><h1>Workflows</h1></div>
+          <div class="wf-actions">
+            <button type="button" id="wfImport" class="secondary">Import</button>
+            <button type="button" id="wfNew" class="primary">New workflow</button>
+          </div>
+        </div>
+        <input id="wfFile" type="file" accept=".yaml,.yml,.json" hidden>
+        <div class="wf-library">
+          <label>Saved draft<select id="wfDraft"><option value="">Select a draft</option></select></label>
+          <button type="button" id="wfReload" class="secondary">Reload</button>
+          <span id="wfStatus" role="status" aria-live="polite">No draft selected</span>
+        </div>
+        <div id="wfEditor" hidden>
+          <div class="wf-metadata">
+            <label>Title<input id="wfTitle" maxlength="200" required></label>
+            <label>Solution<select id="wfSolution" required></select></label>
+            <label>Workflow ID<input id="wfId" required maxlength="255"></label>
+            <label>Version<input id="wfVersion" required maxlength="64"></label>
+            <label>Max concurrency<input id="wfConcurrency" type="number" min="1" max="100" required></label>
+          </div>
+          <div class="wf-toolbar">
+            <div class="wf-actions">
+              <select id="wfKind" aria-label="New node kind"><option value="agent">Agent</option><option value="skill">Skill</option><option value="tool">MCP Tool</option></select>
+              <button type="button" id="wfAdd" class="secondary">Add node</button>
+              <button type="button" id="wfArrange" class="secondary">Arrange</button>
+              <button type="button" id="wfUndo" class="secondary">Undo</button>
+              <button type="button" id="wfRedo" class="secondary">Redo</button>
+            </div>
+            <div class="wf-actions">
+              <button type="button" id="wfSave" class="primary">Save draft</button>
+              <button type="button" id="wfRelease" class="secondary">Review release</button>
+              <button type="button" id="wfValidate" class="secondary">Validate</button>
+              <button type="button" id="wfExport" class="secondary">Export YAML</button>
+              <button type="button" id="wfPackage" class="secondary">Export design</button>
+              <button type="button" id="wfDelete" class="danger">Delete draft</button>
+            </div>
+          </div>
+          <div class="wf-workspace">
+            <div class="wf-graph-scroll" tabindex="0" aria-label="Workflow dependency graph">
+              <div id="wfGraph"><svg id="wfEdges" aria-hidden="true"></svg><div id="wfNodes"></div></div>
+            </div>
+            <section class="wf-inspector" aria-label="Node properties"><div id="wfProperties"></div></section>
+          </div>
+          <div id="wfValidation" class="wf-validation" role="status" aria-live="polite"></div>
+          <details class="wf-output"><summary>Workflow outputs</summary><div id="wfOutputs"></div></details>
+          <details class="wf-output"><summary>Definition JSON</summary><pre id="wfSource"></pre></details>
+        </div>
+      </section>
+
+      <section class="view" data-view-panel="agents">
+        <div class="page-heading">
+          <div><span class="eyebrow">Definitions</span><h1>Agents</h1></div>
+          <button id="newAgent" type="button" class="primary">New agent</button>
+        </div>
+        <div class="split-workspace">
+          <section class="resource-pane">
+            <div class="section-heading"><h2>Drafts</h2><span id="agentCount"></span></div>
+            <div id="agentList" class="resource-list"></div>
+          </section>
+          <form id="agentForm" class="editor-pane">
+            <input id="agentDraftId" type="hidden">
+            <div class="form-grid two">
+              <label>Agent ID<input id="agentId" required></label>
+              <label>Version<input id="agentVersion" required value="1.0.0"></label>
+              <label class="span-two">Display name<input id="agentName" required></label>
+              <label class="span-two">Instructions<textarea id="agentInstructions" rows="7" required></textarea></label>
+              <fieldset class="span-two"><legend>Capabilities</legend><div id="agentCapabilities" class="check-grid"></div></fieldset>
+              <label>Memory<select id="agentMemory"><option value="none">None</option><option value="thread" selected>Thread</option><option value="thread-and-user">Thread + user</option></select></label>
+              <label>Max steps<input id="agentMaxSteps" type="number" min="1" max="200" value="40"></label>
+              <label>Max model calls<input id="agentMaxModelCalls" type="number" min="1" max="1000" value="100"></label>
+              <label>Max Skill calls<input id="agentMaxToolCalls" type="number" min="1" max="1000" value="100"></label>
+              <label>Max subagent calls<input id="agentMaxSubagentCalls" type="number" min="1" max="200" value="20"></label>
+              <label class="span-two">Subagents JSON<textarea id="agentSubagents" rows="6">[]</textarea></label>
+            </div>
+            <div class="form-actions">
+              <button type="submit" class="primary">Save draft</button>
+              <button id="validateAgent" type="button" class="secondary">Validate</button>
+              <button id="cloneAgent" type="button" class="secondary">Clone version</button>
+            </div>
+            <div id="agentValidation" class="validation-panel"></div>
+          </form>
+        </div>
+      </section>
+
+      <section class="view" data-view-panel="skills">
+        <div class="page-heading"><div><span class="eyebrow">Packages</span><h1>Skills</h1></div></div>
+        <form id="skillUploadForm" class="upload-strip">
+          <label for="skillZip">Skill ZIP</label>
+          <input id="skillZip" type="file" accept=".zip,application/zip" required>
+          <button type="submit" class="primary">Upload ZIP</button>
+        </form>
+        <section class="work-section">
+          <div class="section-heading"><h2>Quarantine and published packages</h2><span id="skillPackageCount"></span></div>
+          <div id="skillPackageList" class="table-wrap"></div>
+        </section>
+      </section>
+
+      <section class="view" data-view-panel="mcp">
+        <div class="page-heading"><div><span class="eyebrow">Connections</span><h1>MCP Servers</h1></div><button id="newMcp" type="button" class="primary">New server</button></div>
+        <div class="split-workspace">
+          <section class="resource-pane">
+            <div class="section-heading"><h2>Configurations</h2><span id="mcpCount"></span></div>
+            <div id="mcpList" class="resource-list"></div>
+          </section>
+          <div class="editor-pane">
+            <form id="mcpForm">
+              <input id="mcpServerId" type="hidden">
+              <div class="form-grid two">
+                <label>Alias<input id="mcpAlias" required></label>
+                <label>Transport<select id="mcpTransport"><option value="streamable-http">Streamable HTTP</option><option value="stdio">stdio preset</option></select></label>
+                <label class="span-two">Server URL<input id="mcpUrl" type="url"></label>
+                <label>stdio preset<input id="mcpPreset"></label>
+                <label>Secret environment variable<input id="mcpSecretRef"></label>
+                <label class="span-two">DEV plaintext secret<input id="mcpDevSecret" type="password" autocomplete="new-password"></label>
+              </div>
+              <div class="form-actions">
+                <button type="submit" class="primary">Save configuration</button>
+                <button id="testMcp" type="button" class="secondary">Test</button>
+                <button id="discoverMcp" type="button" class="secondary">Discover tools</button>
+              </div>
+            </form>
+            <section class="tool-import">
+              <div class="section-heading"><h2>Discovered tools</h2></div>
+              <div id="mcpTools" class="resource-list"></div>
+              <section id="mcpToolTest" class="work-section" hidden>
+                <div class="section-heading"><h2 id="mcpTestTitle">Tool test</h2><button id="closeMcpTest" type="button" class="secondary" aria-label="Close tool test">Close</button></div>
+                <details><summary>Schema and binding</summary><pre id="mcpTestSchema"></pre></details>
+                <div class="form-grid two">
+                  <label>Reviewed risk<select id="mcpTestRisk"><option value="">Unreviewed</option><option value="read-only">Read only</option><option value="write-low">Write low</option><option value="write-high">Write high</option><option value="destructive">Destructive</option></select></label>
+                  <div class="form-actions align-end"><button id="reviewMcpTestRisk" type="button" class="secondary">Save risk review</button><span id="mcpTestReview"></span></div>
+                </div>
+                <form id="mcpTestForm">
+                  <label>Parameters<select id="mcpTestMode"><option value="fields">Fields</option><option value="json">JSON</option></select></label>
+                  <div id="mcpTestFields" class="form-grid two"></div>
+                  <label id="mcpTestJsonLabel" hidden>Arguments JSON<textarea id="mcpTestArguments" rows="7" spellcheck="false">{}</textarea></label>
+                  <label>Timeout (seconds)<input id="mcpTestTimeout" type="number" min="1" max="60" value="30" required></label>
+                  <label class="check-option"><input id="mcpTestConfirm" type="checkbox">I confirm this real write operation with the submitted parameters.</label>
+                  <div class="form-actions"><button id="runMcpTest" type="submit" class="primary">Run test</button><button id="newMcpTest" type="button" class="secondary">New test</button><button id="refreshMcpTests" type="button" class="secondary">Refresh results</button></div>
+                </form>
+                <div id="mcpTestApproval" hidden>
+                  <label>Decision reason<input id="mcpTestReason" maxlength="2000"></label>
+                  <div class="form-actions"><button id="approveMcpTest" type="button" class="primary">Approve test</button><button id="rejectMcpTest" type="button" class="secondary">Reject test</button></div>
+                </div>
+                <pre id="mcpTestResult" aria-live="polite"></pre>
+                <div id="mcpTestHistory" class="table-wrap"></div>
+              </section>
+              <form id="mcpImportForm" class="form-grid two">
+                <input id="mcpToolName" type="hidden">
+                <label>Skill name<input id="mcpSkillName" required></label>
+                <label>Version<input id="mcpSkillVersion" value="1.0.0" required></label>
+                <label class="span-two">Description<input id="mcpSkillDescription" required></label>
+                <label class="span-two">Skill instructions<textarea id="mcpSkillInstructions" rows="5" required></textarea></label>
+                <label>Risk<select id="mcpSkillRisk"><option value="read-only">Read only</option><option value="write-low">Write low</option><option value="write-high">Write high</option><option value="destructive">Destructive</option></select></label>
+                <div class="form-actions align-end"><button id="registerMcpTool" type="button" class="primary">Register native tool</button><button type="submit" class="secondary">Import as Skill</button></div>
+              </form>
+            </section>
+          </div>
+        </div>
+      </section>
+
+      <section class="view" data-view-panel="catalog">
+        <div class="page-heading"><div><span class="eyebrow">Release</span><h1>Catalog</h1></div><button type="button" class="secondary" data-refresh>Refresh</button></div>
+        <form id="candidateForm" class="candidate-builder">
+          <div class="form-grid two">
+            <label>Title<input id="candidateTitle" required></label>
+            <label>Default Agent<select id="candidateDefaultAgent"><option value="">Keep current default</option></select></label>
+            <label class="span-two">Description<input id="candidateDescription"></label>
+            <fieldset><legend>Agent drafts</legend><div id="candidateAgents" class="check-grid"></div></fieldset>
+            <fieldset><legend>Skill packages</legend><div id="candidateSkills" class="check-grid"></div></fieldset>
+            <fieldset class="span-two"><legend>Native tools</legend><div id="candidateTools" class="check-grid"></div></fieldset>
+            <fieldset class="span-two"><legend>Solution Releases</legend><div id="candidateReleases" class="check-grid"></div></fieldset>
+          </div>
+          <div class="form-actions"><button type="submit" class="primary">Create candidate</button></div>
+        </form>
+        <section id="candidateSection" class="work-section"><div class="section-heading"><h2>Candidates</h2></div><div id="candidateList" class="table-wrap"></div></section>
+        <section id="approvalSection" class="work-section"><div class="section-heading"><h2>Approvals</h2></div><div id="approvalList" class="table-wrap"></div></section>
+        <section class="work-section"><div class="section-heading"><h2>Generations</h2></div><div id="generationList" class="table-wrap"></div></section>
+      </section>
+
+      <section class="view" data-view-panel="quality">
+        <div class="page-heading">
+          <div><span class="eyebrow">Evidence</span><h1>Quality</h1></div>
+          <button type="button" class="secondary" data-refresh>Refresh</button>
+        </div>
+        <div id="qualityMetrics" class="metric-grid quality-metrics"></div>
+        <section class="work-section">
+          <div class="section-heading"><h2>Version trends</h2></div>
+          <div id="qualityBreakdown" class="table-wrap"></div>
+        </section>
+        <div class="split-workspace quality-workspace">
+          <section class="resource-pane">
+            <div class="section-heading"><h2>Feedback</h2><span id="qualityFeedbackCount"></span></div>
+            <div id="qualityFeedbackList" class="resource-list"></div>
+          </section>
+          <section id="qualityFeedbackEditor" class="editor-pane" hidden>
+            <div class="section-heading"><h2>Feedback review</h2><span id="qualityFeedbackRating"></span></div>
+            <div id="qualityFeedbackMeta" class="detail-block"></div>
+            <div id="qualityFeedbackComment" class="quality-comment"></div>
+            <form id="qualityDispositionForm" class="quality-form">
+              <div class="form-grid two">
+                <label>Disposition<select id="qualityDispositionAction">
+                  <option value="acknowledged">Acknowledged</option>
+                  <option value="needs-human-review">Needs human review</option>
+                  <option value="proposed-revision">Proposed revision</option>
+                  <option value="resolved">Resolved</option>
+                  <option value="rejected">Rejected</option>
+                </select></label>
+                <label>Reason<input id="qualityDispositionReason" maxlength="4000" required></label>
+              </div>
+              <div class="form-actions"><button type="submit" class="secondary">Record disposition</button></div>
+            </form>
+            <div id="qualityDispositionList" class="table-wrap"></div>
+            <form id="qualityCandidateForm" class="quality-form">
+              <div class="form-grid two">
+                <label class="span-two">Rubric<textarea id="qualityRubric" rows="3" maxlength="4000" required></textarea></label>
+                <label class="span-two">Expected result JSON<textarea id="qualityExpectedResult" rows="4">{}</textarea></label>
+                <label class="span-two">Tags<input id="qualityTags" placeholder="correctness, regression"></label>
+              </div>
+              <div class="form-actions"><button type="submit" class="primary">Freeze evaluation sample</button></div>
+            </form>
+          </section>
+        </div>
+        <section class="work-section">
+          <div class="section-heading"><h2>Regression sample sets</h2><span id="qualityCandidateCount"></span></div>
+          <form id="qualitySampleSetForm" class="quality-form">
+            <div class="form-grid two">
+              <label>Version<input id="qualitySampleSetVersion" value="1.0.0" maxlength="64" required></label>
+              <label>Title<input id="qualitySampleSetTitle" maxlength="200" required></label>
+              <label class="span-two">Description<input id="qualitySampleSetDescription" maxlength="4000"></label>
+              <fieldset class="span-two"><legend>Frozen samples</legend><div id="qualityCandidateOptions" class="check-grid quality-candidate-options"></div></fieldset>
+            </div>
+            <div class="form-actions"><button type="submit" class="primary">Create sample set</button></div>
+          </form>
+          <div id="qualitySampleSetList" class="table-wrap"></div>
+        </section>
+        <section id="qualityComparisonPanel" class="work-section" hidden>
+          <div class="section-heading"><h2>Baseline comparison</h2><span id="qualitySampleSetMeta"></span></div>
+          <form id="qualityComparisonForm" class="quality-form">
+            <div class="form-grid two">
+              <label>Baseline target digest<input id="qualityBaselineDigest" placeholder="sha256:..." required></label>
+              <label>Candidate target digest<input id="qualityCandidateDigest" placeholder="sha256:..." required></label>
+              <label>Evaluator ID<input id="qualityEvaluatorId" value="human-review" maxlength="200" required></label>
+              <label>Evaluator version<input id="qualityEvaluatorVersion" value="1.0.0" maxlength="64" required></label>
+              <label class="span-two">Outcomes JSON<textarea id="qualityOutcomes" rows="8" required>[]</textarea></label>
+            </div>
+            <div class="form-actions"><button type="submit" class="primary">Import comparison</button></div>
+          </form>
+          <div id="qualityComparisonList" class="table-wrap"></div>
+        </section>
+      </section>
+    </main>
+  </div>
+  <script src="/static/admin.js?v=20260911-quality-v2" defer></script>
+  <script src="/static/workflow-designer.js?v=20260910-workbench" defer></script>
+  <script src="/static/solution-workbench.js?v=20260910-quick" defer></script>
+</body>
+</html>

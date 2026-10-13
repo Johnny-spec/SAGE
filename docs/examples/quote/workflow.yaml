@@ -1,0 +1,22 @@
+apiVersion: sage.dev/v1alpha1
+kind: WorkflowTemplate
+workflowId: quote
+version: 1.0.0
+steps:
+  - id: total
+    kind: tool
+    inheritInput: false
+    target: tool:mcp:REPLACE_SERVER_ID:calculate_total
+    bindings:
+      unit_price: {source: workflow-input, path: /unit_price}
+      quantity: {source: workflow-input, path: /quantity}
+  - id: runbook
+    kind: tool
+    inheritInput: false
+    target: tool:mcp:REPLACE_SERVER_ID:lookup_runbook
+    dependsOn: [total]
+    bindings:
+      service: {source: workflow-input, path: /service}
+outputs:
+  total: {source: step-output, stepId: total, path: /output/total}
+  runbook: {source: step-output, stepId: runbook, path: /output}

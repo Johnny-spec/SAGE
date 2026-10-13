@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "manager_report.schema.json",
+  "title": "SkillsCollection AI manager report",
+  "type": "object",
+  "required": [
+    "schema_version", "report_id", "generated_at", "products", "status",
+    "problem_statement", "engineering_assessment", "analysis_process", "investigation_process",
+    "evidence_chain", "possible_causes", "solutions", "next_actions",
+    "missing_logs", "cross_validation", "invocation_chain",
+    "confidence_summary", "quality"
+  ],
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "report_id": {"type": "string", "pattern": "^MR-[a-f0-9]{16}$"},
+    "generated_at": {"type": "string"},
+    "products": {"type": "array", "items": {"enum": ["IIS", "Edge"]}, "uniqueItems": true},
+    "status": {"type": "object"},
+    "problem_statement": {"type": "object"},
+    "engineering_assessment": {"type": "object"},
+    "analysis_process": {"type": "object"},
+    "investigation_process": {"type": "object"},
+    "source_inventory": {"type": "object"},
+    "evidence_chain": {"type": "array", "items": {"type": "object"}},
+    "possible_causes": {"type": "array", "items": {"type": "object"}},
+    "solutions": {"type": "array", "items": {"type": "object"}},
+    "next_actions": {"type": "array", "items": {"type": "object"}},
+    "missing_logs": {"type": "array", "items": {"type": "object"}},
+    "cross_validation": {"type": "object"},
+    "invocation_chain": {"type": "object"},
+    "per_product": {"type": "array", "items": {"type": "object"}},
+    "collection_plan": {"type": ["object", "null"]},
+    "next_steps": {"type": "array", "items": {"type": "object"}},
+    "quality": {"type": "object"},
+    "confidence_summary": {"type": "object"},
+    "privacy": {"type": "object"}
+  },
+  "additionalProperties": true
+}

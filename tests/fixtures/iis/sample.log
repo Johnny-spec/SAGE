@@ -1,0 +1,9 @@
+#Software: Microsoft Internet Information Services 10.0
+#Version: 1.0
+#Date: 2026-08-24 10:00:00
+#Fields: date time s-ip cs-method cs-uri-stem cs-uri-query s-port cs-username c-ip cs(User-Agent) cs(Referer) sc-status sc-substatus sc-win32-status time-taken
+2026-08-24 10:00:00 10.0.0.10 GET /api/orders - 443 - 192.0.2.10 SAGE-Test - 200 0 0 120
+2026-08-24 10:00:01 10.0.0.10 GET /api/orders/42 - 443 - 192.0.2.11 SAGE-Test - 500 0 0 6500
+2026-08-24 10:00:02 10.0.0.10 GET /api/orders/43 - 443 - 192.0.2.12 SAGE-Test - 500 0 0 7200
+2026-08-24 10:00:03 10.0.0.10 GET /health - 443 - 192.0.2.13 SAGE-Test - 200 0 0 20
+2026-08-24 10:00:04 10.0.0.10 POST /api/orders - 443 - 192.0.2.14 SAGE-Test - 201 0 0 300

@@ -1,0 +1,36 @@
+{
+  "constants": {
+    "logFormatVersion": 1,
+    "timeTickOffset": "0",
+    "logEventTypes": {
+      "URL_REQUEST_START_JOB": 1,
+      "AUTH_GENERATE_TOKEN": 2
+    },
+    "logSourceType": {
+      "URL_REQUEST": 1
+    }
+  },
+  "events": [
+    {
+      "time": "1000",
+      "type": 1,
+      "phase": 1,
+      "source": {"id": 7, "type": 1},
+      "params": {"url": "https://example.test/protected", "method": "GET"}
+    },
+    {
+      "time": "1001",
+      "type": 2,
+      "phase": 0,
+      "source": {"id": 7, "type": 1},
+      "params": {"net_error": -341}
+    },
+    {
+      "time": "1002",
+      "type": 1,
+      "phase": 2,
+      "source": {"id": 7, "type": 1},
+      "params": {"net_error": -341, "http_status_code": 401}
+    }
+  ]
+}

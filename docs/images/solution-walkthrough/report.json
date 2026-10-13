@@ -1,0 +1,25 @@
+{
+  "url": "http://127.0.0.1:8015",
+  "solution_id": "s89fd",
+  "steps": [
+    "01-new-solution-entry",
+    "02-create-form",
+    "03-created-selection",
+    "04-workflow",
+    "05-review-dependencies",
+    "06-built-not-published",
+    "07-published",
+    "08-active-after-reload"
+  ],
+  "errors": [],
+  "initial": {
+    "create_form_visible": false,
+    "new_workflow_enabled": false,
+    "resolve_enabled": false
+  },
+  "create_status": 201,
+  "selection_after_create": "",
+  "candidate_id": "cand_1cfc4df1d3224b49b1c487d35ae1e5d2",
+  "generation": "Generation: gen_20260910081447_02514048",
+  "status": "published"
+}

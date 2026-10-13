@@ -1,0 +1,32 @@
+﻿1
+00:00:00,000 --> 00:00:07,000
+Turn personal Skills into governed AI capabilities the whole team can reuse.
+
+2
+00:00:07,000 --> 00:00:18,000
+The challenge is not calling a Tool. It is safe delivery and continuous change.
+
+3
+00:00:18,000 --> 00:00:34,000
+Validation, release, version pinning, and policy form one trusted loop.
+
+4
+00:00:34,000 --> 00:00:48,000
+Every MCP Tool enters with a version, risk class, and content digest.
+
+5
+00:00:48,000 --> 00:01:06,000
+One action resolves dependencies, builds, activates, and starts a durable run.
+
+6
+00:01:06,000 --> 00:01:24,000
+Output: 32.4. Run, Release, and Generation remain traceable.
+
+7
+00:01:24,000 --> 00:01:39,000
+Pass: activate atomically. Fail: keep the active Generation.
+
+8
+00:01:39,000 --> 00:01:46,000
+Build once, reuse across the team. Releases are gated; failures keep the active version.
+

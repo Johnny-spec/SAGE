@@ -1,0 +1,367 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: sage-config
+data:
+  SAGE_ENVIRONMENT: production
+  SAGE_REPLICA_COUNT: "1"
+  SAGE_ADMIN_AUTH_ENABLED: "true"
+  SAGE_EVALUATION_GATE_MODE: advisory
+  SAGE_RUNNER_URL: http://sage-runner:8080
+  SAGE_RUNNER_PROFILE: python-restricted-v1
+  SAGE_ALLOW_LOCAL_SUBPROCESS: "false"
+  SAGE_CONTROL_DATA_ROOT: /var/lib/sage
+  SAGE_SKILLS_ROOT: /app/skills
+  SAGE_AUTHENTICATION_MODE: entra-id
+  SAGE_ARTIFACT_BACKEND: s3
+  SAGE_S3_PREFIX: sage
+  SAGE_TEMPORAL_NAMESPACE: default
+  SAGE_TEMPORAL_TASK_QUEUE: sage-workflows
+  SAGE_TEMPORAL_TLS: "true"
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: sage-state
+spec:
+  accessModes: [ReadWriteOnce]
+  resources:
+    requests:
+      storage: 10Gi
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: sage-worker
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sage
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sage
+  template:
+    metadata:
+      labels:
+        app: sage
+    spec:
+      securityContext:
+        runAsNonRoot: true
+        seccompProfile:
+          type: RuntimeDefault
+      containers:
+        - name: sage
+          image: ghcr.io/your-org/sage:0.1.0
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: http
+              containerPort: 8000
+          envFrom:
+            - configMapRef:
+                name: sage-config
+          env:
+            - name: SAGE_ENTRA_TENANT_ID
+              valueFrom:
+                secretKeyRef:
+                  name: sage-secrets
+                  key: entra-tenant-id
+            - name: SAGE_ENTRA_AUDIENCE
+              valueFrom:
+                secretKeyRef:
+                  name: sage-secrets
+                  key: entra-audience
+            - name: SAGE_CHECKPOINT_DATABASE_URL
+              valueFrom:
+                secretKeyRef:
+                  name: sage-secrets
+                  key: checkpoint-database-url
+            - name: SAGE_TEMPORAL_TARGET
+              valueFrom:
+                secretKeyRef:
+                  name: sage-secrets
+                  key: temporal-target
+            - name: SAGE_TEMPORAL_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: sage-secrets
+                  key: temporal-api-key
+                  optional: true
+            - name: SAGE_S3_BUCKET
+              valueFrom:
+                secretKeyRef:
+                  name: sage-secrets
+                  key: s3-bucket
+            - name: SAGE_RUNNER_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: sage-secrets
+                  key: runner-token
+            - name: SAGE_S3_ENDPOINT_URL
+              valueFrom:
+                secretKeyRef:
+                  name: sage-secrets
+                  key: s3-endpoint-url
+                  optional: true
+            - name: SAGE_S3_REGION
+              valueFrom:
+                secretKeyRef:
+                  name: sage-secrets
+                  key: s3-region
+                  optional: true
+            - name: AWS_ACCESS_KEY_ID
+              valueFrom:
+                secretKeyRef:
+                  name: sage-secrets
+                  key: s3-access-key-id
+                  optional: true
+            - name: AWS_SECRET_ACCESS_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: sage-secrets
+                  key: s3-secret-access-key
+                  optional: true
+          readinessProbe:
+            httpGet:
+              path: /health/ready
+              port: http
+            initialDelaySeconds: 10
+            periodSeconds: 10
+            timeoutSeconds: 3
+          livenessProbe:
+            httpGet:
+              path: /health/live
+              port: http
+            initialDelaySeconds: 20
+            periodSeconds: 30
+            timeoutSeconds: 3
+          resources:
+            requests:
+              cpu: 250m
+              memory: 512Mi
+            limits:
+              cpu: "2"
+              memory: 2Gi
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop: [ALL]
+            readOnlyRootFilesystem: true
+          volumeMounts:
+            - name: state
+              mountPath: /var/lib/sage
+            - name: temporary
+              mountPath: /tmp
+      volumes:
+        - name: state
+          persistentVolumeClaim:
+            claimName: sage-state
+        - name: temporary
+          emptyDir:
+            sizeLimit: 2Gi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sage-worker
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sage-worker
+  template:
+    metadata:
+      labels:
+        app: sage-worker
+    spec:
+      serviceAccountName: sage-worker
+      securityContext:
+        runAsNonRoot: true
+        seccompProfile:
+          type: RuntimeDefault
+      containers:
+        - name: worker
+          image: ghcr.io/your-org/sage:0.1.0
+          imagePullPolicy: IfNotPresent
+          command: ["python", "-m", "sage.temporal_worker"]
+          env:
+            - name: SAGE_API_BASE_URL
+              value: http://sage
+            - name: SAGE_TEMPORAL_NAMESPACE
+              valueFrom:
+                configMapKeyRef:
+                  name: sage-config
+                  key: SAGE_TEMPORAL_NAMESPACE
+            - name: SAGE_TEMPORAL_TASK_QUEUE
+              valueFrom:
+                configMapKeyRef:
+                  name: sage-config
+                  key: SAGE_TEMPORAL_TASK_QUEUE
+            - name: SAGE_TEMPORAL_TLS
+              valueFrom:
+                configMapKeyRef:
+                  name: sage-config
+                  key: SAGE_TEMPORAL_TLS
+            - name: SAGE_TEMPORAL_TARGET
+              valueFrom:
+                secretKeyRef:
+                  name: sage-secrets
+                  key: temporal-target
+            - name: SAGE_TEMPORAL_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: sage-secrets
+                  key: temporal-api-key
+                  optional: true
+            - name: SAGE_WORKER_TOKEN_SCOPE
+              valueFrom:
+                secretKeyRef:
+                  name: sage-secrets
+                  key: worker-token-scope
+          resources:
+            requests:
+              cpu: 100m
+              memory: 256Mi
+            limits:
+              cpu: "1"
+              memory: 1Gi
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop: [ALL]
+            readOnlyRootFilesystem: true
+          volumeMounts:
+            - name: temporary
+              mountPath: /tmp
+      volumes:
+        - name: temporary
+          emptyDir:
+            sizeLimit: 1Gi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sage-runner
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sage-runner
+  template:
+    metadata:
+      labels:
+        app: sage-runner
+    spec:
+      automountServiceAccountToken: false
+      securityContext:
+        runAsNonRoot: true
+        seccompProfile:
+          type: RuntimeDefault
+      containers:
+        - name: runner
+          image: ghcr.io/your-org/sage:0.1.0
+          imagePullPolicy: IfNotPresent
+          command:
+            - uvicorn
+            - sage.runner_app:create_runner_app
+            - --factory
+            - --host
+            - 0.0.0.0
+            - --port
+            - "8080"
+          ports:
+            - name: runner-http
+              containerPort: 8080
+          env:
+            - name: SAGE_RUNNER_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: sage-secrets
+                  key: runner-token
+            - name: SAGE_RUNNER_PROFILE
+              valueFrom:
+                configMapKeyRef:
+                  name: sage-config
+                  key: SAGE_RUNNER_PROFILE
+            - name: SAGE_RUNNER_WORK_ROOT
+              value: /tmp/sage-runner
+            - name: SAGE_RUNNER_MAX_CONCURRENCY
+              value: "1"
+          readinessProbe:
+            httpGet:
+              path: /health/ready
+              port: runner-http
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /health/live
+              port: runner-http
+            initialDelaySeconds: 10
+            periodSeconds: 30
+          resources:
+            requests:
+              cpu: 100m
+              memory: 256Mi
+              ephemeral-storage: 128Mi
+            limits:
+              cpu: "1"
+              memory: 1Gi
+              ephemeral-storage: 512Mi
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop: [ALL]
+            readOnlyRootFilesystem: true
+          volumeMounts:
+            - name: temporary
+              mountPath: /tmp
+      volumes:
+        - name: temporary
+          emptyDir:
+            sizeLimit: 512Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: sage
+spec:
+  selector:
+    app: sage
+  ports:
+    - name: http
+      port: 80
+      targetPort: http
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: sage-runner
+spec:
+  selector:
+    app: sage-runner
+  ports:
+    - name: runner-http
+      port: 8080
+      targetPort: runner-http
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: sage-runner-isolation
+spec:
+  podSelector:
+    matchLabels:
+      app: sage-runner
+  policyTypes: [Ingress, Egress]
+  ingress:
+    - from:
+        - podSelector:
+            matchLabels:
+              app: sage
+      ports:
+        - protocol: TCP
+          port: 8080
+  egress: []

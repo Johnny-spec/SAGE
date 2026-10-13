@@ -1,0 +1,162 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "skill_result.schema.json",
+  "title": "Skill result envelope (v2.3/v2.4 compatibility)",
+  "type": "object",
+  "required": ["skill", "ok"],
+  "properties": {
+    "schema_version": {"enum": ["2.3", "2.4"]},
+    "skill": {"type": "string", "minLength": 1},
+    "ok": {"type": "boolean"},
+    "findings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["summary", "severity"],
+        "properties": {
+          "summary": {"type": "string"},
+          "severity": {"enum": ["critical", "warning", "info"]},
+          "evidence": {"type": "object"},
+          "evidence_id": {"type": "string"},
+          "provenance": {"type": "object"}
+        }
+      }
+    },
+    "root_cause": {"type": ["string", "null"]},
+    "confidence": {"enum": ["high", "medium", "low"]},
+    "recommendations": {"type": "array", "items": {"type": "string"}},
+    "solutions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["title"],
+        "properties": {
+          "title": {"type": "string"},
+          "steps": {"type": "array", "items": {"type": "string"}},
+          "problem_ref": {"type": ["string", "null"]},
+          "severity": {"enum": ["critical", "warning", "info"]},
+          "references": {"type": "array", "items": {"type": "string"}}
+        }
+      }
+    },
+    "next_steps": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["action"],
+        "properties": {
+          "action": {"type": "string"},
+          "why": {"type": ["string", "null"]},
+          "skill": {"type": ["string", "null"]}
+        }
+      }
+    },
+    "additional_logs_needed": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["log_kind", "why"],
+        "properties": {
+          "log_kind": {"type": "string"},
+          "why": {"type": "string"},
+          "how_to_collect": {"type": ["string", "null"]},
+          "skill": {"type": ["string", "null"]}
+        }
+      }
+    },
+    "cross_validation": {"type": ["object", "null"]},
+    "evidence_state": {
+      "enum": [
+        "ROOT_CAUSE_FOUND", "INCONCLUSIVE_EVIDENCE",
+        "MISSING_REQUIRED_EVIDENCE", "TIME_NOT_COMPARABLE",
+        "PERMISSION_BLOCKED", "TOOL_UNAVAILABLE", "UNKNOWN_LOG_TYPE",
+        "LIVE_COLLECTION_REQUIRED", "COLLECTION_PLAN_READY"
+      ]
+    },
+    "evidence_gaps": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/evidenceGap"}
+    },
+    "collection_plan": {
+      "oneOf": [
+        {"type": "null"},
+        {"$ref": "#/$defs/collectionPlan"}
+      ]
+    },
+    "raw": {"type": "object"},
+    "error": {"type": ["string", "null"]},
+    "generated_at": {"type": "string", "format": "date-time"}
+  },
+  "allOf": [
+    {
+      "if": {
+        "required": ["schema_version"],
+        "properties": {"schema_version": {"const": "2.4"}}
+      },
+      "then": {
+        "required": [
+          "schema_version", "skill", "ok", "findings", "root_cause",
+          "confidence", "recommendations", "solutions", "next_steps",
+          "additional_logs_needed", "cross_validation", "evidence_state",
+          "evidence_gaps", "collection_plan", "raw", "error"
+        ]
+      }
+    }
+  ],
+  "$defs": {
+    "evidenceGap": {
+      "type": "object",
+      "required": ["code", "summary", "severity", "blocking"],
+      "properties": {
+        "code": {"type": "string"},
+        "summary": {"type": "string"},
+        "severity": {"enum": ["critical", "warning", "info"]},
+        "blocking": {"type": "boolean"},
+        "log_kind": {"type": ["string", "null"]},
+        "skill": {"type": ["string", "null"]},
+        "details": {"type": "object"}
+      }
+    },
+    "collectionCommand": {
+      "type": "object",
+      "required": ["platform", "shell", "command", "readonly"],
+      "properties": {
+        "platform": {"type": "string"},
+        "shell": {"type": "string"},
+        "command": {"type": "string"},
+        "output": {"type": "array", "items": {"type": "string"}},
+        "readonly": {"type": "boolean"},
+        "notes": {"type": ["string", "null"]}
+      }
+    },
+    "collectionRequest": {
+      "type": "object",
+      "required": ["id", "log_kind", "required", "reason", "mode", "requires_admin"],
+      "properties": {
+        "id": {"type": "string"},
+        "log_kind": {"type": "string"},
+        "required": {"type": "boolean"},
+        "reason": {"type": "string"},
+        "consumer_skill": {"type": ["string", "null"]},
+        "mode": {"type": "string"},
+        "requires_admin": {"type": "boolean"},
+        "sensitivity": {"type": "array", "items": {"type": "string"}},
+        "commands": {"type": "array", "items": {"$ref": "#/$defs/collectionCommand"}},
+        "validation": {"type": "object"},
+        "alternatives": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "collectionPlan": {
+      "type": "object",
+      "required": ["schema_version", "status", "incident_scope", "requests", "safety"],
+      "properties": {
+        "schema_version": {"type": "string"},
+        "status": {"type": "string"},
+        "incident_scope": {"type": "object"},
+        "requests": {"type": "array", "items": {"$ref": "#/$defs/collectionRequest"}},
+        "stop_when": {"type": "array", "items": {"type": "string"}},
+        "safety": {"type": "object"}
+      }
+    }
+  }
+}

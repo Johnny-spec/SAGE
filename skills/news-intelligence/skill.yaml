@@ -1,0 +1,43 @@
+apiVersion: sage.dev/v1alpha1
+kind: SkillBinding
+metadata:
+  name: news-intelligence
+  version: 1.0.0
+spec:
+  execution:
+    type: builtin
+    handler: news-intelligence
+  inputSchema:
+    type: object
+    properties:
+      articles:
+        type: array
+        items:
+          type: object
+          properties:
+            title: {type: string, minLength: 1}
+            url: {type: string, minLength: 1}
+            source: {type: string}
+            published_at: {type: string}
+            summary: {type: string}
+          required: [title, url]
+          additionalProperties: false
+      limit: {type: integer, minimum: 1, maximum: 100, default: 10}
+    required: [articles]
+    additionalProperties: false
+  outputSchema:
+    type: object
+    properties:
+      status: {const: completed}
+      story_count: {type: integer, minimum: 0}
+      stories:
+        type: array
+        items: {type: object}
+    required: [status, story_count, stories]
+    additionalProperties: false
+  routing:
+    keywords: [hot news, headlines, news analysis, 热点新闻]
+  policy:
+    risk: read-only
+    timeoutSeconds: 10
+    maxOutputBytes: 262144

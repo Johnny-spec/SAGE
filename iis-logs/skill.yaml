@@ -1,0 +1,49 @@
+apiVersion: sage.dev/v1alpha1
+kind: SkillBinding
+metadata:
+  name: iis-logs
+  version: 2.0.0
+spec:
+  execution:
+    type: python-subprocess
+    entrypoint: vendor/IIS/IIS_logs/scripts/iis_analyzer.py
+    arguments:
+      - name: log_path
+        position: 0
+      - name: filter
+        option: --filter
+  inputSchema:
+    type: object
+    required: [log_path]
+    additionalProperties: false
+    properties:
+      log_path:
+        type: string
+      filter:
+        type: string
+  outputSchema:
+    type: object
+    required: [skill, ok, findings, confidence, recommendations, raw]
+    properties:
+      skill:
+        const: iis_logs
+      ok:
+        type: boolean
+      findings:
+        type: array
+      root_cause:
+        type: [string, "null"]
+      confidence:
+        type: string
+      recommendations:
+        type: array
+      raw:
+        type: object
+  routing:
+    keywords: [iis, iis log, w3c, iis日志, iis 日志]
+    attachmentTypes: [text/iis-w3c, application/vnd.sage.iis-w3c-bundle]
+  policy:
+    risk: read-only
+    timeoutSeconds: 30
+    maxOutputBytes: 2097152
+    resultValidator: iis-w3c-nonempty

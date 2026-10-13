@@ -1,0 +1,44 @@
+apiVersion: sage.dev/v1alpha1
+kind: SkillBinding
+metadata:
+  name: netlog
+  version: 1.0.0
+spec:
+  execution:
+    type: python-subprocess
+    entrypoint: scripts/netlog_analyzer.py
+    arguments:
+      - name: netlog_path
+        position: 0
+  inputSchema:
+    type: object
+    required: [netlog_path]
+    additionalProperties: false
+    properties:
+      netlog_path:
+        type: string
+  outputSchema:
+    type: object
+    required: [skill, ok, findings, confidence, recommendations, raw]
+    properties:
+      skill:
+        const: netlog
+      ok:
+        type: boolean
+      findings:
+        type: array
+      root_cause:
+        type: [string, "null"]
+      confidence:
+        type: string
+      recommendations:
+        type: array
+      raw:
+        type: object
+  routing:
+    keywords: [netlog, net-export, chrome net export, edge net export, 浏览器日志]
+    attachmentTypes: [application/x-chromium-netlog]
+  policy:
+    risk: read-only
+    timeoutSeconds: 60
+    maxOutputBytes: 2097152

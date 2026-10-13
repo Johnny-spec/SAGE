@@ -1,0 +1,23 @@
+#solutionWorkbench { min-width: 0; }
+#solutionWorkbench .form-actions { align-self: end; flex-wrap: wrap; }
+#solutionWorkbench .section-heading { flex-wrap: wrap; gap: 8px; }
+#solutionWorkbench label, #solutionWorkbench .form-grid > * { min-width: 0; }
+#solutionWorkbench pre { white-space: pre-wrap; overflow-wrap: anywhere; max-height: 360px; overflow: auto; font-size: 12px; background: var(--cp-surface-soft); padding: 12px; }
+#solutionWorkbench td { overflow-wrap: anywhere; min-width: 100px; vertical-align: top; }
+#solutionWorkbench td:last-child { min-width: 180px; }
+#solutionWorkbench details { padding: 12px 0; border-top: 1px solid var(--cp-border); }
+#solutionWorkbench summary { cursor: pointer; padding: 8px 0; font-weight: 600; }
+#swStatus, #swSnapshot, #swRunStatus { color: var(--cp-text-muted); font-size: 12px; overflow-wrap: anywhere; min-width: 0; max-width: 100%; }
+#swRuntime { border: 0; border-top: 1px solid var(--cp-border); border-radius: 0; padding: 16px 0 0; }
+#swReview, #swResult, .sw-ai { margin-top: 20px; }
+#swResult:empty { display: none; }
+#swResult { border-left: 3px solid var(--cp-accent); padding: 0 16px; overflow-wrap: anywhere; }
+#swAiTargets { width: 100%; min-height: 140px; }
+#swSigned { max-width: 100%; }
+#swProposal { display: grid; gap: 12px; }
+#swProposal[hidden], #swReview[hidden], #swSignedLabel[hidden], #swBuildSigned[hidden], #swBuild[hidden] { display: none; }
+@media (max-width: 760px) {
+  #solutionWorkbench .form-grid.two { grid-template-columns: minmax(0, 1fr); }
+  #solutionWorkbench .span-two { grid-column: auto; }
+  #solutionWorkbench .form-actions button { white-space: normal; max-width: 100%; }
+}

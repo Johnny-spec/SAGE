@@ -1,0 +1,82 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "registry.schema.json",
+  "title": "IIS diagnostic skill registry",
+  "type": "object",
+  "required": ["version", "skills", "problem_types"],
+  "properties": {
+    "version": {"type": "string"},
+    "skills": {
+      "type": "object",
+      "additionalProperties": {"$ref": "#/$defs/skill"}
+    },
+    "problem_types": {
+      "type": "object",
+      "additionalProperties": {"$ref": "#/$defs/problemType"}
+    },
+    "shared_modules": {
+      "type": "object",
+      "additionalProperties": {"type": "string"}
+    },
+    "external_registries": {
+      "type": "array",
+      "items": {"type": "string"},
+      "uniqueItems": true
+    },
+    "skill_overrides": {
+      "type": "object",
+      "additionalProperties": {"type": "string"}
+    }
+  },
+  "$defs": {
+    "skill": {
+      "type": "object",
+      "required": ["folder", "entry", "role"],
+      "properties": {
+        "folder": {"type": "string", "minLength": 1},
+        "entry": {
+          "type": "object",
+          "minProperties": 1,
+          "additionalProperties": {"type": "string", "minLength": 1}
+        },
+        "role": {"type": "string", "minLength": 1},
+        "needs_admin": {"type": "boolean"},
+        "status": {"type": "string"},
+        "runtime_order": {
+          "type": "array",
+          "items": {"enum": ["python", "pwsh"]},
+          "uniqueItems": true
+        },
+        "runtime_status": {
+          "type": "object",
+          "additionalProperties": {
+            "enum": ["complete", "framework", "stub", "unimplemented"]
+          }
+        },
+        "folder_dispatch": {"enum": ["evidence", "live_only"]},
+        "folder_evidence_kinds": {
+          "type": "array",
+          "items": {"type": "string"},
+          "uniqueItems": true
+        },
+        "triggers_for": {
+          "type": "array",
+          "items": {"type": "string"},
+          "uniqueItems": true
+        }
+      }
+    },
+    "problemType": {
+      "type": "object",
+      "required": ["severity_default", "follow_ups"],
+      "properties": {
+        "severity_default": {"enum": ["critical", "warning", "info"]},
+        "follow_ups": {
+          "type": "array",
+          "items": {"type": "string"},
+          "uniqueItems": true
+        }
+      }
+    }
+  }
+}

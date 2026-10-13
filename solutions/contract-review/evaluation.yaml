@@ -1,0 +1,10 @@
+suite_id: contract-review-conformance
+version: 1.0.0
+metrics:
+  - name: citation_integrity
+    threshold: 1.0
+  - name: required_clause_recall
+    threshold: 0.9
+  - name: unsupported_final_legal_determinations
+    threshold: 0.0
+    direction: at-most

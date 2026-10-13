@@ -1,0 +1,158 @@
+{
+  "errors": [],
+  "runs": [
+    {
+      "width": 1440,
+      "solution_id": "s91c6",
+      "run_id": "run_3ca314c3e54b7fe268d0e3922b3bad30c64ecc0718a38b300fb2542a644a7530",
+      "result": {
+        "results": {
+          "step-14946c19": {
+            "approval_task_id": null,
+            "capability_id": "skill:echo",
+            "invocation_id": "run_3ca314c3e54b7fe268d0e3922b3bad30c64ecc0718a38b300fb2542a644a7530:step-14946c19",
+            "output": {
+              "text": "Quick flow works"
+            },
+            "run_id": "run_3ca314c3e54b7fe268d0e3922b3bad30c64ecc0718a38b300fb2542a644a7530",
+            "solution_id": "s91c6",
+            "solution_release_id": "s91c6@1.0.0",
+            "status": "completed",
+            "usage": {
+              "duration_ms": 0,
+              "model_calls": 0,
+              "subagent_calls": 0,
+              "tool_calls": 1
+            }
+          },
+          "step-5429098c": {
+            "approval_task_id": null,
+            "capability_id": "skill:k55b3",
+            "invocation_id": "run_3ca314c3e54b7fe268d0e3922b3bad30c64ecc0718a38b300fb2542a644a7530:step-5429098c",
+            "output": {
+              "discount": 3.6,
+              "discount_percent": 10.0,
+              "quantity": 3,
+              "subtotal": 36.0,
+              "total": 32.4,
+              "unit_price": 12.0
+            },
+            "run_id": "run_3ca314c3e54b7fe268d0e3922b3bad30c64ecc0718a38b300fb2542a644a7530",
+            "solution_id": "s91c6",
+            "solution_release_id": "s91c6@1.0.0",
+            "status": "completed",
+            "usage": {
+              "duration_ms": 0,
+              "model_calls": 0,
+              "subagent_calls": 0,
+              "tool_calls": 1
+            }
+          },
+          "step-e5edc8a3": {
+            "approval_task_id": null,
+            "capability_id": "tool:mcp:mcp_131b6b59f6914418ba9343cf95339c28:calculate_total",
+            "invocation_id": "run_3ca314c3e54b7fe268d0e3922b3bad30c64ecc0718a38b300fb2542a644a7530:step-e5edc8a3",
+            "output": {
+              "discount": 3.6,
+              "discount_percent": 10.0,
+              "quantity": 3,
+              "subtotal": 36.0,
+              "total": 32.4,
+              "unit_price": 12.0
+            },
+            "run_id": "run_3ca314c3e54b7fe268d0e3922b3bad30c64ecc0718a38b300fb2542a644a7530",
+            "solution_id": "s91c6",
+            "solution_release_id": "s91c6@1.0.0",
+            "status": "completed",
+            "usage": {
+              "duration_ms": 0,
+              "model_calls": 0,
+              "subagent_calls": 0,
+              "tool_calls": 1
+            }
+          }
+        },
+        "status": "completed",
+        "workflow_id": "s91c6"
+      }
+    },
+    {
+      "width": 390,
+      "solution_id": "s68e8",
+      "run_id": "run_b6418a05a94aa6bae43472959a0172cace6744a4a9e00b4fe3db8f841d388c7e",
+      "result": {
+        "results": {
+          "step-1ec35559": {
+            "approval_task_id": null,
+            "capability_id": "skill:k55b3",
+            "invocation_id": "run_b6418a05a94aa6bae43472959a0172cace6744a4a9e00b4fe3db8f841d388c7e:step-1ec35559",
+            "output": {
+              "discount": 3.6,
+              "discount_percent": 10.0,
+              "quantity": 3,
+              "subtotal": 36.0,
+              "total": 32.4,
+              "unit_price": 12.0
+            },
+            "run_id": "run_b6418a05a94aa6bae43472959a0172cace6744a4a9e00b4fe3db8f841d388c7e",
+            "solution_id": "s68e8",
+            "solution_release_id": "s68e8@1.0.0",
+            "status": "completed",
+            "usage": {
+              "duration_ms": 0,
+              "model_calls": 0,
+              "subagent_calls": 0,
+              "tool_calls": 1
+            }
+          },
+          "step-231d0072": {
+            "approval_task_id": null,
+            "capability_id": "skill:echo",
+            "invocation_id": "run_b6418a05a94aa6bae43472959a0172cace6744a4a9e00b4fe3db8f841d388c7e:step-231d0072",
+            "output": {
+              "text": "Quick flow works"
+            },
+            "run_id": "run_b6418a05a94aa6bae43472959a0172cace6744a4a9e00b4fe3db8f841d388c7e",
+            "solution_id": "s68e8",
+            "solution_release_id": "s68e8@1.0.0",
+            "status": "completed",
+            "usage": {
+              "duration_ms": 0,
+              "model_calls": 0,
+              "subagent_calls": 0,
+              "tool_calls": 1
+            }
+          },
+          "step-4a2a79dd": {
+            "approval_task_id": null,
+            "capability_id": "tool:mcp:mcp_131b6b59f6914418ba9343cf95339c28:calculate_total",
+            "invocation_id": "run_b6418a05a94aa6bae43472959a0172cace6744a4a9e00b4fe3db8f841d388c7e:step-4a2a79dd",
+            "output": {
+              "discount": 3.6,
+              "discount_percent": 10.0,
+              "quantity": 3,
+              "subtotal": 36.0,
+              "total": 32.4,
+              "unit_price": 12.0
+            },
+            "run_id": "run_b6418a05a94aa6bae43472959a0172cace6744a4a9e00b4fe3db8f841d388c7e",
+            "solution_id": "s68e8",
+            "solution_release_id": "s68e8@1.0.0",
+            "status": "completed",
+            "usage": {
+              "duration_ms": 0,
+              "model_calls": 0,
+              "subagent_calls": 0,
+              "tool_calls": 1
+            }
+          }
+        },
+        "status": "completed",
+        "workflow_id": "s68e8"
+      }
+    }
+  ],
+  "agent_published": "aba4c",
+  "mcp_native_and_skill_published": true,
+  "status": "passed"
+}

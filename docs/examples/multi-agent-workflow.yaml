@@ -1,0 +1,125 @@
+apiVersion: sage.dev/v1beta1
+kind: WorkflowTemplate
+workflowId: verified-incident-analysis
+version: 1.0.0
+maxConcurrency: 3
+steps:
+  - id: route
+    kind: agent
+    target: incident-router
+    input:
+      message: Classify the incident as full, security, or operations. Return only the label.
+    outputSchema:
+      type: object
+      properties:
+        message:
+          enum: [full, security, operations]
+      required: [message]
+
+  - id: security-analysis
+    kind: agent
+    target: security-analyst
+    dependsOn: [route]
+    failurePolicy: continue-with-errors
+    when:
+      source: step-output
+      stepId: route
+      path: /output/message
+      operator: in
+      value: [full, security]
+    bindings:
+      route:
+        source: step-output
+        stepId: route
+        path: /output/message
+
+  - id: log-analysis
+    kind: agent
+    target: log-analyst
+    dependsOn: [route]
+    failurePolicy: continue-with-errors
+    when:
+      source: step-output
+      stepId: route
+      path: /output/message
+      operator: in
+      value: [full, operations]
+
+  - id: configuration-analysis
+    kind: agent
+    target: configuration-analyst
+    dependsOn: [route]
+    failurePolicy: continue-with-errors
+    when:
+      source: step-output
+      stepId: route
+      path: /output/message
+      operator: in
+      value: [full, operations]
+
+  - id: aggregate
+    kind: agent
+    target: incident-aggregator
+    dependsOn: [security-analysis, log-analysis, configuration-analysis]
+    joinPolicy: all-settled
+    input:
+      message: Merge the analyses, retain source references, and identify disagreements.
+    bindings:
+      security:
+        source: step-output
+        stepId: security-analysis
+      logs:
+        source: step-output
+        stepId: log-analysis
+      configuration:
+        source: step-output
+        stepId: configuration-analysis
+
+  - id: verify
+    kind: agent
+    target: incident-verifier
+    dependsOn: [aggregate]
+    input:
+      message: Verify the report against its evidence. Return only PASS, REVISE, or ESCALATE.
+    bindings:
+      report:
+        source: step-output
+        stepId: aggregate
+        path: /output/message
+    outputSchema:
+      type: object
+      properties:
+        message:
+          enum: [PASS, REVISE, ESCALATE]
+      required: [message]
+
+  - id: publish
+    kind: skill
+    target: report-summary
+    dependsOn: [verify]
+    when:
+      source: step-output
+      stepId: verify
+      path: /output/message
+      operator: equals
+      value: PASS
+    bindings:
+      report:
+        source: step-output
+        stepId: aggregate
+        path: /output/message
+
+  - id: human-review
+    kind: human-task
+    target: incident-review
+    dependsOn: [verify]
+    when:
+      source: step-output
+      stepId: verify
+      path: /output/message
+      operator: in
+      value: [REVISE, ESCALATE]
+    input:
+      task_kind: approval
+      title: Review disputed incident findings
+      assigned_roles: [incident-reviewer]

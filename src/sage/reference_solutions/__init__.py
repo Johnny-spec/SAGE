@@ -1,0 +1,1 @@
+"""Optional reference Solution plugins shipped with SAGE."""
