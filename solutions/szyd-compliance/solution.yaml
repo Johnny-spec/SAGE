@@ -1,0 +1,21 @@
+apiVersion: sage.dev/v1alpha1
+kind: SolutionBundle
+metadata:
+  name: szyd-compliance
+  version: 1.0.0
+  title: SZYD Compliance Review
+spec:
+  owner: szyd
+  description: Offline enterprise compliance review with Gate-controlled stages and persistent supplement/resume.
+  entryAgentId: szyd-agent
+  allowedRoles: [user]
+  supportedProfiles: [interactive]
+  components:
+    - kind: skill
+      id: szyd-law
+      version: 1.0.0
+      contentDigest: sha256:2c95092a40c7707345cf0ae0e7bfac0dd3ac1fbc71868e4285c2f8787adda3a4
+    - kind: agent
+      id: szyd-agent
+      version: 1.0.0
+      contentDigest: sha256:b560a3e93dfec6115bed1419615aa865cac5400162132f73549728fd62ccf698

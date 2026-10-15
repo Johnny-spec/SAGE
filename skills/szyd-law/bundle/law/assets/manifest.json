@@ -1,0 +1,34 @@
+{
+  "source": "LawAgents original workflow; company-specific, unverified legal currency",
+  "deduplicated_ids": [
+    "15",
+    "16"
+  ],
+  "unmapped_item_ids": [],
+  "checklist_count": 90,
+  "rule_count": 90,
+  "prompt_names": [
+    "CHROMA_QUERY_GENERATION_PROMPT",
+    "CHROMA_RERANK_PROMPT",
+    "ENTERPRISE_GRAPH_EXTRACTION_PROMPT",
+    "ENTITY_EXTRACTION_PROMPT",
+    "FINAL_RESULT_PROMPT",
+    "FINAL_RESULT_SKIP_PROMPT",
+    "NEO4J_ANALYSIS_PROMPT",
+    "NEO4J_QUERY_PROMPT",
+    "STEP1_SMJY_IDENTIFY_PROMPT",
+    "STEP2_LEGAL_FACT_PROMPT",
+    "STEP3_CAPITAL_COMPLIANCE_PROMPT",
+    "STEP4_PROJECT_DECISION_PROMPT",
+    "STEP5_PROCESS_COMPLETENESS_PROMPT",
+    "SUPPLEMENT_REQUEST_PROMPT",
+    "TEXT_SPLITTER_PROMPT"
+  ],
+  "sha256": {
+    "major.json": "205c5ec47faa43fc3f1cc095af08c25d1da642ce35aacf2d73b4af241155dd7d",
+    "rules.json": "98a9617fb62f78534326756106c5468e9a9f7af862e93fe53b85e890eb034122",
+    "ontology.json": "16ae7f18f1947a773c442bf814125446ef0e81ba90a1ae2c3669e14a277dca7c",
+    "graph_schema.json": "f88bbbb1a68d11dd74f301707a310b08002ce41010973615a5ffa2f5718df203",
+    "prompts.json": "03a7e40cb6ee23ea2384fbdb38abba2baad6d02b433d40370f725a4e11af60fc"
+  }
+}

@@ -1,0 +1,414 @@
+{
+  "ENTERPRISE_GRAPH_SCHEMA": {
+    "nodes": {
+      "Company": {
+        "labels": [
+          "Company",
+          "Entity"
+        ],
+        "properties": {
+          "id": "str",
+          "doc_id": "str",
+          "name": "str",
+          "is_state_owned": "bool",
+          "is_listed": "bool",
+          "registration_number": "str",
+          "established_date": "str",
+          "industry": "str"
+        }
+      },
+      "Government": {
+        "labels": [
+          "Government",
+          "Entity"
+        ],
+        "properties": {
+          "id": "str",
+          "doc_id": "str",
+          "name": "str",
+          "level": "str",
+          "type": "str"
+        }
+      },
+      "ResearchInstitute": {
+        "labels": [
+          "ResearchInstitute",
+          "Entity"
+        ],
+        "properties": {
+          "id": "str",
+          "doc_id": "str",
+          "name": "str",
+          "affiliation": "str",
+          "research_domain": "str"
+        }
+      },
+      "Platform": {
+        "labels": [
+          "Platform",
+          "Entity"
+        ],
+        "properties": {
+          "id": "str",
+          "doc_id": "str",
+          "name": "str",
+          "platform_type": "str",
+          "established_date": "str"
+        }
+      },
+      "Person": {
+        "labels": [
+          "Person",
+          "Entity"
+        ],
+        "properties": {
+          "id": "str",
+          "doc_id": "str",
+          "name": "str",
+          "title": "str",
+          "identity": "str"
+        }
+      }
+    },
+    "relations": {
+      "INVESTS_IN": {
+        "description": "投资/出资",
+        "properties": {
+          "amount": "float",
+          "ratio": "float",
+          "investment_type": "str",
+          "date": "str"
+        }
+      },
+      "CONTROL": {
+        "description": "控股/全资控制/并表",
+        "properties": {
+          "ratio": "float",
+          "control_type": "str",
+          "date": "str"
+        }
+      },
+      "SUBSIDIARY_OF": {
+        "description": "子公司/分支机构",
+        "properties": {
+          "subsidiary_type": "str",
+          "date": "str"
+        }
+      },
+      "CO_ESTABLISH": {
+        "description": "共建",
+        "properties": {
+          "cooperation_type": "str",
+          "date": "str"
+        }
+      },
+      "HOLD_SHARE": {
+        "description": "持股",
+        "properties": {
+          "ratio": "float",
+          "share_type": "str"
+        }
+      },
+      "GOVERNED_BY": {
+        "description": "由监管/治理",
+        "properties": {
+          "governance_type": "str"
+        }
+      }
+    }
+  },
+  "LEGAL_GRAPH_SCHEMA": {
+    "nodes": {
+      "LegalConcept": {
+        "labels": [
+          "LegalConcept"
+        ],
+        "properties": {
+          "id": "str",
+          "name": "str",
+          "abbreviation": "str",
+          "definition": "str",
+          "risk_level": "str"
+        }
+      },
+      "LawDomain": {
+        "labels": [
+          "LawDomain"
+        ],
+        "properties": {
+          "id": "str",
+          "name": "str",
+          "category": "str"
+        }
+      },
+      "Law": {
+        "labels": [
+          "Law"
+        ],
+        "properties": {
+          "id": "str",
+          "name": "str",
+          "short_name": "str",
+          "effective_date": "str",
+          "status": "str"
+        }
+      },
+      "Article": {
+        "labels": [
+          "Article"
+        ],
+        "properties": {
+          "id": "str",
+          "number": "str",
+          "title": "str",
+          "content": "str",
+          "key_obligations": "str",
+          "key_prohibitions": "str"
+        }
+      },
+      "RiskPoint": {
+        "labels": [
+          "RiskPoint"
+        ],
+        "properties": {
+          "id": "str",
+          "name": "str",
+          "severity": "str",
+          "remediation": "str"
+        }
+      }
+    },
+    "relations": {
+      "BELONGS_TO": {
+        "description": "法律概念属于法律领域"
+      },
+      "HAS_LAW": {
+        "description": "法律领域含有法律"
+      },
+      "HAS_ARTICLE": {
+        "description": "法律包含条款"
+      },
+      "HAS_RISK": {
+        "description": "条款包含风险点"
+      },
+      "DEFINES": {
+        "description": "条款定义概念"
+      }
+    }
+  },
+  "TRIGGER_RULES_SCHEMA": {
+    "rule": {
+      "rule_id": "str",
+      "name": "str",
+      "pattern": {
+        "entity_type": "str | None",
+        "relation_type": "str | None",
+        "property_conditions": "Dict[str, Any]",
+        "threshold": "float | None"
+      },
+      "output": {
+        "legal_concepts": "List[str]",
+        "priority": "int",
+        "confidence": "float"
+      },
+      "description": "str"
+    }
+  },
+  "INTEGRATION_SCHEMA": {
+    "relations": {
+      "TRIGGERS": {
+        "from": "Enterprise(node/relation)",
+        "to": "LegalConcept",
+        "description": "企业图触发法律概念",
+        "properties": {
+          "rule_id": "str",
+          "triggered_at": "str",
+          "confidence": "float"
+        }
+      },
+      "INSTANTIATES": {
+        "from": "DocumentFact(node/relation)",
+        "to": "LegalConcept",
+        "description": "文档事实实例化法律概念",
+        "properties": {
+          "doc_id": "str",
+          "mapped_at": "str"
+        }
+      }
+    }
+  },
+  "CORE_TRIGGER_RULES": [
+    {
+      "rule_id": "R001",
+      "name": "股权控制触发",
+      "pattern": {
+        "relation_type": "CONTROL",
+        "property_conditions": {
+          "ratio": ">=0.5"
+        }
+      },
+      "output": {
+        "legal_concepts": [
+          "股权控制",
+          "并表处理"
+        ],
+        "priority": 10,
+        "confidence": 0.95
+      },
+      "description": "当存在>=50%控制关系时触发股权控制法律概念"
+    },
+    {
+      "rule_id": "R002",
+      "name": "国资投资行为触发",
+      "pattern": {
+        "entity_type": "Company",
+        "relation_type": "INVESTS_IN",
+        "property_conditions": {
+          "is_state_owned": true
+        }
+      },
+      "output": {
+        "legal_concepts": [
+          "国资投资行为",
+          "国资监管"
+        ],
+        "priority": 9,
+        "confidence": 0.9
+      },
+      "description": "当国有企业投资时触发国资投资行为概念"
+    },
+    {
+      "rule_id": "R003",
+      "name": "共建平台决策",
+      "pattern": {
+        "relation_type": "CO_ESTABLISH"
+      },
+      "output": {
+        "legal_concepts": [
+          "三重一大决策",
+          "共建治理"
+        ],
+        "priority": 8,
+        "confidence": 0.85
+      },
+      "description": "共建关系触发三重一大相关规则"
+    },
+    {
+      "rule_id": "R004",
+      "name": "大额投资决策",
+      "pattern": {
+        "relation_type": "INVESTS_IN",
+        "property_conditions": {
+          "amount": ">50000000"
+        }
+      },
+      "output": {
+        "legal_concepts": [
+          "重大投资决策",
+          "三重一大决策"
+        ],
+        "priority": 9,
+        "confidence": 0.95
+      },
+      "description": "投资金额≥5000万时触发重大投资决策规则"
+    },
+    {
+      "rule_id": "R005",
+      "name": "上市公司关联交易",
+      "pattern": {
+        "entity_type": "Company",
+        "relation_type": "INVESTS_IN",
+        "property_conditions": {
+          "is_listed": true
+        }
+      },
+      "output": {
+        "legal_concepts": [
+          "关联交易",
+          "信息披露义务"
+        ],
+        "priority": 10,
+        "confidence": 0.9
+      },
+      "description": "上市公司关联方交易触发披露义务"
+    }
+  ],
+  "LEGAL_CONCEPT_MAPPINGS": {
+    "股权控制": {
+      "concept_id": "concept_001",
+      "law_domain": "公司法",
+      "relevant_articles": [
+        "公司法第216条",
+        "公司法第217条"
+      ],
+      "risk_points": [
+        "控股股东特别责任",
+        "关联交易规范"
+      ],
+      "key_obligations": [
+        "信息披露",
+        "关联交易审查"
+      ],
+      "key_prohibitions": [
+        "不当控制权行使"
+      ]
+    },
+    "国资投资行为": {
+      "concept_id": "concept_002",
+      "law_domain": "国有资产监督管理暂行条例",
+      "relevant_articles": [
+        "条例第15条",
+        "条例第16条"
+      ],
+      "risk_points": [
+        "投资回报率要求",
+        "审批制度"
+      ],
+      "key_obligations": [
+        "投资报告",
+        "效益评估"
+      ],
+      "key_prohibitions": [
+        "非主业过度扩张"
+      ]
+    },
+    "三重一大决策": {
+      "concept_id": "concept_003",
+      "law_domain": "国有企业管理规章",
+      "relevant_articles": [
+        "中央企业重大经营决策操作规程"
+      ],
+      "risk_points": [
+        "程序合规",
+        "权限规范"
+      ],
+      "key_obligations": [
+        "董事会决议",
+        "职工代表大会",
+        "监事会"
+      ],
+      "key_prohibitions": [
+        "违法决策行为"
+      ]
+    },
+    "重大投资决策": {
+      "concept_id": "concept_004",
+      "law_domain": "公司法",
+      "relevant_articles": [
+        "公司法第四十六条",
+        "公司法第一百一十八条"
+      ],
+      "risk_points": [
+        "审批权限",
+        "尽职调查"
+      ],
+      "key_obligations": [
+        "信息披露",
+        "独立审计"
+      ],
+      "key_prohibitions": [
+        "内幕交易"
+      ]
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "run_id": "example-001",
+  "input_text": "示例：公司拟开展对外股权投资，金额及决策材料尚未提供。此为接口示例，不是实际审核结论。",
+  "file_list": [],
+  "evidence": [
+    {
+      "id": "document-001",
+      "source": "用户示例输入",
+      "content": "公司拟开展对外股权投资，金额及决策材料尚未提供。",
+      "locator": "第1段",
+      "kind": "document",
+      "verified": false
+    }
+  ]
+}

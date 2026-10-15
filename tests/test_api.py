@@ -741,6 +741,9 @@ def test_admin_page_exposes_quality_workspace(client: TestClient) -> None:
     response = client.get("/admin")
 
     assert response.status_code == 200
+    assert 'id="solutionQuickStart"' in response.text
+    assert 'id="qsCapabilities"' in response.text
+    assert "/static/solution-quick-start.js?v=20261014" in response.text
     assert 'data-view="quality"' in response.text
     assert 'data-view-panel="quality"' in response.text
     assert 'id="qualityFeedbackList"' in response.text

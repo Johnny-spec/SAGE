@@ -1,4 +1,11 @@
 #solutionWorkbench { min-width: 0; }
+#solutionQuickStart { min-width: 0; }
+#solutionQuickStart .section-heading > div { min-width: 0; }
+#solutionQuickStart .section-heading h2 { margin-bottom: 3px; }
+#solutionQuickStart .check-grid { max-height: 240px; overflow: auto; }
+#solutionQuickStart .check-option { overflow-wrap: anywhere; }
+#solutionQuickStart .form-actions { flex-wrap: wrap; }
+#qsEmpty[hidden] { display: none; }
 #solutionWorkbench .form-actions { align-self: end; flex-wrap: wrap; }
 #solutionWorkbench .section-heading { flex-wrap: wrap; gap: 8px; }
 #solutionWorkbench label, #solutionWorkbench .form-grid > * { min-width: 0; }
@@ -17,6 +24,8 @@
 #swProposal { display: grid; gap: 12px; }
 #swProposal[hidden], #swReview[hidden], #swSignedLabel[hidden], #swBuildSigned[hidden], #swBuild[hidden] { display: none; }
 @media (max-width: 760px) {
+  #solutionQuickStart .form-grid.two { grid-template-columns: minmax(0, 1fr); }
+  #solutionQuickStart .span-two { grid-column: auto; }
   #solutionWorkbench .form-grid.two { grid-template-columns: minmax(0, 1fr); }
   #solutionWorkbench .span-two { grid-column: auto; }
   #solutionWorkbench .form-actions button { white-space: normal; max-width: 100%; }

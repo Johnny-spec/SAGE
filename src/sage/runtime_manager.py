@@ -15,10 +15,10 @@ from sage.adapters import (
     BuiltinAdapter,
     HttpAdapter,
     McpAdapter,
-    SubprocessAdapter,
 )
 from sage.adapters.base import SkillAdapter
 from sage.adapters.builtin import BuiltinHandler
+from sage.adapters.szyd import runtime_python_adapters
 from sage.agent_catalog import AgentCatalog
 from sage.agent_drafts import agent_from_dict
 from sage.agent_factory import AgentRuntimeFactory
@@ -463,10 +463,9 @@ class RuntimeManager:
         adapters: dict[str, SkillAdapter] = {
             "builtin": BuiltinAdapter(self._builtin_handlers),
         }
-        if self._python_adapter is not None:
-            adapters["python-subprocess"] = self._python_adapter
-        elif self._allow_local_subprocess:
-            adapters["python-subprocess"] = SubprocessAdapter()
+        adapters.update(runtime_python_adapters(
+            self._python_adapter, self._allow_local_subprocess, self._store.root, self._attachments,
+        ))
         if self._mcp_gateway is not None:
             adapters["mcp"] = McpAdapter(self._mcp_gateway)
         if self._http_endpoints is not None:

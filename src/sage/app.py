@@ -22,8 +22,7 @@ from starlette.middleware.cors import CORSMiddleware
 from sage.adapters import HttpRunnerClient, RunnerAdapter
 from sage.adapters.runner import RunnerClient
 from sage.admin_api import create_admin_router
-from sage.agent_definitions import default_diagnostic_agent
-from sage.agent_drafts import AgentDraftManager, agent_to_dict
+from sage.agent_drafts import AgentDraftManager
 from sage.agent_invocations import AgentTask
 from sage.agent_runtime import DeepAgentRuntime
 from sage.api_models import (
@@ -117,6 +116,7 @@ from sage.reference_solutions.incident_diagnostics import (
     require_nonempty_iis_metrics,
 )
 from sage.reference_solutions.news_intelligence import analyze_news
+from sage.reference_solutions.szyd_compliance import startup_agents
 from sage.result_validation import ResultValidatorRegistry
 from sage.results import (
     ResultUnavailableError,
@@ -301,12 +301,7 @@ def create_app(
                     shutil.copytree(root, initial_root)
             initial = None
             if not state_exists:
-                default_agent = default_diagnostic_agent()
-                initial = initial_generation(
-                    initial_root,
-                    {default_agent.agent_id: agent_to_dict(default_agent)},
-                    default_agent.agent_id,
-                )
+                initial = initial_generation(initial_root, *startup_agents(initial_root))
             control_store = LocalControlStore(resolved_control_settings.data_root, initial)
             content_scanner = build_content_scanner(
                 host=resolved_control_settings.clamav_host,

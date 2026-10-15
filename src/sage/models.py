@@ -19,6 +19,7 @@ class ArgumentBinding(BaseModel):
     name: str
     position: int | None = Field(default=None, ge=0)
     option: str | None = None
+    encoding: Literal["string", "json-file"] = "string"
 
     @model_validator(mode="after")
     def validate_binding(self) -> "ArgumentBinding":

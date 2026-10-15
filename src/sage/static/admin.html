@@ -113,6 +113,31 @@
           <div><span class="eyebrow">Applications</span><h1>Solutions</h1></div>
           <div class="form-actions"><button id="newSolution" type="button" class="primary">New Solution</button><button type="button" class="secondary" data-refresh>Refresh</button></div>
         </div>
+        <section id="solutionQuickStart" class="work-section">
+          <div class="section-heading">
+            <div><h2>Quick start</h2><span>Create a Solution, Workflow, and first release in one step.</span></div>
+            <span id="qsStatus" role="status"></span>
+          </div>
+          <form id="qsForm">
+            <div class="form-grid two">
+              <label>Solution ID<input id="qsSolutionId" required maxlength="64" pattern="[a-z0-9](?:[a-z0-9-]{0,62}[a-z0-9])?"></label>
+              <label>Title<input id="qsTitle" required maxlength="200"></label>
+              <label>Owner<input id="qsOwner" required value="solution-owner" maxlength="200"></label>
+              <label>Release version<input id="qsVersion" required value="1.0.0" maxlength="64"></label>
+              <fieldset class="span-two">
+                <legend>Capabilities</legend>
+                <div id="qsCapabilities" class="check-grid"></div>
+                <div id="qsEmpty" class="empty">Connect to load Agents, Skills, and MCP Tools.</div>
+              </fieldset>
+            </div>
+            <p class="muted">Selected draft resources are published first in development. Workflow steps receive the run input and execute in the order shown.</p>
+            <div class="form-actions">
+              <button id="qsCreate" type="submit" class="primary">Create and publish</button>
+              <button id="qsOpenSkills" type="button" class="secondary">Add or manage Skills</button>
+              <button id="qsOpenMcp" type="button" class="secondary">Configure MCP</button>
+            </div>
+          </form>
+        </section>
         <section id="solutionWorkbench" class="work-section">
           <div class="section-heading"><h2>Solution workbench</h2><span id="swStatus" role="status">Select a Solution</span></div>
           <div class="form-grid two">
@@ -496,6 +521,7 @@
     </main>
   </div>
   <script src="/static/admin.js?v=20260911-quality-v2" defer></script>
+  <script src="/static/solution-quick-start.js?v=20261014" defer></script>
   <script src="/static/workflow-designer.js?v=20260910-workbench" defer></script>
   <script src="/static/solution-workbench.js?v=20260910-quick" defer></script>
 </body>

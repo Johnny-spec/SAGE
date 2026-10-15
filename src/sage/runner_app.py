@@ -217,7 +217,7 @@ async def _execute(
         if entrypoint.suffix.casefold() != ".py":
             raise RunnerExecutionFailure("invalid_entrypoint", "Runner only executes Python")
 
-        argv = build_subprocess_argv(binding.arguments, arguments)
+        argv = build_subprocess_argv(binding.arguments, arguments, input_directory=execution_root)
         try:
             if os.name == "nt":
                 process = await asyncio.create_subprocess_exec(

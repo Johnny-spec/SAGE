@@ -39,4 +39,6 @@ def build_skill_arguments(
         arguments["text"] = message
     if "message" in properties and "message" not in arguments:
         arguments["message"] = message
+    if "artifact_ids" in properties and attachments:
+        arguments["artifact_ids"] = [item.artifact_id for item in attachments]
     return arguments

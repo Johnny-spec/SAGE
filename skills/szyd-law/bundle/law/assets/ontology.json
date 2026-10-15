@@ -1,0 +1,5056 @@
+{
+  "concepts": [
+    {
+      "id": "Subject.Organization",
+      "entity_types": [
+        "Company",
+        "Government",
+        "ResearchInstitute",
+        "Platform"
+      ],
+      "aliases": [
+        "企业",
+        "公司",
+        "政府",
+        "机构",
+        "研究院",
+        "研究所",
+        "平台",
+        "中心",
+        "实验室"
+      ]
+    },
+    {
+      "id": "Subject.Person",
+      "entity_types": [
+        "Person"
+      ],
+      "aliases": [
+        "自然人",
+        "董事",
+        "监事",
+        "高级管理人员",
+        "职工董事",
+        "法定代表人"
+      ]
+    },
+    {
+      "id": "Subject.Shareholder",
+      "entity_types": [
+        "Person",
+        "Company"
+      ],
+      "aliases": [
+        "股东",
+        "投资人",
+        "出资人"
+      ]
+    },
+    {
+      "id": "Subject.ActualController",
+      "entity_types": [
+        "Person",
+        "Company"
+      ],
+      "aliases": [
+        "实际控制人",
+        "控制人"
+      ]
+    },
+    {
+      "id": "Subject.StateOwnedEnterprise",
+      "entity_types": [
+        "Company"
+      ],
+      "aliases": [
+        "国有企业",
+        "央企",
+        "国企"
+      ]
+    },
+    {
+      "id": "Subject.PrivateEnterprise",
+      "entity_types": [
+        "Company"
+      ],
+      "aliases": [
+        "民营企业",
+        "私营企业"
+      ]
+    },
+    {
+      "id": "Subject.ListedCompany",
+      "entity_types": [
+        "Company"
+      ],
+      "aliases": [
+        "上市公司",
+        "挂牌公司",
+        "公众公司"
+      ]
+    },
+    {
+      "id": "Subject.ForeignInvestor",
+      "entity_types": [
+        "Person",
+        "Company"
+      ],
+      "aliases": [
+        "外国投资者",
+        "外商",
+        "境外投资人"
+      ]
+    },
+    {
+      "id": "Subject.PartyMember",
+      "entity_types": [
+        "Person"
+      ],
+      "aliases": [
+        "党员",
+        "中共党员"
+      ]
+    },
+    {
+      "id": "Subject.BoardOfDirectors",
+      "entity_types": [
+        "Organization"
+      ],
+      "aliases": [
+        "董事会"
+      ]
+    },
+    {
+      "id": "Subject.BoardOfSupervisors",
+      "entity_types": [
+        "Organization"
+      ],
+      "aliases": [
+        "监事会"
+      ]
+    },
+    {
+      "id": "Subject.ShareholdersMeeting",
+      "entity_types": [
+        "Organization"
+      ],
+      "aliases": [
+        "股东会",
+        "股东大会"
+      ]
+    },
+    {
+      "id": "Subject.LiquidationGroup",
+      "entity_types": [
+        "Organization"
+      ],
+      "aliases": [
+        "清算组"
+      ]
+    },
+    {
+      "id": "Subject.Creditor",
+      "entity_types": [
+        "Person",
+        "Company"
+      ],
+      "aliases": [
+        "债权人"
+      ]
+    },
+    {
+      "id": "Subject.Debtor",
+      "entity_types": [
+        "Person",
+        "Company"
+      ],
+      "aliases": [
+        "债务人"
+      ]
+    },
+    {
+      "id": "Law.CompanyLaw",
+      "entity_types": [
+        "Law"
+      ],
+      "aliases": [
+        "公司法",
+        "中华人民共和国公司法"
+      ]
+    },
+    {
+      "id": "Law.CivilCode",
+      "entity_types": [
+        "Law"
+      ],
+      "aliases": [
+        "民法典",
+        "中华人民共和国民法典"
+      ]
+    },
+    {
+      "id": "Law.ForeignInvestmentLaw",
+      "entity_types": [
+        "Law"
+      ],
+      "aliases": [
+        "外商投资法",
+        "中华人民共和国外商投资法"
+      ]
+    },
+    {
+      "id": "Law.PartyConstitution",
+      "entity_types": [
+        "Law"
+      ],
+      "aliases": [
+        "党章",
+        "中国共产党章程"
+      ]
+    },
+    {
+      "id": "Law.SecuritiesLaw",
+      "entity_types": [
+        "Law"
+      ],
+      "aliases": [
+        "证券法",
+        "中华人民共和国证券法"
+      ]
+    },
+    {
+      "id": "Law.AntiMonopolyLaw",
+      "entity_types": [
+        "Law"
+      ],
+      "aliases": [
+        "反垄断法",
+        "中华人民共和国反垄断法"
+      ]
+    },
+    {
+      "id": "Law.StateOwnedAssetsLaw",
+      "entity_types": [
+        "Law"
+      ],
+      "aliases": [
+        "企业国有资产法"
+      ]
+    },
+    {
+      "id": "Law.DataSecurityLaw",
+      "entity_types": [
+        "Law"
+      ],
+      "aliases": [
+        "数据安全法"
+      ]
+    },
+    {
+      "id": "Law.PersonalInformationProtectionLaw",
+      "entity_types": [
+        "Law"
+      ],
+      "aliases": [
+        "个人信息保护法"
+      ]
+    },
+    {
+      "id": "Law.CyberSecurityLaw",
+      "entity_types": [
+        "Law"
+      ],
+      "aliases": [
+        "网络安全法"
+      ]
+    },
+    {
+      "id": "Corporate.CapitalContribution",
+      "entity_types": [
+        "LegalConcept"
+      ],
+      "aliases": [
+        "出资",
+        "注册资本",
+        "认缴出资"
+      ]
+    },
+    {
+      "id": "Corporate.PaidInCapital",
+      "entity_types": [
+        "LegalConcept"
+      ],
+      "aliases": [
+        "实缴资本"
+      ]
+    },
+    {
+      "id": "Corporate.CapitalReduction",
+      "entity_types": [
+        "LegalConcept"
+      ],
+      "aliases": [
+        "减资"
+      ]
+    },
+    {
+      "id": "Corporate.CapitalIncrease",
+      "entity_types": [
+        "LegalConcept"
+      ],
+      "aliases": [
+        "增资"
+      ]
+    },
+    {
+      "id": "Corporate.EquityTransfer",
+      "entity_types": [
+        "LegalConcept"
+      ],
+      "aliases": [
+        "股权转让"
+      ]
+    },
+    {
+      "id": "Corporate.EquityPledge",
+      "entity_types": [
+        "LegalConcept"
+      ],
+      "aliases": [
+        "股权质押"
+      ]
+    },
+    {
+      "id": "Corporate.ShareIssuance",
+      "entity_types": [
+        "LegalConcept"
+      ],
+      "aliases": [
+        "发行股份",
+        "增发"
+      ]
+    },
+    {
+      "id": "Corporate.DividendDistribution",
+      "entity_types": [
+        "LegalConcept"
+      ],
+      "aliases": [
+        "利润分配",
+        "分红"
+      ]
+    },
+    {
+      "id": "Corporate.CompanyMerger",
+      "entity_types": [
+        "LegalConcept"
+      ],
+      "aliases": [
+        "公司合并"
+      ]
+    },
+    {
+      "id": "Corporate.CompanySplit",
+      "entity_types": [
+        "LegalConcept"
+      ],
+      "aliases": [
+        "公司分立"
+      ]
+    },
+    {
+      "id": "Corporate.CompanyDissolution",
+      "entity_types": [
+        "LegalConcept"
+      ],
+      "aliases": [
+        "公司解散"
+      ]
+    },
+    {
+      "id": "Corporate.CompanyLiquidation",
+      "entity_types": [
+        "LegalConcept"
+      ],
+      "aliases": [
+        "公司清算"
+      ]
+    },
+    {
+      "id": "Corporate.FiduciaryDuty",
+      "entity_types": [
+        "LegalConcept"
+      ],
+      "aliases": [
+        "忠实义务"
+      ]
+    },
+    {
+      "id": "Corporate.DutyOfCare",
+      "entity_types": [
+        "LegalConcept"
+      ],
+      "aliases": [
+        "勤勉义务"
+      ]
+    },
+    {
+      "id": "Corporate.NonCompeteObligation",
+      "entity_types": [
+        "LegalConcept"
+      ],
+      "aliases": [
+        "竞业禁止"
+      ]
+    },
+    {
+      "id": "Corporate.ActualControl",
+      "entity_types": [
+        "LegalConcept"
+      ],
+      "aliases": [
+        "实际控制"
+      ]
+    },
+    {
+      "id": "Corporate.CorporateVeilPiercing",
+      "entity_types": [
+        "LegalConcept"
+      ],
+      "aliases": [
+        "公司人格否认"
+      ]
+    },
+    {
+      "id": "Corporate.RelatedPartyTransaction",
+      "entity_types": [
+        "LegalConcept"
+      ],
+      "aliases": [
+        "关联交易"
+      ]
+    },
+    {
+      "id": "Corporate.InformationDisclosure",
+      "entity_types": [
+        "LegalConcept"
+      ],
+      "aliases": [
+        "信息披露"
+      ]
+    },
+    {
+      "id": "Corporate.ShareholderDerivativeAction",
+      "entity_types": [
+        "LegalConcept"
+      ],
+      "aliases": [
+        "股东代表诉讼"
+      ]
+    },
+    {
+      "id": "Civil.ContractFormation",
+      "entity_types": [
+        "LegalConcept"
+      ],
+      "aliases": [
+        "合同成立"
+      ]
+    },
+    {
+      "id": "Civil.ContractValidity",
+      "entity_types": [
+        "LegalConcept"
+      ],
+      "aliases": [
+        "合同效力"
+      ]
+    },
+    {
+      "id": "Civil.BreachOfContract",
+      "entity_types": [
+        "LegalConcept"
+      ],
+      "aliases": [
+        "违约"
+      ]
+    },
+    {
+      "id": "Civil.LiquidatedDamages",
+      "entity_types": [
+        "LegalConcept"
+      ],
+      "aliases": [
+        "违约金"
+      ]
+    },
+    {
+      "id": "Civil.ForceMajeure",
+      "entity_types": [
+        "LegalConcept"
+      ],
+      "aliases": [
+        "不可抗力"
+      ]
+    },
+    {
+      "id": "Civil.TortLiability",
+      "entity_types": [
+        "LegalConcept"
+      ],
+      "aliases": [
+        "侵权责任"
+      ]
+    },
+    {
+      "id": "Civil.ProductLiability",
+      "entity_types": [
+        "LegalConcept"
+      ],
+      "aliases": [
+        "产品责任"
+      ]
+    },
+    {
+      "id": "Civil.Guarantee",
+      "entity_types": [
+        "LegalConcept"
+      ],
+      "aliases": [
+        "保证",
+        "担保"
+      ]
+    },
+    {
+      "id": "Civil.MortgageRight",
+      "entity_types": [
+        "LegalConcept"
+      ],
+      "aliases": [
+        "抵押权"
+      ]
+    },
+    {
+      "id": "Civil.PledgeRight",
+      "entity_types": [
+        "LegalConcept"
+      ],
+      "aliases": [
+        "质权"
+      ]
+    },
+    {
+      "id": "Civil.PossessoryLien",
+      "entity_types": [
+        "LegalConcept"
+      ],
+      "aliases": [
+        "留置权"
+      ]
+    },
+    {
+      "id": "Civil.PropertyRight",
+      "entity_types": [
+        "LegalConcept"
+      ],
+      "aliases": [
+        "物权"
+      ]
+    },
+    {
+      "id": "Civil.UsufructuaryRight",
+      "entity_types": [
+        "LegalConcept"
+      ],
+      "aliases": [
+        "用益物权"
+      ]
+    },
+    {
+      "id": "Civil.CreditorRight",
+      "entity_types": [
+        "LegalConcept"
+      ],
+      "aliases": [
+        "债权"
+      ]
+    },
+    {
+      "id": "Civil.DebtAssignment",
+      "entity_types": [
+        "LegalConcept"
+      ],
+      "aliases": [
+        "债权转让"
+      ]
+    },
+    {
+      "id": "Civil.SubrogationRight",
+      "entity_types": [
+        "LegalConcept"
+      ],
+      "aliases": [
+        "代位权"
+      ]
+    },
+    {
+      "id": "Civil.RevocationRight",
+      "entity_types": [
+        "LegalConcept"
+      ],
+      "aliases": [
+        "撤销权"
+      ]
+    },
+    {
+      "id": "Civil.UnjustEnrichment",
+      "entity_types": [
+        "LegalConcept"
+      ],
+      "aliases": [
+        "不当得利"
+      ]
+    },
+    {
+      "id": "Civil.NegotiorumGestio",
+      "entity_types": [
+        "LegalConcept"
+      ],
+      "aliases": [
+        "无因管理"
+      ]
+    },
+    {
+      "id": "Civil.PersonalityRight",
+      "entity_types": [
+        "LegalConcept"
+      ],
+      "aliases": [
+        "人格权"
+      ]
+    },
+    {
+      "id": "Investment.ForeignInvestmentAccess",
+      "entity_types": [
+        "LegalConcept"
+      ],
+      "aliases": [
+        "外资准入"
+      ]
+    },
+    {
+      "id": "Investment.NegativeList",
+      "entity_types": [
+        "LegalConcept"
+      ],
+      "aliases": [
+        "负面清单"
+      ]
+    },
+    {
+      "id": "Investment.NationalSecurityReview",
+      "entity_types": [
+        "LegalConcept"
+      ],
+      "aliases": [
+        "国家安全审查"
+      ]
+    },
+    {
+      "id": "Investment.InformationReporting",
+      "entity_types": [
+        "LegalConcept"
+      ],
+      "aliases": [
+        "信息报告制度"
+      ]
+    },
+    {
+      "id": "Investment.EncouragedIndustry",
+      "entity_types": [
+        "LegalConcept"
+      ],
+      "aliases": [
+        "鼓励类产业"
+      ]
+    },
+    {
+      "id": "Investment.RestrictedIndustry",
+      "entity_types": [
+        "LegalConcept"
+      ],
+      "aliases": [
+        "限制类产业"
+      ]
+    },
+    {
+      "id": "Investment.ProhibitedIndustry",
+      "entity_types": [
+        "LegalConcept"
+      ],
+      "aliases": [
+        "禁止类产业"
+      ]
+    },
+    {
+      "id": "Investment.ExpropriationCompensation",
+      "entity_types": [
+        "LegalConcept"
+      ],
+      "aliases": [
+        "征收补偿"
+      ]
+    },
+    {
+      "id": "Investment.CrossBorderInvestment",
+      "entity_types": [
+        "LegalConcept"
+      ],
+      "aliases": [
+        "跨境投资"
+      ]
+    },
+    {
+      "id": "Investment.VIEControlStructure",
+      "entity_types": [
+        "LegalConcept"
+      ],
+      "aliases": [
+        "VIE结构",
+        "协议控制"
+      ]
+    },
+    {
+      "id": "Party.DisciplineSanction",
+      "entity_types": [
+        "LegalConcept"
+      ],
+      "aliases": [
+        "党纪处分"
+      ]
+    },
+    {
+      "id": "Party.OrganizationBuilding",
+      "entity_types": [
+        "LegalConcept"
+      ],
+      "aliases": [
+        "党的建设",
+        "党建"
+      ]
+    },
+    {
+      "id": "Party.DemocraticCentralism",
+      "entity_types": [
+        "LegalConcept"
+      ],
+      "aliases": [
+        "民主集中制"
+      ]
+    },
+    {
+      "id": "Party.MajorDecisionProcedure",
+      "entity_types": [
+        "LegalConcept"
+      ],
+      "aliases": [
+        "三重一大决策"
+      ]
+    },
+    {
+      "id": "Party.SupervisionMechanism",
+      "entity_types": [
+        "LegalConcept"
+      ],
+      "aliases": [
+        "党内监督"
+      ]
+    },
+    {
+      "id": "Party.Accountability",
+      "entity_types": [
+        "LegalConcept"
+      ],
+      "aliases": [
+        "问责机制"
+      ]
+    },
+    {
+      "id": "Party.PartyCommittee",
+      "entity_types": [
+        "Organization"
+      ],
+      "aliases": [
+        "党委"
+      ]
+    },
+    {
+      "id": "Party.PartyBranch",
+      "entity_types": [
+        "Organization"
+      ],
+      "aliases": [
+        "党支部"
+      ]
+    },
+    {
+      "id": "Party.PartyGroup",
+      "entity_types": [
+        "Organization"
+      ],
+      "aliases": [
+        "党组"
+      ]
+    },
+    {
+      "id": "Party.DisciplinaryInspectionCommission",
+      "entity_types": [
+        "Organization"
+      ],
+      "aliases": [
+        "纪委",
+        "纪检委员会"
+      ]
+    },
+    {
+      "id": "Compliance.AntiMonopolyReview",
+      "entity_types": [
+        "LegalConcept"
+      ],
+      "aliases": [
+        "反垄断审查"
+      ]
+    },
+    {
+      "id": "Compliance.ConcentrationOfUndertakings",
+      "entity_types": [
+        "LegalConcept"
+      ],
+      "aliases": [
+        "经营者集中"
+      ]
+    },
+    {
+      "id": "Compliance.MonopolyAgreement",
+      "entity_types": [
+        "LegalConcept"
+      ],
+      "aliases": [
+        "垄断协议"
+      ]
+    },
+    {
+      "id": "Compliance.DataCrossBorderTransfer",
+      "entity_types": [
+        "LegalConcept"
+      ],
+      "aliases": [
+        "数据出境"
+      ]
+    },
+    {
+      "id": "Compliance.DataLocalization",
+      "entity_types": [
+        "LegalConcept"
+      ],
+      "aliases": [
+        "数据本地化"
+      ]
+    },
+    {
+      "id": "Compliance.PersonalInformationProcessing",
+      "entity_types": [
+        "LegalConcept"
+      ],
+      "aliases": [
+        "个人信息处理"
+      ]
+    },
+    {
+      "id": "Compliance.SecurityAssessment",
+      "entity_types": [
+        "LegalConcept"
+      ],
+      "aliases": [
+        "安全评估"
+      ]
+    },
+    {
+      "id": "Compliance.InternalControl",
+      "entity_types": [
+        "LegalConcept"
+      ],
+      "aliases": [
+        "内部控制"
+      ]
+    },
+    {
+      "id": "Compliance.RiskManagement",
+      "entity_types": [
+        "LegalConcept"
+      ],
+      "aliases": [
+        "风险管理"
+      ]
+    },
+    {
+      "id": "Compliance.LegalAudit",
+      "entity_types": [
+        "LegalConcept"
+      ],
+      "aliases": [
+        "合规审查"
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "id": "INVESTS_IN",
+      "aliases": [
+        "投资",
+        "出资"
+      ]
+    },
+    {
+      "id": "CONTROLS",
+      "aliases": [
+        "控股",
+        "全资控制",
+        "并表"
+      ]
+    },
+    {
+      "id": "CO_BUILDS",
+      "aliases": [
+        "共建",
+        "联合建设"
+      ]
+    },
+    {
+      "id": "ESTABLISHES",
+      "aliases": [
+        "设立",
+        "拟设立",
+        "成立"
+      ]
+    },
+    {
+      "id": "AUTHORIZES",
+      "aliases": [
+        "授牌",
+        "认定"
+      ]
+    },
+    {
+      "id": "SUBORDINATE_OF",
+      "aliases": [
+        "隶属",
+        "属于"
+      ]
+    },
+    {
+      "id": "GOVERNED_BY",
+      "aliases": [
+        "适用",
+        "管治",
+        "约束"
+      ]
+    },
+    {
+      "id": "DECISION_RULE",
+      "aliases": [
+        "决策规则",
+        "程序要求"
+      ]
+    },
+    {
+      "id": "APPLIES_TO",
+      "aliases": [
+        "适用对象",
+        "适用范围"
+      ]
+    },
+    {
+      "id": "REQUIRES",
+      "aliases": [
+        "要求",
+        "应当",
+        "必须"
+      ]
+    },
+    {
+      "id": "PROHIBITS",
+      "aliases": [
+        "禁止",
+        "不得",
+        "不允许"
+      ]
+    },
+    {
+      "id": "ALLOWS",
+      "aliases": [
+        "允许",
+        "可以",
+        "可"
+      ]
+    },
+    {
+      "id": "HOLDS_SHARE",
+      "aliases": [
+        "持股",
+        "持有股份"
+      ]
+    },
+    {
+      "id": "TRANSFERS_EQUITY",
+      "aliases": [
+        "转让股权",
+        "股权转让"
+      ]
+    },
+    {
+      "id": "DISPOSES_ASSET",
+      "aliases": [
+        "处置资产",
+        "资产处置"
+      ]
+    },
+    {
+      "id": "RAISES_FINANCE",
+      "aliases": [
+        "融资",
+        "筹资"
+      ]
+    },
+    {
+      "id": "PROVIDES_GUARANTEE",
+      "aliases": [
+        "提供担保",
+        "对外担保"
+      ]
+    },
+    {
+      "id": "RELATED_TO",
+      "aliases": [
+        "关联",
+        "有关联"
+      ]
+    },
+    {
+      "id": "DISCLOSES",
+      "aliases": [
+        "披露",
+        "公开"
+      ]
+    },
+    {
+      "id": "FILES_RECORD",
+      "aliases": [
+        "备案",
+        "登记"
+      ]
+    },
+    {
+      "id": "UNDERGOES_AUDIT",
+      "aliases": [
+        "接受审计",
+        "审计"
+      ]
+    },
+    {
+      "id": "UNDERGOES_ASSESSMENT",
+      "aliases": [
+        "接受评估",
+        "评估"
+      ]
+    },
+    {
+      "id": "STORES_IN_CHINA",
+      "aliases": [
+        "境内存储",
+        "本地存储"
+      ]
+    },
+    {
+      "id": "OBTAINS_CONSENT",
+      "aliases": [
+        "取得同意",
+        "获得授权"
+      ]
+    },
+    {
+      "id": "SIGNS_CONTRACT",
+      "aliases": [
+        "签订合同",
+        "签约"
+      ]
+    },
+    {
+      "id": "SUBMITS_FOR_APPROVAL",
+      "aliases": [
+        "报批",
+        "提交审批"
+      ]
+    },
+    {
+      "id": "BIDS_FOR",
+      "aliases": [
+        "投标",
+        "参与招标"
+      ]
+    },
+    {
+      "id": "WINS_BID",
+      "aliases": [
+        "中标",
+        "竞得"
+      ]
+    },
+    {
+      "id": "PURCHASES_FROM",
+      "aliases": [
+        "采购",
+        "购买"
+      ]
+    },
+    {
+      "id": "REPORTS_TO",
+      "aliases": [
+        "报告给",
+        "上报"
+      ]
+    },
+    {
+      "id": "SUPERVISES",
+      "aliases": [
+        "监督",
+        "监管"
+      ]
+    },
+    {
+      "id": "PENALIZES",
+      "aliases": [
+        "处罚",
+        "惩罚"
+      ]
+    },
+    {
+      "id": "RECTIFIES",
+      "aliases": [
+        "整改",
+        "改正"
+      ]
+    },
+    {
+      "id": "MONITORS",
+      "aliases": [
+        "监测",
+        "监控"
+      ]
+    },
+    {
+      "id": "REVIEWS",
+      "aliases": [
+        "审查",
+        "复核"
+      ]
+    },
+    {
+      "id": "ENFORCES",
+      "aliases": [
+        "执行",
+        "落实"
+      ]
+    },
+    {
+      "id": "EXEMPTS",
+      "aliases": [
+        "豁免",
+        "免除"
+      ]
+    },
+    {
+      "id": "LIMITS",
+      "aliases": [
+        "限制",
+        "限缩"
+      ]
+    },
+    {
+      "id": "TRIGGERS",
+      "aliases": [
+        "触发",
+        "引发"
+      ]
+    },
+    {
+      "id": "HAS_RISK",
+      "aliases": [
+        "存在风险",
+        "风险点"
+      ]
+    },
+    {
+      "id": "INVESTS_IN",
+      "aliases": [
+        "投资",
+        "出资",
+        "认缴出资"
+      ]
+    },
+    {
+      "id": "CAPITAL_CONTRIBUTES_TO",
+      "aliases": [
+        "缴纳出资",
+        "实缴"
+      ]
+    },
+    {
+      "id": "HOLDS_EQUITY_OF",
+      "aliases": [
+        "持股",
+        "持有股权"
+      ]
+    },
+    {
+      "id": "TRANSFERS_EQUITY_TO",
+      "aliases": [
+        "转让股权",
+        "出售股权"
+      ]
+    },
+    {
+      "id": "PLEDGES_EQUITY_TO",
+      "aliases": [
+        "质押股权",
+        "设定质押"
+      ]
+    },
+    {
+      "id": "MORTGAGES_PROPERTY_TO",
+      "aliases": [
+        "抵押",
+        "设定抵押"
+      ]
+    },
+    {
+      "id": "PROVIDES_GUARANTEE_FOR",
+      "aliases": [
+        "提供担保",
+        "保证"
+      ]
+    },
+    {
+      "id": "ASSIGNS_CREDITOR_RIGHT_TO",
+      "aliases": [
+        "债权转让"
+      ]
+    },
+    {
+      "id": "ASSUMES_DEBT_OF",
+      "aliases": [
+        "债务承担"
+      ]
+    },
+    {
+      "id": "MERGES_WITH",
+      "aliases": [
+        "合并",
+        "吸收合并",
+        "新设合并"
+      ]
+    },
+    {
+      "id": "SPLITS_INTO",
+      "aliases": [
+        "分立",
+        "拆分"
+      ]
+    },
+    {
+      "id": "ESTABLISHES",
+      "aliases": [
+        "设立",
+        "成立",
+        "注册成立"
+      ]
+    },
+    {
+      "id": "DISSOLVES",
+      "aliases": [
+        "解散"
+      ]
+    },
+    {
+      "id": "LIQUIDATES",
+      "aliases": [
+        "清算"
+      ]
+    },
+    {
+      "id": "APPOINTS",
+      "aliases": [
+        "任命",
+        "委派",
+        "选举"
+      ]
+    },
+    {
+      "id": "REMOVES",
+      "aliases": [
+        "罢免",
+        "解任"
+      ]
+    },
+    {
+      "id": "SUPERVISES",
+      "aliases": [
+        "监督",
+        "监管"
+      ]
+    },
+    {
+      "id": "AUDITS",
+      "aliases": [
+        "审计"
+      ]
+    },
+    {
+      "id": "DISCLOSES_TO",
+      "aliases": [
+        "披露",
+        "公告"
+      ]
+    },
+    {
+      "id": "REPORTS_TO",
+      "aliases": [
+        "报告",
+        "报送"
+      ]
+    },
+    {
+      "id": "CONTROLS",
+      "aliases": [
+        "控股",
+        "实际控制",
+        "控制"
+      ]
+    },
+    {
+      "id": "IS_SUBSIDIARY_OF",
+      "aliases": [
+        "子公司",
+        "下属公司"
+      ]
+    },
+    {
+      "id": "IS_PARENT_OF",
+      "aliases": [
+        "母公司"
+      ]
+    },
+    {
+      "id": "IS_AFFILIATED_WITH",
+      "aliases": [
+        "关联",
+        "关联方"
+      ]
+    },
+    {
+      "id": "ENGAGES_IN_RELATED_TRANSACTION_WITH",
+      "aliases": [
+        "关联交易"
+      ]
+    },
+    {
+      "id": "COMPETES_WITH",
+      "aliases": [
+        "竞争"
+      ]
+    },
+    {
+      "id": "SIGNS_CONTRACT_WITH",
+      "aliases": [
+        "签订合同",
+        "订立合同"
+      ]
+    },
+    {
+      "id": "PERFORMS_CONTRACT_FOR",
+      "aliases": [
+        "履行合同"
+      ]
+    },
+    {
+      "id": "BREACHES_CONTRACT_WITH",
+      "aliases": [
+        "违约"
+      ]
+    },
+    {
+      "id": "TERMINATES_CONTRACT_WITH",
+      "aliases": [
+        "解除合同"
+      ]
+    },
+    {
+      "id": "CLAIMS_DAMAGES_FROM",
+      "aliases": [
+        "请求赔偿"
+      ]
+    },
+    {
+      "id": "COMMITS_TORT_AGAINST",
+      "aliases": [
+        "侵权"
+      ]
+    },
+    {
+      "id": "COMPENSATES",
+      "aliases": [
+        "赔偿"
+      ]
+    },
+    {
+      "id": "EXEMPTED_BY_FORCE_MAJEURE",
+      "aliases": [
+        "不可抗力免责"
+      ]
+    },
+    {
+      "id": "FILES_LAWSUIT_AGAINST",
+      "aliases": [
+        "起诉"
+      ]
+    },
+    {
+      "id": "ARBITRATES_WITH",
+      "aliases": [
+        "仲裁"
+      ]
+    },
+    {
+      "id": "MEDIATES_WITH",
+      "aliases": [
+        "调解"
+      ]
+    },
+    {
+      "id": "EXECUTES_JUDGMENT_AGAINST",
+      "aliases": [
+        "强制执行"
+      ]
+    },
+    {
+      "id": "REQUIRES",
+      "aliases": [
+        "要求",
+        "应当",
+        "必须"
+      ]
+    },
+    {
+      "id": "PROHIBITS",
+      "aliases": [
+        "禁止",
+        "不得"
+      ]
+    },
+    {
+      "id": "ALLOWS",
+      "aliases": [
+        "允许",
+        "可以"
+      ]
+    },
+    {
+      "id": "AUTHORIZES",
+      "aliases": [
+        "授权",
+        "批准"
+      ]
+    },
+    {
+      "id": "APPROVES",
+      "aliases": [
+        "审批",
+        "核准"
+      ]
+    },
+    {
+      "id": "REGISTERS",
+      "aliases": [
+        "登记"
+      ]
+    },
+    {
+      "id": "FILES_FOR_RECORD",
+      "aliases": [
+        "备案"
+      ]
+    },
+    {
+      "id": "REVIEWS_SECURITY",
+      "aliases": [
+        "安全审查"
+      ]
+    },
+    {
+      "id": "CONDUCTS_ANTI_MONOPOLY_REVIEW",
+      "aliases": [
+        "反垄断审查"
+      ]
+    },
+    {
+      "id": "SUBMITS_FOR_APPROVAL",
+      "aliases": [
+        "报批"
+      ]
+    },
+    {
+      "id": "IMPLEMENTS_DECISION",
+      "aliases": [
+        "执行决议"
+      ]
+    },
+    {
+      "id": "MAKES_RESOLUTION",
+      "aliases": [
+        "作出决议"
+      ]
+    },
+    {
+      "id": "VOTES_ON",
+      "aliases": [
+        "表决"
+      ]
+    },
+    {
+      "id": "HAS_VOTING_RIGHT_ON",
+      "aliases": [
+        "表决权"
+      ]
+    },
+    {
+      "id": "HAS_PREEMPTIVE_RIGHT_ON",
+      "aliases": [
+        "优先购买权"
+      ]
+    },
+    {
+      "id": "HAS_INFORMATION_RIGHT_ON",
+      "aliases": [
+        "知情权"
+      ]
+    },
+    {
+      "id": "EXERCISES_DERIVATIVE_ACTION_AGAINST",
+      "aliases": [
+        "代表诉讼"
+      ]
+    },
+    {
+      "id": "PIERCES_CORPORATE_VEIL_OF",
+      "aliases": [
+        "人格否认"
+      ]
+    },
+    {
+      "id": "IMPOSES_DISCIPLINE_ON",
+      "aliases": [
+        "处分"
+      ]
+    },
+    {
+      "id": "ESTABLISHES_PARTY_ORG_IN",
+      "aliases": [
+        "设立党组织"
+      ]
+    },
+    {
+      "id": "REPORTS_MAJOR_MATTER_TO",
+      "aliases": [
+        "重大事项报告"
+      ]
+    },
+    {
+      "id": "IMPLEMENTS_DEMOCRATIC_CENTRALISM_IN",
+      "aliases": [
+        "民主集中制"
+      ]
+    },
+    {
+      "id": "CONDUCTS_PARTY_SUPERVISION_OVER",
+      "aliases": [
+        "党内监督"
+      ]
+    },
+    {
+      "id": "APPLIES_TO",
+      "aliases": [
+        "适用对象",
+        "适用范围"
+      ]
+    },
+    {
+      "id": "GOVERNED_BY",
+      "aliases": [
+        "适用",
+        "受…约束"
+      ]
+    },
+    {
+      "id": "INTERPRETS",
+      "aliases": [
+        "解释"
+      ]
+    },
+    {
+      "id": "AMENDS",
+      "aliases": [
+        "修订"
+      ]
+    },
+    {
+      "id": "INVALIDATES",
+      "aliases": [
+        "无效"
+      ]
+    },
+    {
+      "id": "ENGAGES_IN_MONOPOLY_AGREEMENT_WITH",
+      "aliases": [
+        "达成垄断协议"
+      ]
+    },
+    {
+      "id": "CONCENTRATES_WITH",
+      "aliases": [
+        "经营者集中"
+      ]
+    },
+    {
+      "id": "ABUSES_MARKET_DOMINANCE_OVER",
+      "aliases": [
+        "滥用市场支配地位"
+      ]
+    },
+    {
+      "id": "TRANSFERS_DATA_TO",
+      "aliases": [
+        "数据出境"
+      ]
+    },
+    {
+      "id": "STORES_DATA_IN",
+      "aliases": [
+        "数据存储"
+      ]
+    },
+    {
+      "id": "PROCESSES_PERSONAL_INFORMATION_OF",
+      "aliases": [
+        "处理个人信息"
+      ]
+    },
+    {
+      "id": "EXPROPRIATES",
+      "aliases": [
+        "征收",
+        "征用"
+      ]
+    },
+    {
+      "id": "COMPENSATES_FOR_EXPROPRIATION",
+      "aliases": [
+        "补偿"
+      ]
+    },
+    {
+      "id": "IS_CREDITOR_OF",
+      "aliases": [
+        "债权人"
+      ]
+    },
+    {
+      "id": "IS_DEBTOR_OF",
+      "aliases": [
+        "债务人"
+      ]
+    },
+    {
+      "id": "OWES_DEBT_TO",
+      "aliases": [
+        "负有债务"
+      ]
+    },
+    {
+      "id": "HOLDS_BOARD_MEETING_OF",
+      "aliases": [
+        "召开董事会"
+      ]
+    },
+    {
+      "id": "HOLDS_SHAREHOLDERS_MEETING_OF",
+      "aliases": [
+        "召开股东会"
+      ]
+    },
+    {
+      "id": "FORMS_LIQUIDATION_GROUP_FOR",
+      "aliases": [
+        "成立清算组"
+      ]
+    },
+    {
+      "id": "ISSUES_SHARES_TO",
+      "aliases": [
+        "发行股份"
+      ]
+    },
+    {
+      "id": "DISTRIBUTES_DIVIDENDS_TO",
+      "aliases": [
+        "分红"
+      ]
+    },
+    {
+      "id": "REDUCES_CAPITAL_OF",
+      "aliases": [
+        "减资"
+      ]
+    },
+    {
+      "id": "INCREASES_CAPITAL_OF",
+      "aliases": [
+        "增资"
+      ]
+    },
+    {
+      "id": "OPERATES_UNDER_NEGATIVE_LIST",
+      "aliases": [
+        "负面清单管理"
+      ]
+    },
+    {
+      "id": "FILES_FOREIGN_INVESTMENT_REPORT_TO",
+      "aliases": [
+        "外资信息报告"
+      ]
+    },
+    {
+      "id": "HAS_FIDUCIARY_DUTY_TO",
+      "aliases": [
+        "负有忠实义务"
+      ]
+    },
+    {
+      "id": "HAS_DUTY_OF_CARE_TO",
+      "aliases": [
+        "负有勤勉义务"
+      ]
+    },
+    {
+      "id": "VIOLATES_DISCIPLINE_OF",
+      "aliases": [
+        "违反党纪"
+      ]
+    },
+    {
+      "id": "CO_BUILDS",
+      "aliases": [
+        "共建",
+        "联合建设"
+      ]
+    },
+    {
+      "id": "SUBORDINATE_OF",
+      "aliases": [
+        "隶属",
+        "属于"
+      ]
+    },
+    {
+      "id": "DECISION_RULE",
+      "aliases": [
+        "决策规则",
+        "程序要求"
+      ]
+    }
+  ],
+  "conflict_pairs": [
+    [
+      "PROHIBITS",
+      "ALLOWS"
+    ],
+    [
+      "PROHIBITS",
+      "REQUIRES"
+    ],
+    [
+      "EXEMPTS",
+      "REQUIRES"
+    ],
+    [
+      "LIMITS",
+      "ALLOWS"
+    ]
+  ],
+  "rule_triggers": [
+    {
+      "id": "TR001",
+      "name": "控股比例触发股权控制",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国公司法",
+      "article": "第二百一十六条",
+      "pattern": {
+        "action": "CONTROLS",
+        "from_entity_type": "Company",
+        "to_entity_type": "Company",
+        "relation_conditions": {
+          "ratio": ">=0.5"
+        }
+      },
+      "output": {
+        "legal_concepts": [
+          "股权控制",
+          "并表处理"
+        ],
+        "confidence": 0.92
+      }
+    },
+    {
+      "id": "TR002",
+      "name": "重大投资触发三重一大",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国公司法",
+      "article": "第四十六条",
+      "pattern": {
+        "action": "INVESTS_IN",
+        "from_entity_type": "Company",
+        "relation_conditions": {
+          "amount": ">50000000"
+        }
+      },
+      "output": {
+        "legal_concepts": [
+          "重大投资决策",
+          "三重一大决策"
+        ],
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "TR003",
+      "name": "关联交易触发披露义务",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国证券法",
+      "article": "第八十条",
+      "pattern": {
+        "action": "RELATED_TO",
+        "from_entity_type": "Company",
+        "to_entity_type": "Company"
+      },
+      "output": {
+        "legal_concepts": [
+          "关联交易",
+          "信息披露"
+        ],
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "TR004",
+      "name": "上市公司重大事项披露",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国证券法",
+      "article": "第八十一条",
+      "pattern": {
+        "action": "DISCLOSES",
+        "from_entity_type": "Company"
+      },
+      "output": {
+        "legal_concepts": [
+          "信息披露",
+          "合规披露"
+        ],
+        "confidence": 0.88
+      }
+    },
+    {
+      "id": "TR005",
+      "name": "数据跨境触发安全评估",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国数据安全法",
+      "article": "第三十一条",
+      "pattern": {
+        "action": "GOVERNED_BY",
+        "relation_conditions": {
+          "cross_border": "=1"
+        }
+      },
+      "output": {
+        "legal_concepts": [
+          "安全评估",
+          "数据出境"
+        ],
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "TR006",
+      "name": "个人信息处理触发同意要求",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国个人信息保护法",
+      "article": "第十三条",
+      "pattern": {
+        "action": "OBTAINS_CONSENT"
+      },
+      "output": {
+        "legal_concepts": [
+          "个人信息处理",
+          "同意机制"
+        ],
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "TR007",
+      "name": "重要数据触发境内存储",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国数据安全法",
+      "article": "第三十六条",
+      "pattern": {
+        "action": "STORES_IN_CHINA"
+      },
+      "output": {
+        "legal_concepts": [
+          "数据本地化",
+          "重要数据保护"
+        ],
+        "confidence": 0.89
+      }
+    },
+    {
+      "id": "TR008",
+      "name": "关键信息基础设施安全义务",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国网络安全法",
+      "article": "第三十七条",
+      "pattern": {
+        "action": "REQUIRES",
+        "relation_conditions": {
+          "ciio": "=1"
+        }
+      },
+      "output": {
+        "legal_concepts": [
+          "网络安全义务",
+          "数据本地化"
+        ],
+        "confidence": 0.86
+      }
+    },
+    {
+      "id": "TR009",
+      "name": "经营者集中触发反垄断审查",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国反垄断法",
+      "article": "第二十六条",
+      "pattern": {
+        "action": "SUBMITS_FOR_APPROVAL",
+        "relation_conditions": {
+          "concentration": "=1"
+        }
+      },
+      "output": {
+        "legal_concepts": [
+          "反垄断审查",
+          "经营者集中"
+        ],
+        "confidence": 0.91
+      }
+    },
+    {
+      "id": "TR010",
+      "name": "垄断协议风险识别",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国反垄断法",
+      "article": "第十七条",
+      "pattern": {
+        "action": "HAS_RISK",
+        "relation_conditions": {
+          "monopoly_agreement": "=1"
+        }
+      },
+      "output": {
+        "legal_concepts": [
+          "垄断协议",
+          "竞争合规"
+        ],
+        "confidence": 0.85
+      }
+    },
+    {
+      "id": "TR011",
+      "name": "股东会普通决议比例触发",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国公司法",
+      "article": "第四十三条",
+      "pattern": {
+        "action": "MAKES_RESOLUTION",
+        "from_entity_type": "ShareholdersMeeting",
+        "relation_conditions": {
+          "ratio": ">=0.5"
+        }
+      },
+      "output": {
+        "legal_concepts": [
+          "普通决议有效",
+          "公司治理程序"
+        ],
+        "confidence": 0.93
+      }
+    },
+    {
+      "id": "TR012",
+      "name": "特别决议比例触发",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国公司法",
+      "article": "第四十三条",
+      "pattern": {
+        "action": "MAKES_RESOLUTION",
+        "relation_conditions": {
+          "ratio": ">=0.66"
+        }
+      },
+      "output": {
+        "legal_concepts": [
+          "特别决议",
+          "重大事项决策"
+        ],
+        "confidence": 0.93
+      }
+    },
+    {
+      "id": "TR013",
+      "name": "公司合并触发债权人公告义务",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国公司法",
+      "article": "第一百七十三条",
+      "pattern": {
+        "action": "MERGES_WITH",
+        "from_entity_type": "Company"
+      },
+      "output": {
+        "legal_concepts": [
+          "债权人通知",
+          "公告义务"
+        ],
+        "confidence": 0.92
+      }
+    },
+    {
+      "id": "TR014",
+      "name": "公司分立触发债权人保护",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国公司法",
+      "article": "第一百七十五条",
+      "pattern": {
+        "action": "SPLITS",
+        "from_entity_type": "Company"
+      },
+      "output": {
+        "legal_concepts": [
+          "债权人保护",
+          "连带责任"
+        ],
+        "confidence": 0.91
+      }
+    },
+    {
+      "id": "TR015",
+      "name": "减少注册资本触发公告",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国公司法",
+      "article": "第一百七十七条",
+      "pattern": {
+        "action": "REDUCES_CAPITAL",
+        "from_entity_type": "Company"
+      },
+      "output": {
+        "legal_concepts": [
+          "减资公告",
+          "债权人保护"
+        ],
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "TR016",
+      "name": "对外担保重大比例触发特别决议",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国公司法",
+      "article": "第十六条",
+      "pattern": {
+        "action": "PROVIDES_GUARANTEE",
+        "relation_conditions": {
+          "amount_ratio": ">=0.3"
+        }
+      },
+      "output": {
+        "legal_concepts": [
+          "重大担保",
+          "特别决议要求"
+        ],
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "TR017",
+      "name": "抽逃出资触发责任承担",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国公司法",
+      "article": "第二十八条",
+      "pattern": {
+        "action": "WITHDRAWS_CAPITAL",
+        "from_entity_type": "Shareholder"
+      },
+      "output": {
+        "legal_concepts": [
+          "抽逃出资",
+          "补足责任"
+        ],
+        "confidence": 0.94
+      }
+    },
+    {
+      "id": "TR018",
+      "name": "虚假出资触发赔偿责任",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国公司法",
+      "article": "第二十六条",
+      "pattern": {
+        "action": "FALSE_CAPITAL_CONTRIBUTION"
+      },
+      "output": {
+        "legal_concepts": [
+          "虚假出资",
+          "民事赔偿"
+        ],
+        "confidence": 0.93
+      }
+    },
+    {
+      "id": "TR019",
+      "name": "清算义务未履行触发连带责任",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国公司法",
+      "article": "第一百八十八条",
+      "pattern": {
+        "action": "FAILS_TO_LIQUIDATE"
+      },
+      "output": {
+        "legal_concepts": [
+          "清算责任",
+          "连带责任"
+        ],
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "TR020",
+      "name": "董事违反忠实义务",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国公司法",
+      "article": "第一百四十八条",
+      "pattern": {
+        "action": "BREACHES_FIDUCIARY_DUTY",
+        "from_entity_type": "Director"
+      },
+      "output": {
+        "legal_concepts": [
+          "忠实义务",
+          "损害赔偿"
+        ],
+        "confidence": 0.94
+      }
+    },
+    {
+      "id": "TR021",
+      "name": "董事违反勤勉义务",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国公司法",
+      "article": "第一百四十八条",
+      "pattern": {
+        "action": "BREACHES_DUTY_OF_CARE"
+      },
+      "output": {
+        "legal_concepts": [
+          "勤勉义务",
+          "公司责任"
+        ],
+        "confidence": 0.92
+      }
+    },
+    {
+      "id": "TR022",
+      "name": "公司回购股份触发条件限制",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国公司法",
+      "article": "第一百四十二条",
+      "pattern": {
+        "action": "REPURCHASES_SHARES"
+      },
+      "output": {
+        "legal_concepts": [
+          "股份回购",
+          "法定情形"
+        ],
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "TR023",
+      "name": "利润分配前未弥补亏损",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国公司法",
+      "article": "第一百六十六条",
+      "pattern": {
+        "action": "DISTRIBUTES_PROFIT",
+        "relation_conditions": {
+          "loss_uncovered": "=1"
+        }
+      },
+      "output": {
+        "legal_concepts": [
+          "违法分红",
+          "股东返还责任"
+        ],
+        "confidence": 0.92
+      }
+    },
+    {
+      "id": "TR024",
+      "name": "设立公司触发登记义务",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国公司法",
+      "article": "第七条",
+      "pattern": {
+        "action": "ESTABLISHES",
+        "from_entity_type": "Company"
+      },
+      "output": {
+        "legal_concepts": [
+          "公司登记",
+          "法人资格"
+        ],
+        "confidence": 0.95
+      }
+    },
+    {
+      "id": "TR025",
+      "name": "经营者集中申报标准触发",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国反垄断法",
+      "article": "第二十六条",
+      "pattern": {
+        "action": "CONCENTRATES",
+        "relation_conditions": {
+          "turnover": ">=1000000000"
+        }
+      },
+      "output": {
+        "legal_concepts": [
+          "经营者集中",
+          "反垄断申报"
+        ],
+        "confidence": 0.91
+      }
+    },
+    {
+      "id": "TR026",
+      "name": "横向垄断协议触发禁止",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国反垄断法",
+      "article": "第十七条",
+      "pattern": {
+        "action": "ENTERS_MONOPOLY_AGREEMENT"
+      },
+      "output": {
+        "legal_concepts": [
+          "横向垄断",
+          "行政处罚"
+        ],
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "TR027",
+      "name": "滥用市场支配地位",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国反垄断法",
+      "article": "第二十二条",
+      "pattern": {
+        "action": "ABUSES_MARKET_DOMINANCE"
+      },
+      "output": {
+        "legal_concepts": [
+          "市场支配地位",
+          "反垄断责任"
+        ],
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "TR028",
+      "name": "外商投资触发安全审查",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国外商投资法",
+      "article": "第三十五条",
+      "pattern": {
+        "action": "FOREIGN_INVESTS",
+        "relation_conditions": {
+          "sensitive_industry": "=1"
+        }
+      },
+      "output": {
+        "legal_concepts": [
+          "国家安全审查",
+          "外商投资监管"
+        ],
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "TR029",
+      "name": "外商投资企业信息报告义务",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国外商投资法",
+      "article": "第三十四条",
+      "pattern": {
+        "action": "SUBMITS_REPORT",
+        "from_entity_type": "ForeignInvestedEnterprise"
+      },
+      "output": {
+        "legal_concepts": [
+          "信息报告制度"
+        ],
+        "confidence": 0.88
+      }
+    },
+    {
+      "id": "TR030",
+      "name": "合同成立触发法律约束力",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国民法典",
+      "article": "第四百六十五条",
+      "pattern": {
+        "action": "SIGNS_CONTRACT"
+      },
+      "output": {
+        "legal_concepts": [
+          "合同成立",
+          "法律约束力"
+        ],
+        "confidence": 0.95
+      }
+    },
+    {
+      "id": "TR031",
+      "name": "违约触发损害赔偿",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国民法典",
+      "article": "第五百七十七条",
+      "pattern": {
+        "action": "BREACHES_CONTRACT"
+      },
+      "output": {
+        "legal_concepts": [
+          "违约责任",
+          "损害赔偿"
+        ],
+        "confidence": 0.95
+      }
+    },
+    {
+      "id": "TR032",
+      "name": "不可抗力免责",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国民法典",
+      "article": "第五百九十条",
+      "pattern": {
+        "action": "CLAIMS_FORCE_MAJEURE"
+      },
+      "output": {
+        "legal_concepts": [
+          "不可抗力",
+          "免责"
+        ],
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "TR033",
+      "name": "保证合同触发保证责任",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国民法典",
+      "article": "第六百八十六条",
+      "pattern": {
+        "action": "PROVIDES_GUARANTEE"
+      },
+      "output": {
+        "legal_concepts": [
+          "保证责任",
+          "连带保证"
+        ],
+        "confidence": 0.93
+      }
+    },
+    {
+      "id": "TR034",
+      "name": "抵押设立触发登记",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国民法典",
+      "article": "第四百零二条",
+      "pattern": {
+        "action": "CREATES_MORTGAGE"
+      },
+      "output": {
+        "legal_concepts": [
+          "抵押权",
+          "登记生效"
+        ],
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "TR035",
+      "name": "质押设立触发交付",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国民法典",
+      "article": "第四百二十九条",
+      "pattern": {
+        "action": "CREATES_PLEDGE"
+      },
+      "output": {
+        "legal_concepts": [
+          "质权设立",
+          "交付生效"
+        ],
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "TR036",
+      "name": "侵权行为触发赔偿责任",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国民法典",
+      "article": "第一千一百六十五条",
+      "pattern": {
+        "action": "COMMITS_TORT"
+      },
+      "output": {
+        "legal_concepts": [
+          "侵权责任",
+          "赔偿"
+        ],
+        "confidence": 0.95
+      }
+    },
+    {
+      "id": "TR037",
+      "name": "合伙人承担无限连带责任",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国合伙企业法",
+      "article": "第二条",
+      "pattern": {
+        "action": "ESTABLISHES_PARTNERSHIP"
+      },
+      "output": {
+        "legal_concepts": [
+          "普通合伙",
+          "无限连带责任"
+        ],
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "TR038",
+      "name": "有限合伙人责任限制",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国合伙企业法",
+      "article": "第六十条",
+      "pattern": {
+        "action": "LIMITED_PARTNER_INVESTS"
+      },
+      "output": {
+        "legal_concepts": [
+          "有限责任",
+          "出资限额"
+        ],
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "TR039",
+      "name": "党员违反纪律触发处分",
+      "rule_level": "PARTY",
+      "source_law": "中国共产党章程",
+      "article": "第四十条",
+      "pattern": {
+        "action": "VIOLATES_DISCIPLINE"
+      },
+      "output": {
+        "legal_concepts": [
+          "党纪处分",
+          "组织处理"
+        ],
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "TR040",
+      "name": "重大事项必须集体决策",
+      "rule_level": "PARTY",
+      "source_law": "中国共产党章程",
+      "article": "第十条",
+      "pattern": {
+        "action": "MAKES_MAJOR_DECISION"
+      },
+      "output": {
+        "legal_concepts": [
+          "集体领导",
+          "民主集中制"
+        ],
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "TR041",
+      "name": "股权转让触发其他股东优先购买权",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国公司法",
+      "article": "第七十一条",
+      "pattern": {
+        "action": "TRANSFERS_EQUITY",
+        "from_entity_type": "Shareholder",
+        "to_entity_type": "ThirdParty"
+      },
+      "output": {
+        "legal_concepts": [
+          "优先购买权",
+          "股权限制转让"
+        ],
+        "confidence": 0.93
+      }
+    },
+    {
+      "id": "TR042",
+      "name": "股东知情权行使触发查阅义务",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国公司法",
+      "article": "第三十三条",
+      "pattern": {
+        "action": "REQUESTS_INFORMATION",
+        "from_entity_type": "Shareholder"
+      },
+      "output": {
+        "legal_concepts": [
+          "股东知情权",
+          "公司配合义务"
+        ],
+        "confidence": 0.92
+      }
+    },
+    {
+      "id": "TR043",
+      "name": "滥用公司法人独立地位触发揭开公司面纱",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国公司法",
+      "article": "第二十条",
+      "pattern": {
+        "action": "ABUSES_CORPORATE_PERSONALITY"
+      },
+      "output": {
+        "legal_concepts": [
+          "法人人格否认",
+          "股东连带责任"
+        ],
+        "confidence": 0.95
+      }
+    },
+    {
+      "id": "TR044",
+      "name": "董事关联交易未披露触发责任",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国公司法",
+      "article": "第一百四十八条",
+      "pattern": {
+        "action": "ENGAGES_IN_RELATED_TRANSACTION",
+        "relation_conditions": {
+          "disclosed": "=0"
+        }
+      },
+      "output": {
+        "legal_concepts": [
+          "关联交易违规",
+          "赔偿责任"
+        ],
+        "confidence": 0.93
+      }
+    },
+    {
+      "id": "TR045",
+      "name": "监事未履行监督职责",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国公司法",
+      "article": "第五十三条",
+      "pattern": {
+        "action": "FAILS_TO_SUPERVISE",
+        "from_entity_type": "Supervisor"
+      },
+      "output": {
+        "legal_concepts": [
+          "监督责任",
+          "公司治理责任"
+        ],
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "TR046",
+      "name": "发起人未履行出资责任",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国公司法",
+      "article": "第二十六条",
+      "pattern": {
+        "action": "FAILS_TO_CONTRIBUTE_CAPITAL"
+      },
+      "output": {
+        "legal_concepts": [
+          "发起人责任",
+          "补足出资"
+        ],
+        "confidence": 0.92
+      }
+    },
+    {
+      "id": "TR047",
+      "name": "上市公司内幕信息形成触发保密义务",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国证券法",
+      "article": "第五十二条",
+      "pattern": {
+        "action": "POSSESSES_INSIDE_INFORMATION"
+      },
+      "output": {
+        "legal_concepts": [
+          "内幕信息",
+          "保密义务"
+        ],
+        "confidence": 0.94
+      }
+    },
+    {
+      "id": "TR048",
+      "name": "利用内幕信息交易触发处罚",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国证券法",
+      "article": "第五十三条",
+      "pattern": {
+        "action": "INSIDER_TRADING"
+      },
+      "output": {
+        "legal_concepts": [
+          "内幕交易",
+          "行政处罚"
+        ],
+        "confidence": 0.95
+      }
+    },
+    {
+      "id": "TR049",
+      "name": "操纵证券市场行为触发处罚",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国证券法",
+      "article": "第五十五条",
+      "pattern": {
+        "action": "MANIPULATES_MARKET"
+      },
+      "output": {
+        "legal_concepts": [
+          "操纵市场",
+          "证券监管"
+        ],
+        "confidence": 0.94
+      }
+    },
+    {
+      "id": "TR050",
+      "name": "虚假陈述触发民事赔偿",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国证券法",
+      "article": "第八十五条",
+      "pattern": {
+        "action": "FALSE_DISCLOSURE"
+      },
+      "output": {
+        "legal_concepts": [
+          "虚假陈述",
+          "投资者赔偿"
+        ],
+        "confidence": 0.93
+      }
+    },
+    {
+      "id": "TR051",
+      "name": "公开发行证券需核准",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国证券法",
+      "article": "第九条",
+      "pattern": {
+        "action": "PUBLIC_OFFERING"
+      },
+      "output": {
+        "legal_concepts": [
+          "发行核准",
+          "证券监管"
+        ],
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "TR052",
+      "name": "重大资产重组触发披露义务",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国证券法",
+      "article": "第八十条",
+      "pattern": {
+        "action": "MAJOR_ASSET_RESTRUCTURING"
+      },
+      "output": {
+        "legal_concepts": [
+          "重大事项披露",
+          "信息透明"
+        ],
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "TR053",
+      "name": "合同无效情形触发返还责任",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国民法典",
+      "article": "第一百五十七条",
+      "pattern": {
+        "action": "INVALID_CONTRACT"
+      },
+      "output": {
+        "legal_concepts": [
+          "合同无效",
+          "恢复原状"
+        ],
+        "confidence": 0.94
+      }
+    },
+    {
+      "id": "TR054",
+      "name": "重大误解触发撤销权",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国民法典",
+      "article": "第一百四十七条",
+      "pattern": {
+        "action": "MAKES_CONTRACT",
+        "relation_conditions": {
+          "major_mistake": "=1"
+        }
+      },
+      "output": {
+        "legal_concepts": [
+          "可撤销合同",
+          "撤销权"
+        ],
+        "confidence": 0.92
+      }
+    },
+    {
+      "id": "TR055",
+      "name": "欺诈行为触发撤销权",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国民法典",
+      "article": "第一百四十八条",
+      "pattern": {
+        "action": "COMMITS_FRAUD"
+      },
+      "output": {
+        "legal_concepts": [
+          "欺诈",
+          "撤销权"
+        ],
+        "confidence": 0.93
+      }
+    },
+    {
+      "id": "TR056",
+      "name": "债权人代位权行使",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国民法典",
+      "article": "第五百三十五条",
+      "pattern": {
+        "action": "EXERCISES_SUBROGATION"
+      },
+      "output": {
+        "legal_concepts": [
+          "代位权",
+          "债权保护"
+        ],
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "TR057",
+      "name": "债权转让通知义务",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国民法典",
+      "article": "第五百四十六条",
+      "pattern": {
+        "action": "ASSIGNS_CLAIM"
+      },
+      "output": {
+        "legal_concepts": [
+          "债权转让",
+          "通知义务"
+        ],
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "TR058",
+      "name": "合同解除触发清算义务",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国民法典",
+      "article": "第五百六十六条",
+      "pattern": {
+        "action": "TERMINATES_CONTRACT"
+      },
+      "output": {
+        "legal_concepts": [
+          "合同解除",
+          "清算结算"
+        ],
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "TR059",
+      "name": "不当得利返还",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国民法典",
+      "article": "第九百八十七条",
+      "pattern": {
+        "action": "UNJUST_ENRICHMENT"
+      },
+      "output": {
+        "legal_concepts": [
+          "不当得利",
+          "返还责任"
+        ],
+        "confidence": 0.92
+      }
+    },
+    {
+      "id": "TR060",
+      "name": "无因管理触发补偿",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国民法典",
+      "article": "第九百七十九条",
+      "pattern": {
+        "action": "MANAGES_WITHOUT_MANDATE"
+      },
+      "output": {
+        "legal_concepts": [
+          "无因管理",
+          "补偿请求权"
+        ],
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "TR061",
+      "name": "外商投资准入负面清单限制",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国外商投资法",
+      "article": "第四条",
+      "pattern": {
+        "action": "FOREIGN_INVESTS",
+        "relation_conditions": {
+          "negative_list": "=1"
+        }
+      },
+      "output": {
+        "legal_concepts": [
+          "负面清单",
+          "准入限制"
+        ],
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "TR062",
+      "name": "外商投资企业平等待遇",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国外商投资法",
+      "article": "第九条",
+      "pattern": {
+        "action": "OPERATES",
+        "from_entity_type": "ForeignInvestedEnterprise"
+      },
+      "output": {
+        "legal_concepts": [
+          "国民待遇",
+          "平等保护"
+        ],
+        "confidence": 0.88
+      }
+    },
+    {
+      "id": "TR063",
+      "name": "经营者达成纵向协议",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国反垄断法",
+      "article": "第十八条",
+      "pattern": {
+        "action": "VERTICAL_AGREEMENT"
+      },
+      "output": {
+        "legal_concepts": [
+          "纵向垄断协议",
+          "反垄断监管"
+        ],
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "TR064",
+      "name": "拒绝交易构成滥用",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国反垄断法",
+      "article": "第二十二条",
+      "pattern": {
+        "action": "REFUSES_TO_DEAL"
+      },
+      "output": {
+        "legal_concepts": [
+          "拒绝交易",
+          "滥用支配地位"
+        ],
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "TR065",
+      "name": "搭售行为构成滥用",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国反垄断法",
+      "article": "第二十二条",
+      "pattern": {
+        "action": "TIES_SALES"
+      },
+      "output": {
+        "legal_concepts": [
+          "搭售",
+          "反垄断责任"
+        ],
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "TR066",
+      "name": "低价倾销构成滥用",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国反垄断法",
+      "article": "第二十二条",
+      "pattern": {
+        "action": "PREDATORY_PRICING"
+      },
+      "output": {
+        "legal_concepts": [
+          "掠夺性定价",
+          "滥用市场支配"
+        ],
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "TR067",
+      "name": "公司解散触发清算程序",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国公司法",
+      "article": "第一百八十条",
+      "pattern": {
+        "action": "DISSOLVES"
+      },
+      "output": {
+        "legal_concepts": [
+          "公司解散",
+          "清算程序"
+        ],
+        "confidence": 0.93
+      }
+    },
+    {
+      "id": "TR068",
+      "name": "营业执照吊销触发解散",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国公司法",
+      "article": "第一百八十条",
+      "pattern": {
+        "action": "REVOKES_LICENSE"
+      },
+      "output": {
+        "legal_concepts": [
+          "强制解散",
+          "行政监管"
+        ],
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "TR069",
+      "name": "公司提供财务资助限制",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国公司法",
+      "article": "第一百六十一条",
+      "pattern": {
+        "action": "PROVIDES_FINANCIAL_ASSISTANCE"
+      },
+      "output": {
+        "legal_concepts": [
+          "财务资助限制",
+          "资本维持原则"
+        ],
+        "confidence": 0.88
+      }
+    },
+    {
+      "id": "TR070",
+      "name": "董事会召集程序违法",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国公司法",
+      "article": "第四十七条",
+      "pattern": {
+        "action": "CONVENES_BOARD",
+        "relation_conditions": {
+          "procedure_valid": "=0"
+        }
+      },
+      "output": {
+        "legal_concepts": [
+          "程序违法",
+          "决议可撤销"
+        ],
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "TR071",
+      "name": "股东代表诉讼启动",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国公司法",
+      "article": "第一百五十一条",
+      "pattern": {
+        "action": "FILES_DERIVATIVE_LAWSUIT"
+      },
+      "output": {
+        "legal_concepts": [
+          "股东代表诉讼",
+          "公司利益保护"
+        ],
+        "confidence": 0.94
+      }
+    },
+    {
+      "id": "TR072",
+      "name": "实际控制人操纵公司决策",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国公司法",
+      "article": "第二十一条",
+      "pattern": {
+        "action": "CONTROLS_DECISION"
+      },
+      "output": {
+        "legal_concepts": [
+          "实际控制人责任",
+          "损害赔偿"
+        ],
+        "confidence": 0.92
+      }
+    },
+    {
+      "id": "TR073",
+      "name": "公司章程修改需特别决议",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国公司法",
+      "article": "第四十三条",
+      "pattern": {
+        "action": "AMENDS_ARTICLES"
+      },
+      "output": {
+        "legal_concepts": [
+          "章程修改",
+          "特别决议"
+        ],
+        "confidence": 0.93
+      }
+    },
+    {
+      "id": "TR074",
+      "name": "发行公司债券需决议",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国公司法",
+      "article": "第一百五十三条",
+      "pattern": {
+        "action": "ISSUES_BONDS"
+      },
+      "output": {
+        "legal_concepts": [
+          "公司债发行",
+          "股东会决议"
+        ],
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "TR075",
+      "name": "募集资金违规使用",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国证券法",
+      "article": "第十五条",
+      "pattern": {
+        "action": "MISUSES_FUNDS"
+      },
+      "output": {
+        "legal_concepts": [
+          "募集资金违规",
+          "监管处罚"
+        ],
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "TR076",
+      "name": "信息披露重大遗漏",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国证券法",
+      "article": "第八十五条",
+      "pattern": {
+        "action": "OMITS_MATERIAL_INFORMATION"
+      },
+      "output": {
+        "legal_concepts": [
+          "信息披露违法",
+          "赔偿责任"
+        ],
+        "confidence": 0.92
+      }
+    },
+    {
+      "id": "TR077",
+      "name": "债务人迟延履行",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国民法典",
+      "article": "第五百七十七条",
+      "pattern": {
+        "action": "DELAY_PERFORMANCE"
+      },
+      "output": {
+        "legal_concepts": [
+          "迟延履行",
+          "违约责任"
+        ],
+        "confidence": 0.94
+      }
+    },
+    {
+      "id": "TR078",
+      "name": "合同部分无效",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国民法典",
+      "article": "第一百五十六条",
+      "pattern": {
+        "action": "PARTIAL_INVALIDITY"
+      },
+      "output": {
+        "legal_concepts": [
+          "部分无效",
+          "合同效力"
+        ],
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "TR079",
+      "name": "格式条款未提示说明",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国民法典",
+      "article": "第四百九十六条",
+      "pattern": {
+        "action": "USES_STANDARD_TERMS",
+        "relation_conditions": {
+          "not_notified": "=1"
+        }
+      },
+      "output": {
+        "legal_concepts": [
+          "格式条款无效",
+          "消费者保护"
+        ],
+        "confidence": 0.93
+      }
+    },
+    {
+      "id": "TR080",
+      "name": "重大误导性陈述",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国证券法",
+      "article": "第八十五条",
+      "pattern": {
+        "action": "MISLEADING_STATEMENT"
+      },
+      "output": {
+        "legal_concepts": [
+          "误导性陈述",
+          "证券民事责任"
+        ],
+        "confidence": 0.92
+      }
+    },
+    {
+      "id": "TR081",
+      "name": "不动产登记生效规则",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国民法典",
+      "article": "第二百零九条",
+      "pattern": {
+        "action": "TRANSFERS_REAL_PROPERTY",
+        "relation_conditions": {
+          "registered": "=1"
+        }
+      },
+      "output": {
+        "legal_concepts": [
+          "不动产物权变动",
+          "登记生效"
+        ],
+        "confidence": 0.95
+      }
+    },
+    {
+      "id": "TR082",
+      "name": "未登记不动产物权不生效",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国民法典",
+      "article": "第二百零九条",
+      "pattern": {
+        "action": "TRANSFERS_REAL_PROPERTY",
+        "relation_conditions": {
+          "registered": "=0"
+        }
+      },
+      "output": {
+        "legal_concepts": [
+          "物权未生效",
+          "登记对抗"
+        ],
+        "confidence": 0.93
+      }
+    },
+    {
+      "id": "TR083",
+      "name": "动产交付生效规则",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国民法典",
+      "article": "第二百二十四条",
+      "pattern": {
+        "action": "DELIVERS_MOVABLE_PROPERTY"
+      },
+      "output": {
+        "legal_concepts": [
+          "动产物权变动",
+          "交付生效"
+        ],
+        "confidence": 0.94
+      }
+    },
+    {
+      "id": "TR084",
+      "name": "抵押权实现",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国民法典",
+      "article": "第四百零七条",
+      "pattern": {
+        "action": "ENFORCES_MORTGAGE"
+      },
+      "output": {
+        "legal_concepts": [
+          "抵押权实现",
+          "优先受偿"
+        ],
+        "confidence": 0.92
+      }
+    },
+    {
+      "id": "TR085",
+      "name": "保证期间届满免责",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国民法典",
+      "article": "第六百九十二条",
+      "pattern": {
+        "action": "CLAIMS_GUARANTEE",
+        "relation_conditions": {
+          "within_period": "=0"
+        }
+      },
+      "output": {
+        "legal_concepts": [
+          "保证期间",
+          "免责"
+        ],
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "TR086",
+      "name": "连带保证责任触发",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国民法典",
+      "article": "第六百八十六条",
+      "pattern": {
+        "action": "PROVIDES_JOINT_GUARANTEE"
+      },
+      "output": {
+        "legal_concepts": [
+          "连带保证",
+          "共同责任"
+        ],
+        "confidence": 0.93
+      }
+    },
+    {
+      "id": "TR087",
+      "name": "产品责任侵权",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国民法典",
+      "article": "第一千二百零二条",
+      "pattern": {
+        "action": "PRODUCES_DEFECTIVE_PRODUCT"
+      },
+      "output": {
+        "legal_concepts": [
+          "产品责任",
+          "侵权赔偿"
+        ],
+        "confidence": 0.94
+      }
+    },
+    {
+      "id": "TR088",
+      "name": "环境污染侵权责任",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国民法典",
+      "article": "第一千二百二十九条",
+      "pattern": {
+        "action": "CAUSES_ENVIRONMENTAL_DAMAGE"
+      },
+      "output": {
+        "legal_concepts": [
+          "环境侵权",
+          "无过错责任"
+        ],
+        "confidence": 0.92
+      }
+    },
+    {
+      "id": "TR089",
+      "name": "高度危险作业责任",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国民法典",
+      "article": "第一千二百三十七条",
+      "pattern": {
+        "action": "ENGAGES_IN_ULTRAHAZARDOUS_ACTIVITY"
+      },
+      "output": {
+        "legal_concepts": [
+          "高度危险责任",
+          "无过错原则"
+        ],
+        "confidence": 0.91
+      }
+    },
+    {
+      "id": "TR090",
+      "name": "共同侵权连带责任",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国民法典",
+      "article": "第一千一百六十八条",
+      "pattern": {
+        "action": "COMMITS_JOINT_TORT"
+      },
+      "output": {
+        "legal_concepts": [
+          "共同侵权",
+          "连带责任"
+        ],
+        "confidence": 0.94
+      }
+    },
+    {
+      "id": "TR091",
+      "name": "股东会决议可撤销",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国公司法",
+      "article": "第二十二条",
+      "pattern": {
+        "action": "MAKES_RESOLUTION",
+        "relation_conditions": {
+          "procedure_illegal": "=1"
+        }
+      },
+      "output": {
+        "legal_concepts": [
+          "决议可撤销",
+          "公司治理瑕疵"
+        ],
+        "confidence": 0.93
+      }
+    },
+    {
+      "id": "TR092",
+      "name": "滥用表决权损害公司利益",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国公司法",
+      "article": "第二十条",
+      "pattern": {
+        "action": "ABUSES_VOTING_RIGHT"
+      },
+      "output": {
+        "legal_concepts": [
+          "滥用权利",
+          "损害赔偿"
+        ],
+        "confidence": 0.92
+      }
+    },
+    {
+      "id": "TR093",
+      "name": "未按期缴纳出资触发违约责任",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国公司法",
+      "article": "第二十八条",
+      "pattern": {
+        "action": "FAILS_TO_PAY_CAPITAL"
+      },
+      "output": {
+        "legal_concepts": [
+          "出资违约",
+          "补缴责任"
+        ],
+        "confidence": 0.93
+      }
+    },
+    {
+      "id": "TR094",
+      "name": "公司对外投资超过净资产比例",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国公司法",
+      "article": "第十六条",
+      "pattern": {
+        "action": "INVESTS_IN",
+        "relation_conditions": {
+          "asset_ratio": ">=0.5"
+        }
+      },
+      "output": {
+        "legal_concepts": [
+          "重大投资",
+          "特别决议"
+        ],
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "TR095",
+      "name": "上市公司退市触发信息披露",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国证券法",
+      "article": "第六十三条",
+      "pattern": {
+        "action": "DELISTS"
+      },
+      "output": {
+        "legal_concepts": [
+          "退市程序",
+          "信息披露"
+        ],
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "TR096",
+      "name": "投资者适当性义务",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国证券法",
+      "article": "第八十八条",
+      "pattern": {
+        "action": "SELLS_FINANCIAL_PRODUCT"
+      },
+      "output": {
+        "legal_concepts": [
+          "适当性管理",
+          "投资者保护"
+        ],
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "TR097",
+      "name": "基金管理人信义义务",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国证券投资基金法",
+      "article": "第九条",
+      "pattern": {
+        "action": "MANAGES_FUND"
+      },
+      "output": {
+        "legal_concepts": [
+          "信义义务",
+          "受托责任"
+        ],
+        "confidence": 0.88
+      }
+    },
+    {
+      "id": "TR098",
+      "name": "普通合伙人执行事务责任",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国合伙企业法",
+      "article": "第三条",
+      "pattern": {
+        "action": "EXECUTES_PARTNERSHIP_AFFAIR"
+      },
+      "output": {
+        "legal_concepts": [
+          "执行事务",
+          "无限责任"
+        ],
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "TR099",
+      "name": "有限合伙人参与经营丧失限制责任",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国合伙企业法",
+      "article": "第七十六条",
+      "pattern": {
+        "action": "PARTICIPATES_IN_MANAGEMENT",
+        "from_entity_type": "LimitedPartner"
+      },
+      "output": {
+        "legal_concepts": [
+          "责任突破",
+          "无限责任"
+        ],
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "TR100",
+      "name": "外商投资征收补偿",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国外商投资法",
+      "article": "第二十条",
+      "pattern": {
+        "action": "EXPROPRIATES_FOREIGN_INVESTMENT"
+      },
+      "output": {
+        "legal_concepts": [
+          "公平补偿",
+          "征收限制"
+        ],
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "TR101",
+      "name": "党员必须遵守政治纪律",
+      "rule_level": "PARTY",
+      "source_law": "中国共产党章程",
+      "article": "第三条",
+      "pattern": {
+        "action": "JOINS_PARTY"
+      },
+      "output": {
+        "legal_concepts": [
+          "政治纪律",
+          "党员义务"
+        ],
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "TR102",
+      "name": "党组织参与重大决策",
+      "rule_level": "PARTY",
+      "source_law": "中国共产党章程",
+      "article": "第三十三条",
+      "pattern": {
+        "action": "PARTICIPATES_IN_DECISION"
+      },
+      "output": {
+        "legal_concepts": [
+          "党的领导",
+          "公司治理嵌入"
+        ],
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "TR103",
+      "name": "党员违纪需组织审查",
+      "rule_level": "PARTY",
+      "source_law": "中国共产党章程",
+      "article": "第四十条",
+      "pattern": {
+        "action": "SUSPECTED_DISCIPLINE_VIOLATION"
+      },
+      "output": {
+        "legal_concepts": [
+          "纪律审查",
+          "组织程序"
+        ],
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "TR104",
+      "name": "公司解散未清算责任",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国公司法",
+      "article": "第一百八十八条",
+      "pattern": {
+        "action": "FAILS_TO_FORM_LIQUIDATION_GROUP"
+      },
+      "output": {
+        "legal_concepts": [
+          "清算责任",
+          "连带责任"
+        ],
+        "confidence": 0.92
+      }
+    },
+    {
+      "id": "TR105",
+      "name": "债务人恶意转移财产",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国民法典",
+      "article": "第五百三十八条",
+      "pattern": {
+        "action": "FRAUDULENT_TRANSFER"
+      },
+      "output": {
+        "legal_concepts": [
+          "撤销权",
+          "债权保护"
+        ],
+        "confidence": 0.92
+      }
+    },
+    {
+      "id": "TR106",
+      "name": "合同显失公平",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国民法典",
+      "article": "第一百五十一条",
+      "pattern": {
+        "action": "MAKES_CONTRACT",
+        "relation_conditions": {
+          "grossly_unfair": "=1"
+        }
+      },
+      "output": {
+        "legal_concepts": [
+          "显失公平",
+          "可撤销"
+        ],
+        "confidence": 0.91
+      }
+    },
+    {
+      "id": "TR107",
+      "name": "公司对外担保未经决议",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国公司法",
+      "article": "第十六条",
+      "pattern": {
+        "action": "PROVIDES_GUARANTEE",
+        "relation_conditions": {
+          "approved": "=0"
+        }
+      },
+      "output": {
+        "legal_concepts": [
+          "担保无效风险",
+          "公司治理瑕疵"
+        ],
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "TR108",
+      "name": "控股股东资金占用",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国证券法",
+      "article": "第八十条",
+      "pattern": {
+        "action": "OCCUPIES_FUNDS"
+      },
+      "output": {
+        "legal_concepts": [
+          "资金占用",
+          "信息披露"
+        ],
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "TR109",
+      "name": "董事会未履行信息披露义务",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国证券法",
+      "article": "第八十一条",
+      "pattern": {
+        "action": "FAILS_TO_DISCLOSE"
+      },
+      "output": {
+        "legal_concepts": [
+          "披露违法",
+          "行政责任"
+        ],
+        "confidence": 0.92
+      }
+    },
+    {
+      "id": "TR110",
+      "name": "重大资产出售需特别决议",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国公司法",
+      "article": "第四十三条",
+      "pattern": {
+        "action": "DISPOSES_MAJOR_ASSET"
+      },
+      "output": {
+        "legal_concepts": [
+          "重大资产处置",
+          "特别决议"
+        ],
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "TR111",
+      "name": "债务抵销条件满足",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国民法典",
+      "article": "第五百六十七条",
+      "pattern": {
+        "action": "OFFSETS_DEBT"
+      },
+      "output": {
+        "legal_concepts": [
+          "债务抵销",
+          "债权消灭"
+        ],
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "TR112",
+      "name": "合同继续履行请求权",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国民法典",
+      "article": "第五百七十七条",
+      "pattern": {
+        "action": "REQUESTS_CONTINUED_PERFORMANCE"
+      },
+      "output": {
+        "legal_concepts": [
+          "继续履行",
+          "违约救济"
+        ],
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "TR113",
+      "name": "违约金过高可调减",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国民法典",
+      "article": "第五百八十八条",
+      "pattern": {
+        "action": "CLAIMS_LIQUIDATED_DAMAGES",
+        "relation_conditions": {
+          "excessive": "=1"
+        }
+      },
+      "output": {
+        "legal_concepts": [
+          "违约金调整",
+          "公平原则"
+        ],
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "TR114",
+      "name": "投资协议约定对赌条款",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国民法典",
+      "article": "第四百六十五条",
+      "pattern": {
+        "action": "SIGNS_VAM_AGREEMENT"
+      },
+      "output": {
+        "legal_concepts": [
+          "对赌协议",
+          "合同效力审查"
+        ],
+        "confidence": 0.88
+      }
+    },
+    {
+      "id": "TR115",
+      "name": "股权质押触发登记",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国民法典",
+      "article": "第四百四十三条",
+      "pattern": {
+        "action": "PLEDGES_EQUITY"
+      },
+      "output": {
+        "legal_concepts": [
+          "股权质押",
+          "登记生效"
+        ],
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "TR116",
+      "name": "破产申请触发债权申报",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国企业破产法",
+      "article": "第四十五条",
+      "pattern": {
+        "action": "FILES_BANKRUPTCY"
+      },
+      "output": {
+        "legal_concepts": [
+          "债权申报",
+          "破产程序"
+        ],
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "TR117",
+      "name": "公司债违约触发加速到期",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国民法典",
+      "article": "第五百七十七条",
+      "pattern": {
+        "action": "DEFAULTS_ON_BOND"
+      },
+      "output": {
+        "legal_concepts": [
+          "债券违约",
+          "加速到期"
+        ],
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "TR118",
+      "name": "重大信息披露前交易限制",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国证券法",
+      "article": "第五十二条",
+      "pattern": {
+        "action": "TRADES_DURING_SENSITIVE_PERIOD"
+      },
+      "output": {
+        "legal_concepts": [
+          "敏感期交易",
+          "内幕风险"
+        ],
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "TR119",
+      "name": "董事辞职影响决议有效性",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国公司法",
+      "article": "第四十七条",
+      "pattern": {
+        "action": "DIRECTOR_RESIGNS",
+        "relation_conditions": {
+          "quorum": "<legal_requirement"
+        }
+      },
+      "output": {
+        "legal_concepts": [
+          "法定人数不足",
+          "决议无效风险"
+        ],
+        "confidence": 0.88
+      }
+    },
+    {
+      "id": "TR120",
+      "name": "党员必须执行组织决定",
+      "rule_level": "PARTY",
+      "source_law": "中国共产党章程",
+      "article": "第三条",
+      "pattern": {
+        "action": "REFUSES_ORGANIZATIONAL_DECISION"
+      },
+      "output": {
+        "legal_concepts": [
+          "组织纪律",
+          "纪律处分"
+        ],
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "TR121",
+      "name": "公司分立触发债务连带责任",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国公司法",
+      "article": "第一百七十五条",
+      "pattern": {
+        "action": "SPLITS",
+        "from_entity_type": "Company"
+      },
+      "output": {
+        "legal_concepts": [
+          "公司分立",
+          "债务连带责任"
+        ],
+        "confidence": 0.92
+      }
+    },
+    {
+      "id": "TR122",
+      "name": "公司合并触发债权人通知义务",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国公司法",
+      "article": "第一百七十三条",
+      "pattern": {
+        "action": "MERGES",
+        "from_entity_type": "Company"
+      },
+      "output": {
+        "legal_concepts": [
+          "公司合并",
+          "债权人保护"
+        ],
+        "confidence": 0.91
+      }
+    },
+    {
+      "id": "TR123",
+      "name": "减资触发公告程序",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国公司法",
+      "article": "第一百七十七条",
+      "pattern": {
+        "action": "REDUCES_CAPITAL",
+        "from_entity_type": "Company"
+      },
+      "output": {
+        "legal_concepts": [
+          "注册资本减少",
+          "公告程序"
+        ],
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "TR124",
+      "name": "未履行出资义务触发违约责任",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国公司法",
+      "article": "第二十八条",
+      "pattern": {
+        "action": "FAILS_TO_PAY_CAPITAL",
+        "from_entity_type": "Shareholder"
+      },
+      "output": {
+        "legal_concepts": [
+          "出资违约",
+          "补足责任"
+        ],
+        "confidence": 0.93
+      }
+    },
+    {
+      "id": "TR125",
+      "name": "抽逃出资触发返还责任",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国公司法",
+      "article": "第三十五条",
+      "pattern": {
+        "action": "WITHDRAWS_CAPITAL",
+        "from_entity_type": "Shareholder"
+      },
+      "output": {
+        "legal_concepts": [
+          "抽逃出资",
+          "返还责任"
+        ],
+        "confidence": 0.94
+      }
+    },
+    {
+      "id": "TR126",
+      "name": "董事违反忠实义务触发赔偿责任",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国公司法",
+      "article": "第一百四十八条",
+      "pattern": {
+        "action": "BREACHES_FIDUCIARY_DUTY",
+        "from_entity_type": "Director"
+      },
+      "output": {
+        "legal_concepts": [
+          "忠实义务",
+          "损害赔偿"
+        ],
+        "confidence": 0.92
+      }
+    },
+    {
+      "id": "TR127",
+      "name": "高管违反勤勉义务触发责任追究",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国公司法",
+      "article": "第一百四十九条",
+      "pattern": {
+        "action": "BREACHES_DUTY_OF_CARE",
+        "from_entity_type": "SeniorManager"
+      },
+      "output": {
+        "legal_concepts": [
+          "勤勉义务",
+          "高管责任"
+        ],
+        "confidence": 0.91
+      }
+    },
+    {
+      "id": "TR128",
+      "name": "股东滥用权利触发人格否认",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国公司法",
+      "article": "第二十条",
+      "pattern": {
+        "action": "ABUSES_RIGHT",
+        "from_entity_type": "Shareholder"
+      },
+      "output": {
+        "legal_concepts": [
+          "公司人格否认",
+          "连带责任"
+        ],
+        "confidence": 0.95
+      }
+    },
+    {
+      "id": "TR129",
+      "name": "国有资产转让触发评估备案",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国企业国有资产法",
+      "article": "第五十四条",
+      "pattern": {
+        "action": "TRANSFERS_STATE_ASSET",
+        "from_entity_type": "Company"
+      },
+      "output": {
+        "legal_concepts": [
+          "国资评估",
+          "备案程序"
+        ],
+        "confidence": 0.89
+      }
+    },
+    {
+      "id": "TR130",
+      "name": "股东知情权受限触发诉讼救济",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国公司法",
+      "article": "第三十三条",
+      "pattern": {
+        "action": "REFUSES_INFORMATION",
+        "from_entity_type": "Company",
+        "to_entity_type": "Shareholder"
+      },
+      "output": {
+        "legal_concepts": [
+          "股东知情权",
+          "司法救济"
+        ],
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "TR131",
+      "name": "合同成立触发履行义务",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国民法典",
+      "article": "第四百六十五条",
+      "pattern": {
+        "action": "CONCLUDES_CONTRACT",
+        "from_entity_type": "Person",
+        "to_entity_type": "Person"
+      },
+      "output": {
+        "legal_concepts": [
+          "合同成立",
+          "履行义务"
+        ],
+        "confidence": 0.93
+      }
+    },
+    {
+      "id": "TR132",
+      "name": "违约行为触发违约责任",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国民法典",
+      "article": "第五百七十七条",
+      "pattern": {
+        "action": "BREACHES_CONTRACT"
+      },
+      "output": {
+        "legal_concepts": [
+          "违约责任",
+          "损害赔偿"
+        ],
+        "confidence": 0.94
+      }
+    },
+    {
+      "id": "TR133",
+      "name": "不可抗力触发免责条款",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国民法典",
+      "article": "第五百九十条",
+      "pattern": {
+        "action": "CLAIMS_FORCE_MAJEURE"
+      },
+      "output": {
+        "legal_concepts": [
+          "不可抗力",
+          "免责事由"
+        ],
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "TR134",
+      "name": "侵权行为触发赔偿责任",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国民法典",
+      "article": "第一千一百六十五条",
+      "pattern": {
+        "action": "COMMITS_TORT"
+      },
+      "output": {
+        "legal_concepts": [
+          "侵权责任",
+          "损害赔偿"
+        ],
+        "confidence": 0.95
+      }
+    },
+    {
+      "id": "TR135",
+      "name": "产品缺陷触发生产者责任",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国民法典",
+      "article": "第一千二百零二条",
+      "pattern": {
+        "action": "PRODUCES_DEFECTIVE_PRODUCT"
+      },
+      "output": {
+        "legal_concepts": [
+          "产品责任",
+          "无过错责任"
+        ],
+        "confidence": 0.92
+      }
+    },
+    {
+      "id": "TR136",
+      "name": "担保合同成立触发担保责任",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国民法典",
+      "article": "第六百八十一条",
+      "pattern": {
+        "action": "PROVIDES_GUARANTEE"
+      },
+      "output": {
+        "legal_concepts": [
+          "担保合同",
+          "连带保证"
+        ],
+        "confidence": 0.91
+      }
+    },
+    {
+      "id": "TR137",
+      "name": "抵押登记完成触发优先受偿",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国民法典",
+      "article": "第四百零二条",
+      "pattern": {
+        "action": "REGISTERS_MORTGAGE"
+      },
+      "output": {
+        "legal_concepts": [
+          "抵押权设立",
+          "优先受偿权"
+        ],
+        "confidence": 0.93
+      }
+    },
+    {
+      "id": "TR138",
+      "name": "质押设立触发担保物权",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国民法典",
+      "article": "第四百二十七条",
+      "pattern": {
+        "action": "ESTABLISHES_PLEDGE"
+      },
+      "output": {
+        "legal_concepts": [
+          "质权",
+          "担保物权"
+        ],
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "TR139",
+      "name": "股权质押触发登记要求",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国民法典",
+      "article": "第四百四十三条",
+      "pattern": {
+        "action": "PLEDGES_EQUITY"
+      },
+      "output": {
+        "legal_concepts": [
+          "股权质押",
+          "登记生效"
+        ],
+        "confidence": 0.92
+      }
+    },
+    {
+      "id": "TR140",
+      "name": "外商投资准入负面清单触发审批",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国外商投资法",
+      "article": "第四条",
+      "pattern": {
+        "action": "INVESTS_IN",
+        "relation_conditions": {
+          "negative_list": "=1"
+        }
+      },
+      "output": {
+        "legal_concepts": [
+          "外资准入",
+          "特别管理措施"
+        ],
+        "confidence": 0.91
+      }
+    },
+    {
+      "id": "TR141",
+      "name": "外商投资信息报告触发报送义务",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国外商投资法",
+      "article": "第三十四条",
+      "pattern": {
+        "action": "SUBMITS_REPORT",
+        "from_entity_type": "ForeignInvestor"
+      },
+      "output": {
+        "legal_concepts": [
+          "信息报告",
+          "外资监管"
+        ],
+        "confidence": 0.88
+      }
+    },
+    {
+      "id": "TR142",
+      "name": "征收征用触发补偿机制",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国外商投资法",
+      "article": "第二十条",
+      "pattern": {
+        "action": "EXPROPRIATES"
+      },
+      "output": {
+        "legal_concepts": [
+          "征收补偿",
+          "公平补偿原则"
+        ],
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "TR143",
+      "name": "党员严重违纪触发处分程序",
+      "rule_level": "NATIONAL",
+      "source_law": "中国共产党章程",
+      "article": "第四十条",
+      "pattern": {
+        "action": "VIOLATES_DISCIPLINE",
+        "from_entity_type": "PartyMember"
+      },
+      "output": {
+        "legal_concepts": [
+          "党纪处分",
+          "组织处理"
+        ],
+        "confidence": 0.87
+      }
+    },
+    {
+      "id": "TR144",
+      "name": "设立党组织触发党建义务",
+      "rule_level": "NATIONAL",
+      "source_law": "中国共产党章程",
+      "article": "第三十条",
+      "pattern": {
+        "action": "ESTABLISHES_PARTY_ORG",
+        "from_entity_type": "Company"
+      },
+      "output": {
+        "legal_concepts": [
+          "党建要求",
+          "组织建设"
+        ],
+        "confidence": 0.85
+      }
+    },
+    {
+      "id": "TR145",
+      "name": "重大事项未报告触发问责",
+      "rule_level": "NATIONAL",
+      "source_law": "中国共产党章程",
+      "article": "第三十八条",
+      "pattern": {
+        "action": "FAILS_TO_REPORT"
+      },
+      "output": {
+        "legal_concepts": [
+          "组织问责",
+          "纪律审查"
+        ],
+        "confidence": 0.86
+      }
+    },
+    {
+      "id": "TR146",
+      "name": "有限责任公司股权转让触发优先购买权",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国公司法",
+      "article": "第七十一条",
+      "pattern": {
+        "action": "TRANSFERS_EQUITY",
+        "from_entity_type": "Shareholder"
+      },
+      "output": {
+        "legal_concepts": [
+          "优先购买权",
+          "股权转让限制"
+        ],
+        "confidence": 0.93
+      }
+    },
+    {
+      "id": "TR147",
+      "name": "股份有限公司发行新股触发决议程序",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国公司法",
+      "article": "第一百三十四条",
+      "pattern": {
+        "action": "ISSUES_NEW_SHARES",
+        "from_entity_type": "Company"
+      },
+      "output": {
+        "legal_concepts": [
+          "增发股份",
+          "股东大会决议"
+        ],
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "TR148",
+      "name": "利润分配触发弥补亏损规则",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国公司法",
+      "article": "第一百六十六条",
+      "pattern": {
+        "action": "DISTRIBUTES_PROFIT",
+        "from_entity_type": "Company"
+      },
+      "output": {
+        "legal_concepts": [
+          "利润分配",
+          "弥补亏损"
+        ],
+        "confidence": 0.91
+      }
+    },
+    {
+      "id": "TR149",
+      "name": "清算程序启动触发债权申报",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国公司法",
+      "article": "第一百八十五条",
+      "pattern": {
+        "action": "STARTS_LIQUIDATION",
+        "from_entity_type": "Company"
+      },
+      "output": {
+        "legal_concepts": [
+          "公司清算",
+          "债权申报"
+        ],
+        "confidence": 0.92
+      }
+    },
+    {
+      "id": "TR150",
+      "name": "投资协议签署触发备案义务",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国外商投资法实施条例",
+      "article": "第三十七条",
+      "pattern": {
+        "action": "SIGNS_INVESTMENT_AGREEMENT"
+      },
+      "output": {
+        "legal_concepts": [
+          "投资备案",
+          "合规管理"
+        ],
+        "confidence": 0.88
+      }
+    },
+    {
+      "id": "TR161",
+      "name": "国有资产交易审计",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国企业国有资产法",
+      "article": "第三十条",
+      "pattern": {
+        "action": "UNDERGOES_AUDIT",
+        "from_entity_type": "Company"
+      },
+      "output": {
+        "legal_concepts": [
+          "国资监管",
+          "审计要求"
+        ],
+        "confidence": 0.88
+      }
+    },
+    {
+      "id": "TR162",
+      "name": "国有资产处置审批",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国企业国有资产法",
+      "article": "第三十一条",
+      "pattern": {
+        "action": "DISPOSES_ASSET",
+        "from_entity_type": "Company",
+        "relation_conditions": {
+          "state_owned": "=1"
+        }
+      },
+      "output": {
+        "legal_concepts": [
+          "国资处置",
+          "审批程序"
+        ],
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "TR163",
+      "name": "会计凭证保管义务",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国会计法",
+      "article": "第十五条",
+      "pattern": {
+        "action": "FILES_RECORD"
+      },
+      "output": {
+        "legal_concepts": [
+          "会计合规",
+          "档案管理"
+        ],
+        "confidence": 0.82
+      }
+    },
+    {
+      "id": "TR164",
+      "name": "审计报告报送义务",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国审计法",
+      "article": "第二十三条",
+      "pattern": {
+        "action": "REPORTS_TO"
+      },
+      "output": {
+        "legal_concepts": [
+          "审计报送",
+          "监督义务"
+        ],
+        "confidence": 0.83
+      }
+    },
+    {
+      "id": "TR165",
+      "name": "税务申报义务",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国税收征收管理法",
+      "article": "第二十五条",
+      "pattern": {
+        "action": "FILES_RECORD",
+        "relation_conditions": {
+          "tax": "=1"
+        }
+      },
+      "output": {
+        "legal_concepts": [
+          "税务合规",
+          "纳税申报"
+        ],
+        "confidence": 0.87
+      }
+    },
+    {
+      "id": "TR166",
+      "name": "重大合同签署内控",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国民法典",
+      "article": "第四百六十五条",
+      "pattern": {
+        "action": "SIGNS_CONTRACT",
+        "relation_conditions": {
+          "major_contract": "=1"
+        }
+      },
+      "output": {
+        "legal_concepts": [
+          "合同合规",
+          "内部控制"
+        ],
+        "confidence": 0.84
+      }
+    },
+    {
+      "id": "TR167",
+      "name": "公司担保决策程序",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国公司法",
+      "article": "第十六条",
+      "pattern": {
+        "action": "PROVIDES_GUARANTEE",
+        "from_entity_type": "Company"
+      },
+      "output": {
+        "legal_concepts": [
+          "公司担保",
+          "决策程序"
+        ],
+        "confidence": 0.91
+      }
+    },
+    {
+      "id": "TR168",
+      "name": "违规担保风险",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国公司法",
+      "article": "第二十一条",
+      "pattern": {
+        "action": "HAS_RISK",
+        "relation_conditions": {
+          "illegal_guarantee": "=1"
+        }
+      },
+      "output": {
+        "legal_concepts": [
+          "违规担保风险",
+          "关联方约束"
+        ],
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "TR169",
+      "name": "招标程序义务",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国招标投标法",
+      "article": "第十条",
+      "pattern": {
+        "action": "BIDS_FOR"
+      },
+      "output": {
+        "legal_concepts": [
+          "招投标程序",
+          "采购合规"
+        ],
+        "confidence": 0.86
+      }
+    },
+    {
+      "id": "TR170",
+      "name": "中标公示义务",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国招标投标法",
+      "article": "第四十五条",
+      "pattern": {
+        "action": "WINS_BID"
+      },
+      "output": {
+        "legal_concepts": [
+          "中标公示",
+          "程序合规"
+        ],
+        "confidence": 0.84
+      }
+    },
+    {
+      "id": "TR171",
+      "name": "政府采购审批",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国政府采购法",
+      "article": "第二十六条",
+      "pattern": {
+        "action": "PURCHASES_FROM",
+        "relation_conditions": {
+          "government_procurement": "=1"
+        }
+      },
+      "output": {
+        "legal_concepts": [
+          "政府采购",
+          "审批流程"
+        ],
+        "confidence": 0.85
+      }
+    },
+    {
+      "id": "TR172",
+      "name": "反不正当竞争约束",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国反不正当竞争法",
+      "article": "第八条",
+      "pattern": {
+        "action": "PROHIBITS",
+        "relation_conditions": {
+          "unfair_competition": "=1"
+        }
+      },
+      "output": {
+        "legal_concepts": [
+          "反不正当竞争",
+          "市场行为约束"
+        ],
+        "confidence": 0.83
+      }
+    },
+    {
+      "id": "TR173",
+      "name": "环境影响评估义务",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国环境保护法",
+      "article": "第十九条",
+      "pattern": {
+        "action": "UNDERGOES_ASSESSMENT",
+        "relation_conditions": {
+          "environment": "=1"
+        }
+      },
+      "output": {
+        "legal_concepts": [
+          "环境评估",
+          "环保合规"
+        ],
+        "confidence": 0.82
+      }
+    },
+    {
+      "id": "TR174",
+      "name": "污染防治整改",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国环境保护法",
+      "article": "第四十二条",
+      "pattern": {
+        "action": "RECTIFIES",
+        "relation_conditions": {
+          "pollution": "=1"
+        }
+      },
+      "output": {
+        "legal_concepts": [
+          "污染防治",
+          "整改要求"
+        ],
+        "confidence": 0.8
+      }
+    },
+    {
+      "id": "TR175",
+      "name": "安全生产责任制",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国安全生产法",
+      "article": "第四条",
+      "pattern": {
+        "action": "REQUIRES",
+        "relation_conditions": {
+          "safe_production": "=1"
+        }
+      },
+      "output": {
+        "legal_concepts": [
+          "安全生产",
+          "主体责任"
+        ],
+        "confidence": 0.86
+      }
+    },
+    {
+      "id": "TR176",
+      "name": "事故上报义务",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国安全生产法",
+      "article": "第八十三条",
+      "pattern": {
+        "action": "REPORTS_TO",
+        "relation_conditions": {
+          "accident": "=1"
+        }
+      },
+      "output": {
+        "legal_concepts": [
+          "事故上报",
+          "应急管理"
+        ],
+        "confidence": 0.84
+      }
+    },
+    {
+      "id": "TR177",
+      "name": "数据泄露事件报告",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国个人信息保护法",
+      "article": "第五十七条",
+      "pattern": {
+        "action": "REPORTS_TO",
+        "relation_conditions": {
+          "data_breach": "=1"
+        }
+      },
+      "output": {
+        "legal_concepts": [
+          "数据泄露",
+          "事件报告"
+        ],
+        "confidence": 0.89
+      }
+    },
+    {
+      "id": "TR178",
+      "name": "个人敏感信息保护",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国个人信息保护法",
+      "article": "第二十八条",
+      "pattern": {
+        "action": "REQUIRES",
+        "relation_conditions": {
+          "sensitive_pi": "=1"
+        }
+      },
+      "output": {
+        "legal_concepts": [
+          "敏感个人信息",
+          "保护义务"
+        ],
+        "confidence": 0.88
+      }
+    },
+    {
+      "id": "TR179",
+      "name": "网络产品安全审查",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国网络安全法",
+      "article": "第三十五条",
+      "pattern": {
+        "action": "REVIEWS",
+        "relation_conditions": {
+          "network_product": "=1"
+        }
+      },
+      "output": {
+        "legal_concepts": [
+          "网络安全审查",
+          "供应链安全"
+        ],
+        "confidence": 0.83
+      }
+    },
+    {
+      "id": "TR180",
+      "name": "关键信息设施运行监测",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国网络安全法",
+      "article": "第三十四条",
+      "pattern": {
+        "action": "MONITORS",
+        "relation_conditions": {
+          "ciio": "=1"
+        }
+      },
+      "output": {
+        "legal_concepts": [
+          "运行监测",
+          "网络安全保护"
+        ],
+        "confidence": 0.81
+      }
+    },
+    {
+      "id": "TR181",
+      "name": "股权转让程序合规",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国公司法",
+      "article": "第八十四条",
+      "pattern": {
+        "action": "TRANSFERS_EQUITY",
+        "from_entity_type": "Company"
+      },
+      "output": {
+        "legal_concepts": [
+          "股权转让",
+          "程序合规"
+        ],
+        "confidence": 0.86
+      }
+    },
+    {
+      "id": "TR182",
+      "name": "董事会决议要求",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国公司法",
+      "article": "第四十六条",
+      "pattern": {
+        "action": "DECISION_RULE",
+        "relation_conditions": {
+          "board_resolution": "=1"
+        }
+      },
+      "output": {
+        "legal_concepts": [
+          "董事会决议",
+          "重大决策程序"
+        ],
+        "confidence": 0.87
+      }
+    },
+    {
+      "id": "TR183",
+      "name": "股东会决议要求",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国公司法",
+      "article": "第五十九条",
+      "pattern": {
+        "action": "DECISION_RULE",
+        "relation_conditions": {
+          "shareholders_resolution": "=1"
+        }
+      },
+      "output": {
+        "legal_concepts": [
+          "股东会决议",
+          "公司治理"
+        ],
+        "confidence": 0.86
+      }
+    },
+    {
+      "id": "TR184",
+      "name": "反垄断豁免边界",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国反垄断法",
+      "article": "第二十条",
+      "pattern": {
+        "action": "EXEMPTS",
+        "relation_conditions": {
+          "anti_monopoly": "=1"
+        }
+      },
+      "output": {
+        "legal_concepts": [
+          "反垄断豁免",
+          "竞争政策"
+        ],
+        "confidence": 0.78
+      }
+    },
+    {
+      "id": "TR185",
+      "name": "价格限制风险",
+      "rule_level": "NATIONAL",
+      "source_law": "中华人民共和国反垄断法",
+      "article": "第十七条",
+      "pattern": {
+        "action": "LIMITS",
+        "relation_conditions": {
+          "resale_price": "=1"
+        }
+      },
+      "output": {
+        "legal_concepts": [
+          "价格垄断",
+          "竞争风险"
+        ],
+        "confidence": 0.82
+      }
+    },
+    {
+      "id": "TR186",
+      "name": "地方国资交易规则",
+      "rule_level": "PROVINCIAL",
+      "source_law": "某省国有资产交易管理办法",
+      "article": "第十二条",
+      "pattern": {
+        "action": "DISPOSES_ASSET",
+        "relation_conditions": {
+          "province_state_asset": "=1"
+        }
+      },
+      "output": {
+        "legal_concepts": [
+          "地方国资交易",
+          "地方审批"
+        ],
+        "confidence": 0.75
+      }
+    },
+    {
+      "id": "TR187",
+      "name": "地方数据出境细则",
+      "rule_level": "PROVINCIAL",
+      "source_law": "某省数据条例",
+      "article": "第二十条",
+      "pattern": {
+        "action": "GOVERNED_BY",
+        "relation_conditions": {
+          "province_data": "=1"
+        }
+      },
+      "output": {
+        "legal_concepts": [
+          "地方数据合规",
+          "地方安全评估"
+        ],
+        "confidence": 0.74
+      }
+    },
+    {
+      "id": "TR188",
+      "name": "市级采购目录约束",
+      "rule_level": "PROVINCIAL",
+      "source_law": "某市政府采购目录",
+      "article": "第五条",
+      "pattern": {
+        "action": "PURCHASES_FROM",
+        "relation_conditions": {
+          "city_procurement": "=1"
+        }
+      },
+      "output": {
+        "legal_concepts": [
+          "地方采购合规",
+          "目录管理"
+        ],
+        "confidence": 0.73
+      }
+    },
+    {
+      "id": "TR189",
+      "name": "省级招投标细则",
+      "rule_level": "PROVINCIAL",
+      "source_law": "某省招标投标实施细则",
+      "article": "第九条",
+      "pattern": {
+        "action": "BIDS_FOR",
+        "relation_conditions": {
+          "province_bid": "=1"
+        }
+      },
+      "output": {
+        "legal_concepts": [
+          "地方招标细则",
+          "程序约束"
+        ],
+        "confidence": 0.72
+      }
+    },
+    {
+      "id": "TR190",
+      "name": "公司内部投资管理办法",
+      "rule_level": "COMPANY_POLICY",
+      "source_law": "某公司投资管理制度",
+      "article": "第三章",
+      "pattern": {
+        "action": "INVESTS_IN",
+        "relation_conditions": {
+          "internal_policy": "=1"
+        }
+      },
+      "output": {
+        "legal_concepts": [
+          "公司内部投资规则",
+          "内控审批"
+        ],
+        "confidence": 0.7
+      }
+    }
+  ],
+  "fulltext_index": "entity_name_alias_ft"
+}

@@ -1,8 +1,0 @@
-trigger_id: daily-news
-solution_id: news-intelligence
-kind: schedule
-workflow_type: build-news-brief
-enabled: true
-cron: "0 8 * * *"
-concurrency_policy: forbid
-payload_template: {}

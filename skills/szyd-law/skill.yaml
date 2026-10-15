@@ -1,0 +1,57 @@
+apiVersion: sage.dev/v1alpha1
+kind: SkillBinding
+metadata:
+  name: szyd-law
+  version: 1.0.0
+spec:
+  execution:
+    type: python-subprocess
+    entrypoint: scripts/sage_entry.py
+    arguments:
+      - {name: operation, option: --operation}
+      - {name: payload, option: --payload-file, encoding: json-file}
+      - {name: state, option: --state-file, encoding: json-file}
+      - {name: message, option: --message-file, encoding: json-file}
+  inputSchema:
+    type: object
+    additionalProperties: false
+    required: [operation]
+    properties:
+      operation:
+        enum: [open, inspect, evidence, stage, resume, review, final, schema, rules, prompt, preflight]
+      message: {type: string, maxLength: 200000}
+      payload: {type: object}
+      expected_revision: {type: integer, minimum: 1}
+      case_id: {type: string}
+      artifact_ids:
+        type: array
+        maxItems: 20
+        items: {type: string}
+      state:
+        type: object
+        readOnly: true
+        description: Server-owned. Never supply this field; the coordinator injects it.
+  outputSchema:
+    type: object
+    properties:
+      state: {type: object}
+      decision: {type: object, required: [action]}
+      completed: {type: boolean}
+      data: {type: object}
+      case_id: {type: string}
+      revision: {type: integer}
+      artifact_ids: {type: array, items: {type: string}}
+      documents: {type: array, items: {type: object}}
+      error: {type: string}
+      reason: {type: string}
+    anyOf:
+      - required: [state, decision, completed]
+      - required: [data]
+      - required: [error, reason]
+  routing:
+    keywords: [szyd, compliance, investment, law, 三重一大, 合规, 合法合规性审核]
+    attachmentTypes: []
+  policy:
+    risk: read-only
+    timeoutSeconds: 30
+    maxOutputBytes: 4194304
